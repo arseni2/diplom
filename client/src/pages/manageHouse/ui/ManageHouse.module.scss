@@ -1,0 +1,29 @@
+.main_container {
+  padding: 10px 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill,minmax(14rem,300px))
+}
+
+.filter {
+  display: flex;
+  gap: 10px;
+  width: 100%; // или 100%, как тебе нужно
+
+  &_input {
+    //width: 100px;
+  }
+
+  &_search {
+    flex: 1;
+
+    & > * { // применяем ко всем дочерним элементам (на случай, если Input обёрнут)
+      width: 100% !important;
+    }
+  }
+}

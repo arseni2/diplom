@@ -1,0 +1,42 @@
+@use "@/app-fsd/styles/variables" as var;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(100vh - 52px);
+  border-right: 1px solid var.$gray_border;
+  width: fit-content;
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 10px;
+
+    &_item {
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-radius: 7px;
+      color: var.$gray_text;
+      transition: 0.3s all;
+
+      &_out {
+
+      }
+
+      &:hover {
+        background: var.$g-color-private-brand-150-solid;
+        color: var.$g-color-private-brand-550-solid;
+      }
+
+      &_active {
+        background: var.$g-color-private-brand-150-solid;
+        color: var.$g-color-private-brand-550-solid;
+      }
+    }
+  }
+}

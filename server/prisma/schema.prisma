@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+generator nestgraphql {
+  provider = "node node_modules/prisma-nestjs-graphql"
+  output   = "../generated/graphql"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ======================
+// Модель: Роль пользователя
+// ======================
+model Role {
+  id    Int    @id @default(autoincrement())
+  title String @unique @map("title")
+
+  users User[]
+
+  @@index([title])
+}
+
+// ======================
+// Модель: Пользователь
+// ======================
+model User {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  email      String   @unique
+  firstname  String?
+  lastname   String?
+  middlename String?
+  password   String
+  telephone  String?
+  tg         String?
+
+  roleId           Int?      @default(1)
+  role             Role?     @relation(fields: [roleId], references: [id])
+  avatar           File?     @relation(fields: [avatarId], references: [id]) // ✅ Только здесь fields/references
+  avatarId         Int?      @unique // ✅ Обязательно @unique для 1:1
+  houses           House[]
+  appealsAsClient  Appeals[] @relation("AppealClient")
+  appealsAsRealtor Appeals[] @relation("AppealRealtor")
+
+  @@index([email])
+  @@index([roleId])
+}
+
+// ======================
+// Модель: Файлы (изображения)
+// ======================
+model File {
+  id   Int     @id @default(autoincrement())
+  path String  @map("file")
+  name String?
+  size Int?
+
+  house   House? @relation(fields: [houseId], references: [id])
+  houseId Int?
+  user    User? // ✅ Без fields/references — Prisma сам поймёт по обратной связи
+
+  @@index([houseId])
+}
+
+// ======================
+// Модель: Характеристики дома
+// ======================
+model Feature {
+  id    Int    @id @default(autoincrement())
+  title String
+  value String
+
+  house   House? @relation(fields: [houseId], references: [id])
+  houseId Int?
+
+  @@index([houseId])
+}
+
+// ======================
+// Модель: Объявление (Дом/Квартира)
+// ======================
+model House {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  title       String
+  description String
+  address     String
+  square      String
+  remont      String
+  floor       String?
+  rooms       String?
+  bio         String
+  price       String
+  isRent      Boolean  @default(true)
+  isSell      Boolean  @default(true)
+
+  realtor   User      @relation(fields: [realtorId], references: [id])
+  realtorId Int
+  images    File[]
+  features  Feature[]
+  appeal    Appeals?
+
+  @@index([realtorId])
+  @@index([isRent])
+  @@index([isSell])
+  @@index([createdAt])
+}
+
+model Appeals {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  status    String   @default("Новая")
+  comment   String
+
+  house   House? @relation(fields: [houseId], references: [id])
+  houseId Int?   @unique
+
+  client   User? @relation("AppealClient", fields: [clientId], references: [id])
+  clientId Int?  @unique
+
+  realtor   User? @relation("AppealRealtor", fields: [realtorId], references: [id])
+  realtorId Int?  @unique
+
+  @@index([houseId])
+  @@index([clientId])
+  @@index([realtorId])
+}

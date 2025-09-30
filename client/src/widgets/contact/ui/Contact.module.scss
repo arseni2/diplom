@@ -1,0 +1,59 @@
+@use "@/app-fsd/styles/variables" as var;
+
+.container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: left;
+
+  &_left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &_item {
+    border: 1px solid var.$gray_border;
+    border-radius: 10px;
+    padding: 15px;
+
+    &_item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    &_form {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+    }
+
+    &_header {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+
+      &_icon {
+        padding: 10px;
+        border-radius: 5px;
+        background: var.$g-color-private-brand-100;
+        color: var.$g-color-private-brand-600-solid;
+      }
+    }
+  }
+}
+
+.btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.text_form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,28 @@
+@use "@/app-fsd/styles/variables" as var;
+
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  &_item {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: .3s ease-in-out all;
+
+    &:hover {
+      background-color: var.$gray_border;
+      color: var.$g-color-private-brand-650-solid;
+    }
+
+    &_out {
+      transition: .3s ease-in-out all;
+
+      &:hover {
+        background-color: #FCE3E3;
+        color: #F06565;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use "@/app-fsd/styles/variables" as var;
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: #000;
+  font-size: 15px;
+  width: fit-content;
+  padding: 10px 10px;
+  border-radius: 6px;
+
+
+  &_active {
+    color: var.$g-color-private-brand-550-solid;
+    background: var.$g-color-private-brand-150-solid;
+  }
+  &_active > span {
+    font-weight: 600;
+  }
+}

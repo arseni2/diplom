@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &_nav {
+    display: flex;
+  }
+  &_logo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+  }
+  &_logo_title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+  }
+  &_button {
+    display: flex;
+    gap: 15px;
+  }
+  &_button_btn {
+    font-weight: 600;
+  }
+}
+
+
+.mobileOnly {
+  display: none;
+}
+.dekstopOnly {
+  display: inherit;
+}
+@media (max-width: 768px) {
+  .mobileOnly {
+    display: block;
+  }
+  .dekstopOnly {
+    display: none;
+  }
+}

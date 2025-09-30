@@ -1,0 +1,113 @@
+@use "@/app-fsd/styles/variables" as var;
+
+.container {
+  padding: 20px 0 0 20px;
+}
+
+// Фильтры
+.filterBar {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 24px;
+
+  .searchBox {
+    flex: 1;
+
+    & > div { // обёртка Input (если он обёрнут в div)
+      width: 100% !important;
+    }
+  }
+
+  .sortBox {
+    min-width: 200px;
+  }
+}
+
+// Таблица
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #333;
+
+  .th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #6b7280;
+    background-color: #f9fafb;
+  }
+
+  .tr {
+    border-bottom: 1px solid #e5e7eb;
+
+    &:hover {
+      background-color: #f9fafb;
+    }
+  }
+
+  .td {
+    padding: 16px;
+    vertical-align: middle;
+  }
+
+  // Стили для ячейки с пользователем
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .userText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  // Стили статуса
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .statusDot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+
+    &.online {
+      background-color: #10b981; // зеленый
+    }
+
+    &.offline {
+      background-color: #ef4444; // красный
+    }
+  }
+}
+
+.dropdown_item {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: .2s all;
+
+  &:hover {
+    background: var.$gray_background;
+  }
+}
+
+.dropdown_item_del {
+  &:hover {
+    background-color: #fce3e3;
+    color: #f06565;
+  }
+}

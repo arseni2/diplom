@@ -1,0 +1,80 @@
+@use "@/app-fsd/styles/variables" as var;
+
+.container {
+  padding: 10px 0 0 10px;
+}
+
+.filter {
+  display: flex;
+  gap: 10px;
+  width: 100%; // или 100%, как тебе нужно
+
+  &_input {
+    //width: 100px;
+  }
+
+  &_search {
+    flex: 1;
+
+    & > * { // применяем ко всем дочерним элементам (на случай, если Input обёрнут)
+      width: 100% !important;
+    }
+  }
+}
+
+.features_container {
+  margin-top: 10px;
+
+  &_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+
+    &_btns {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+
+      &_wrapper {
+        &_del {
+          border-radius: 8px;
+          padding: 10px;
+          cursor: pointer;
+          background: #fce3e3;
+        }
+
+        &_edit {
+          border-radius: 8px;
+          padding: 10px;
+          cursor: pointer;
+          background: #e3eefc;
+        }
+
+        &_check {
+          border-radius: 8px;
+          padding: 10px;
+          cursor: pointer;
+          background: #d0f8db;
+        }
+      }
+    }
+
+    &:hover {
+      background: var.$gray_background;
+    }
+  }
+}
+
+.btn_delete {
+  color: #f80565;
+}
+
+.btn_check {
+  color: #15f805;
+}
+
+.btn_edit {
+  color: #0566f8;
+}

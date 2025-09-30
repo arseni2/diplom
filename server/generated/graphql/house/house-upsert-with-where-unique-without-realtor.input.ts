@@ -1,0 +1,23 @@
+import { Field } from '@nestjs/graphql';
+import { InputType } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { HouseWhereUniqueInput } from './house-where-unique.input';
+import { Type } from 'class-transformer';
+import { HouseUpdateWithoutRealtorInput } from './house-update-without-realtor.input';
+import { HouseCreateWithoutRealtorInput } from './house-create-without-realtor.input';
+
+@InputType()
+export class HouseUpsertWithWhereUniqueWithoutRealtorInput {
+
+    @Field(() => HouseWhereUniqueInput, {nullable:false})
+    @Type(() => HouseWhereUniqueInput)
+    where!: Prisma.AtLeast<HouseWhereUniqueInput, 'id'>;
+
+    @Field(() => HouseUpdateWithoutRealtorInput, {nullable:false})
+    @Type(() => HouseUpdateWithoutRealtorInput)
+    update!: HouseUpdateWithoutRealtorInput;
+
+    @Field(() => HouseCreateWithoutRealtorInput, {nullable:false})
+    @Type(() => HouseCreateWithoutRealtorInput)
+    create!: HouseCreateWithoutRealtorInput;
+}

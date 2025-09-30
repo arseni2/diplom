@@ -1,0 +1,222 @@
+@use "@/app-fsd/styles/variables" as var;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var.$white;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid var.$gray_border;
+  background-color: var.$white;
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var.$gray_border;
+  background-color: var.$white;
+
+  .select {
+    padding: 8px 12px;
+    border: 1px solid var.$gray_border;
+    border-radius: 6px;
+    background-color: var.$white;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var.$g-color-private-brand-550-solid;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.requestList {
+  width: 400px;
+  border-right: 1px solid var.$gray_border;
+  overflow-y: auto;
+  background-color: var.$white;
+}
+
+.emptyState {
+  padding: 40px 20px;
+  text-align: center;
+  color: var.$gray_text;
+}
+
+.requests {
+  padding: 0;
+  margin: 0;
+}
+
+.requestItem {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid var.$gray_border;
+
+  &:hover {
+    background-color: var.$g-color-private-purple-50;
+  }
+
+  &.selected {
+    background-color: var.$g-color-private-purple-100;
+    border-left: 4px solid var.$g-color-private-brand-550-solid;
+  }
+}
+
+.requestHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.statusBadge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  background-color: gray;
+
+  &.statusNew {
+    background-color: #f80565; // красный — новые
+  }
+
+  &.statusInProgress {
+    background-color: #FFA500; // оранжевый — в работе
+  }
+
+  &.statusDone {
+    background-color: #28a745; // зелёный — завершено
+  }
+}
+
+.unreadDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #f80565;
+}
+
+.propertyInfo {
+  margin-bottom: 8px;
+}
+
+.propertyTitle {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detailContainer {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: var.$white;
+}
+
+.detailCard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 800px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var.$gray_border;
+}
+
+.card {
+  background-color: var.$gray_background;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.propertyLink {
+  text-decoration: none;
+  color: var.$g-color-text-link;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.contactRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &:not(:last-child) {
+    margin-bottom: 4px;
+  }
+}
+
+.link {
+  color: var.$g-color-text-link;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.commentCard {
+  background-color: var.$white;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var.$gray_border;
+  word-wrap: break-word;
+}
+
+.actions {
+  display: flex;
+  margin-top: 16px;
+  justify-content: space-between;
+}
+
+.emptyDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var.$gray_text;
+  text-align: center;
+  padding: 20px;
+}

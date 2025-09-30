@@ -1,0 +1,50 @@
+.formContainer {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center; /* 👈 Выравниваем по центру */
+  gap: 16px;
+  width: 100%;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.inputWrapper {
+  flex: 1;
+  min-width: 200px;
+  width: 100%;
+  position: relative;
+}
+
+/* Обертка для ошибки — всегда занимает место */
+.errorWrapper {
+  height: 16px; /* 👈 Резервируем высоту под ошибку */
+  margin-top: 4px;
+}
+
+.errorText {
+  color: #e53e3e;
+  font-size: 12px;
+  visibility: hidden; /* 👈 Скрываем, но место остаётся */
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Показываем ошибку, когда она есть */
+.errorText.visible {
+  visibility: visible;
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+}

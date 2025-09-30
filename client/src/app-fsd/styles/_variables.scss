@@ -1,0 +1,167 @@
+/* ===== SCSS ПЕРЕМЕННЫЕ — СВЕТЛАЯ ТЕМА ===== */
+
+
+$gray_text: #A5AAB4;
+$gray_background: #F5F5F5;
+$gray_border: #ebeaf8;
+$white: #FFF;
+
+// Purple — светлая тема
+$g-color-private-purple-50:           rgb(255 255 255 / 0.1);
+$g-color-private-purple-100:          rgb(255 255 255 / 0.15);
+$g-color-private-purple-150:          rgb(255 255 255 / 0.2);
+$g-color-private-purple-200:          rgb(255 255 255 / 0.3);
+$g-color-private-purple-250:          rgb(255 255 255 / 0.4);
+$g-color-private-purple-300:          rgb(255 255 255 / 0.5);
+$g-color-private-purple-350:          rgb(255 255 255 / 0.6);
+$g-color-private-purple-400:          rgb(255 255 255 / 0.7);
+$g-color-private-purple-450:          rgb(255 255 255 / 0.8);
+$g-color-private-purple-500:          rgb(255 255 255 / 0.9);
+$g-color-private-purple-550-solid:    rgb(255 255 255);
+$g-color-private-purple-1000-solid:   rgb(67 63 67);
+$g-color-private-purple-950-solid:    rgb(78 74 78);
+$g-color-private-purple-900-solid:    rgb(100 97 100);
+$g-color-private-purple-850-solid:    rgb(122 119 122);
+$g-color-private-purple-800-solid:    rgb(145 142 145);
+$g-color-private-purple-750-solid:    rgb(167 165 167);
+$g-color-private-purple-700-solid:    rgb(189 187 189);
+$g-color-private-purple-650-solid:    rgb(211 210 211);
+$g-color-private-purple-600-solid:    rgb(233 232 233);
+$g-color-private-purple-500-solid:    rgb(255 255 255);
+$g-color-private-purple-450-solid:    rgb(255 255 255);
+$g-color-private-purple-400-solid:    rgb(255 255 255);
+$g-color-private-purple-350-solid:    rgb(255 255 255);
+$g-color-private-purple-300-solid:    rgb(255 255 255);
+$g-color-private-purple-250-solid:    rgb(255 255 255);
+$g-color-private-purple-200-solid:    rgb(255 255 255);
+$g-color-private-purple-150-solid:    rgb(255 255 255);
+$g-color-private-purple-100-solid:    rgb(255 255 255);
+$g-color-private-purple-50-solid:     rgb(255 255 255);
+
+// Brand — светлая тема
+$g-color-private-brand-50:            rgb(112 101 240 / 0.1);
+$g-color-private-brand-100:           rgb(112 101 240 / 0.15);
+$g-color-private-brand-150:           rgb(112 101 240 / 0.2);
+$g-color-private-brand-200:           rgb(112 101 240 / 0.3);
+$g-color-private-brand-250:           rgb(112 101 240 / 0.4);
+$g-color-private-brand-300:           rgb(112 101 240 / 0.5);
+$g-color-private-brand-350:           rgb(112 101 240 / 0.6);
+$g-color-private-brand-400:           rgb(112 101 240 / 0.7);
+$g-color-private-brand-450:           rgb(112 101 240 / 0.8);
+$g-color-private-brand-500:           rgb(112 101 240 / 0.9);
+$g-color-private-brand-550-solid:     rgb(112 101 240);
+$g-color-private-brand-1000-solid:    rgb(46 40 65);
+$g-color-private-brand-950-solid:     rgb(50 43 75);
+$g-color-private-brand-900-solid:     rgb(57 51 96);
+$g-color-private-brand-850-solid:     rgb(65 58 116);
+$g-color-private-brand-800-solid:     rgb(73 65 137);
+$g-color-private-brand-750-solid:     rgb(81 72 158);
+$g-color-private-brand-700-solid:     rgb(89 79 178);
+$g-color-private-brand-650-solid:     rgb(96 87 199);
+$g-color-private-brand-600-solid:     rgb(104 94 219);
+$g-color-private-brand-500-solid:     rgb(126 116 242);
+$g-color-private-brand-450-solid:     rgb(141 132 243);
+$g-color-private-brand-400-solid:     rgb(155 147 245);
+$g-color-private-brand-350-solid:     rgb(169 163 246);
+$g-color-private-brand-300-solid:     rgb(184 178 248);
+$g-color-private-brand-250-solid:     rgb(198 193 249);
+$g-color-private-brand-200-solid:     rgb(212 209 251);
+$g-color-private-brand-150-solid:     rgb(226 224 252);
+$g-color-private-brand-100-solid:     rgb(234 232 253);
+$g-color-private-brand-50-solid:      rgb(241 240 254);
+
+// Производные переменные — светлая тема
+$g-color-text-brand:                  $g-color-private-brand-700-solid;
+$g-color-text-brand-heavy:            $g-color-private-brand-700-solid;
+$g-color-text-brand-contrast:         rgb(255 255 255);
+$g-color-text-link:                   $g-color-private-brand-600-solid;
+$g-color-text-link-hover:             $g-color-private-brand-800-solid;
+$g-color-text-link-visited:           $g-color-private-purple-550-solid;
+$g-color-text-link-visited-hover:     $g-color-private-purple-800-solid;
+$g-color-base-brand:                  $g-color-private-brand-550-solid;
+$g-color-base-brand-hover:            $g-color-private-brand-600-solid;
+$g-color-base-selection:              $g-color-private-brand-200;
+$g-color-base-selection-hover:        $g-color-private-brand-300;
+$g-color-line-brand:                  $g-color-private-brand-600-solid;
+
+
+/* ===== SCSS ПЕРЕМЕННЫЕ — ТЁМНАЯ ТЕМА ===== */
+
+// Purple — тёмная тема
+$g-color-private-purple-50-dark:      rgb(255 255 255 / 0.1);
+$g-color-private-purple-100-dark:     rgb(255 255 255 / 0.15);
+$g-color-private-purple-150-dark:     rgb(255 255 255 / 0.2);
+$g-color-private-purple-200-dark:     rgb(255 255 255 / 0.3);
+$g-color-private-purple-250-dark:     rgb(255 255 255 / 0.4);
+$g-color-private-purple-300-dark:     rgb(255 255 255 / 0.5);
+$g-color-private-purple-350-dark:     rgb(255 255 255 / 0.6);
+$g-color-private-purple-400-dark:     rgb(255 255 255 / 0.7);
+$g-color-private-purple-450-dark:     rgb(255 255 255 / 0.8);
+$g-color-private-purple-500-dark:     rgb(255 255 255 / 0.9);
+$g-color-private-purple-550-solid-dark: rgb(255 255 255);
+$g-color-private-purple-1000-solid-dark: rgb(255 255 255);
+$g-color-private-purple-950-solid-dark: rgb(255 255 255);
+$g-color-private-purple-900-solid-dark: rgb(255 255 255);
+$g-color-private-purple-850-solid-dark: rgb(255 255 255);
+$g-color-private-purple-800-solid-dark: rgb(255 255 255);
+$g-color-private-purple-750-solid-dark: rgb(255 255 255);
+$g-color-private-purple-700-solid-dark: rgb(255 255 255);
+$g-color-private-purple-650-solid-dark: rgb(255 255 255);
+$g-color-private-purple-600-solid-dark: rgb(255 255 255);
+$g-color-private-purple-500-solid-dark: rgb(233 232 233);
+$g-color-private-purple-450-solid-dark: rgb(211 210 211);
+$g-color-private-purple-400-solid-dark: rgb(189 187 189);
+$g-color-private-purple-350-solid-dark: rgb(167 165 167);
+$g-color-private-purple-300-solid-dark: rgb(145 142 145);
+$g-color-private-purple-250-solid-dark: rgb(122 119 122);
+$g-color-private-purple-200-solid-dark: rgb(100 97 100);
+$g-color-private-purple-150-solid-dark: rgb(78 74 78);
+$g-color-private-purple-100-solid-dark: rgb(67 63 67);
+$g-color-private-purple-50-solid-dark:  rgb(56 52 56);
+
+// Brand — тёмная тема
+$g-color-private-brand-50-dark:       rgb(112 101 240 / 0.1);
+$g-color-private-brand-100-dark:      rgb(112 101 240 / 0.15);
+$g-color-private-brand-150-dark:      rgb(112 101 240 / 0.2);
+$g-color-private-brand-200-dark:      rgb(112 101 240 / 0.3);
+$g-color-private-brand-250-dark:      rgb(112 101 240 / 0.4);
+$g-color-private-brand-300-dark:      rgb(112 101 240 / 0.5);
+$g-color-private-brand-350-dark:      rgb(112 101 240 / 0.6);
+$g-color-private-brand-400-dark:      rgb(112 101 240 / 0.7);
+$g-color-private-brand-450-dark:      rgb(112 101 240 / 0.8);
+$g-color-private-brand-500-dark:      rgb(112 101 240 / 0.9);
+$g-color-private-brand-550-solid-dark: rgb(112 101 240);
+$g-color-private-brand-1000-solid-dark: rgb(234 232 253);
+$g-color-private-brand-950-solid-dark: rgb(226 224 252);
+$g-color-private-brand-900-solid-dark: rgb(212 209 251);
+$g-color-private-brand-850-solid-dark: rgb(198 193 249);
+$g-color-private-brand-800-solid-dark: rgb(184 178 248);
+$g-color-private-brand-750-solid-dark: rgb(169 163 246);
+$g-color-private-brand-700-solid-dark: rgb(155 147 245);
+$g-color-private-brand-650-solid-dark: rgb(141 132 243);
+$g-color-private-brand-600-solid-dark: rgb(126 116 242);
+$g-color-private-brand-500-solid-dark: rgb(104 94 219);
+$g-color-private-brand-450-solid-dark: rgb(96 87 199);
+$g-color-private-brand-400-solid-dark: rgb(89 79 178);
+$g-color-private-brand-350-solid-dark: rgb(81 72 158);
+$g-color-private-brand-300-solid-dark: rgb(73 65 137);
+$g-color-private-brand-250-solid-dark: rgb(65 58 116);
+$g-color-private-brand-200-solid-dark: rgb(57 51 96);
+$g-color-private-brand-150-solid-dark: rgb(50 43 75);
+$g-color-private-brand-100-solid-dark: rgb(46 40 65);
+$g-color-private-brand-50-solid-dark:  rgb(42 36 55);
+
+// Производные переменные — тёмная тема
+$g-color-text-brand-dark:             $g-color-private-brand-600-solid-dark;
+$g-color-text-brand-heavy-dark:       $g-color-private-brand-700-solid-dark;
+$g-color-text-brand-contrast-dark:    rgb(255 255 255);
+$g-color-text-link-dark:              $g-color-private-brand-550-solid-dark;
+$g-color-text-link-hover-dark:        $g-color-private-brand-700-solid-dark;
+$g-color-text-link-visited-dark:      $g-color-private-purple-700-solid-dark;
+$g-color-text-link-visited-hover-dark: $g-color-private-purple-850-solid-dark;
+$g-color-base-background-dark:        rgb(34 29 34);
+$g-color-base-brand-dark:             $g-color-private-brand-550-solid-dark;
+$g-color-base-brand-hover-dark:       $g-color-private-brand-650-solid-dark;
+$g-color-base-selection-dark:         $g-color-private-brand-150-dark;
+$g-color-base-selection-hover-dark:   $g-color-private-brand-200-dark;
+$g-color-line-brand-dark:             $g-color-private-brand-600-solid-dark;

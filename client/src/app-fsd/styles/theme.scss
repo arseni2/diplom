@@ -1,0 +1,177 @@
+@use "_variables" as *;
+@use "swiper" as *;
+//@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.g-root {
+  /*--g-font-family-monospace: 'Plus Jakarta Sans', monospace;*/
+  --g-text-body-font-weight: 400;
+  --g-font-family-sans: 'Inter', sans-serif;
+}
+html,body {
+  height: 100%;
+}
+// ==============================
+// СВЕТЛАЯ ТЕМА — CSS-переменные из SCSS
+// ==============================
+
+.g-root_theme_light {
+  //--g-color-text-primary: #{$g-color-private-brand-750-solid};
+  --g-color-private-purple-50: #{$g-color-private-brand-300-solid};
+  --g-color-private-purple-100: #{$g-color-private-purple-100};
+  --g-color-private-purple-150: #{$g-color-private-purple-150};
+  --g-color-private-purple-200: #{$g-color-private-purple-200};
+  --g-color-private-purple-250: #{$g-color-private-purple-250};
+  --g-color-private-purple-300: #{$g-color-private-purple-300};
+  --g-color-line-generic: #{$g-color-private-brand-250-solid};
+  --g-color-private-purple-350: #{$g-color-private-purple-350};
+  --g-color-private-purple-400: #{$g-color-private-purple-400};
+  --g-color-private-purple-450: #{$g-color-private-purple-450};
+  --g-color-private-purple-500: #{$g-color-private-purple-500};
+  --g-color-private-purple-550-solid: #{$g-color-private-purple-550-solid};
+  --g-color-private-purple-1000-solid: #{$g-color-private-purple-1000-solid};
+  --g-color-private-purple-950-solid: #{$g-color-private-purple-950-solid};
+  --g-color-private-purple-900-solid: #{$g-color-private-purple-900-solid};
+  --g-color-private-purple-850-solid: #{$g-color-private-purple-850-solid};
+  --g-color-private-purple-800-solid: #{$g-color-private-purple-800-solid};
+  --g-color-private-purple-750-solid: #{$g-color-private-purple-750-solid};
+  --g-color-private-purple-700-solid: #{$g-color-private-purple-700-solid};
+  --g-color-private-purple-650-solid: #{$g-color-private-purple-650-solid};
+  --g-color-private-purple-600-solid: #{$g-color-private-purple-600-solid};
+  --g-color-private-purple-500-solid: #{$g-color-private-purple-500-solid};
+  --g-color-private-purple-450-solid: #{$g-color-private-purple-450-solid};
+  --g-color-private-purple-400-solid: #{$g-color-private-purple-400-solid};
+  --g-color-private-purple-350-solid: #{$g-color-private-purple-350-solid};
+  --g-color-private-purple-300-solid: #{$g-color-private-purple-300-solid};
+  --g-color-private-purple-250-solid: #{$g-color-private-purple-250-solid};
+  --g-color-private-purple-200-solid: #{$g-color-private-purple-200-solid};
+  --g-color-private-purple-150-solid: #{$g-color-private-purple-150-solid};
+  --g-color-private-purple-100-solid: #{$g-color-private-purple-100-solid};
+  --g-color-private-purple-50-solid: #{$g-color-private-purple-50-solid};
+
+  --g-color-private-brand-50: #{$g-color-private-brand-50};
+  --g-color-private-brand-100: #{$g-color-private-brand-100};
+  --g-color-private-brand-150: #{$g-color-private-brand-150};
+  --g-color-private-brand-200: #{$g-color-private-brand-200};
+  --g-color-private-brand-250: #{$g-color-private-brand-250};
+  --g-color-private-brand-300: #{$g-color-private-brand-300};
+  --g-color-private-brand-350: #{$g-color-private-brand-350};
+  --g-color-private-brand-400: #{$g-color-private-brand-400};
+  --g-color-private-brand-450: #{$g-color-private-brand-450};
+  --g-color-private-brand-500: #{$g-color-private-brand-500};
+  --g-color-private-brand-550-solid: #{$g-color-private-brand-550-solid};
+  --g-color-private-brand-1000-solid: #{$g-color-private-brand-1000-solid};
+  --g-color-private-brand-950-solid: #{$g-color-private-brand-950-solid};
+  --g-color-private-brand-900-solid: #{$g-color-private-brand-900-solid};
+  --g-color-private-brand-850-solid: #{$g-color-private-brand-850-solid};
+  --g-color-private-brand-800-solid: #{$g-color-private-brand-800-solid};
+  --g-color-private-brand-750-solid: #{$g-color-private-brand-750-solid};
+  --g-color-private-brand-700-solid: #{$g-color-private-brand-700-solid};
+  --g-color-private-brand-650-solid: #{$g-color-private-brand-650-solid};
+  --g-color-private-brand-600-solid: #{$g-color-private-brand-600-solid};
+  --g-color-private-brand-500-solid: #{$g-color-private-brand-500-solid};
+  --g-color-private-brand-450-solid: #{$g-color-private-brand-450-solid};
+  --g-color-private-brand-400-solid: #{$g-color-private-brand-400-solid};
+  --g-color-private-brand-350-solid: #{$g-color-private-brand-350-solid};
+  --g-color-private-brand-300-solid: #{$g-color-private-brand-300-solid};
+  --g-color-private-brand-250-solid: #{$g-color-private-brand-250-solid};
+  --g-color-private-brand-200-solid: #{$g-color-private-brand-200-solid};
+  --g-color-private-brand-150-solid: #{$g-color-private-brand-150-solid};
+  --g-color-private-brand-100-solid: #{$g-color-private-brand-100-solid};
+  --g-color-private-brand-50-solid: #{$g-color-private-brand-50-solid};
+
+  --g-color-text-brand: #{$g-color-text-brand};
+  --g-color-text-brand-heavy: #{$g-color-text-brand-heavy};
+  --g-color-text-brand-contrast: #{$g-color-text-brand-contrast};
+  --g-color-text-link: #{$g-color-text-link};
+  --g-color-text-link-hover: #{$g-color-text-link-hover};
+  --g-color-text-link-visited: #{$g-color-text-link-visited};
+  --g-color-text-link-visited-hover: #{$g-color-text-link-visited-hover};
+  --g-color-base-brand: #{$g-color-base-brand};
+  --g-color-base-brand-hover: #{$g-color-base-brand-hover};
+  --g-color-base-selection: #{$g-color-base-selection};
+  --g-color-base-selection-hover: #{$g-color-base-selection-hover};
+  --g-color-line-brand: #{$g-color-line-brand};
+}
+
+// ==============================
+// ТЁМНАЯ ТЕМА — CSS-переменные из SCSS
+// ==============================
+
+.g-root_theme_dark {
+  --g-color-private-purple-50: #{$g-color-private-purple-50-dark};
+  --g-color-private-purple-100: #{$g-color-private-purple-100-dark};
+  --g-color-private-purple-150: #{$g-color-private-purple-150-dark};
+  --g-color-private-purple-200: #{$g-color-private-purple-200-dark};
+  --g-color-private-purple-250: #{$g-color-private-purple-250-dark};
+  --g-color-private-purple-300: #{$g-color-private-purple-300-dark};
+  --g-color-private-purple-350: #{$g-color-private-purple-350-dark};
+  --g-color-private-purple-400: #{$g-color-private-purple-400-dark};
+  --g-color-private-purple-450: #{$g-color-private-purple-450-dark};
+  --g-color-private-purple-500: #{$g-color-private-purple-500-dark};
+  --g-color-private-purple-550-solid: #{$g-color-private-purple-550-solid-dark};
+  --g-color-private-purple-1000-solid: #{$g-color-private-purple-1000-solid-dark};
+  --g-color-private-purple-950-solid: #{$g-color-private-purple-950-solid-dark};
+  --g-color-private-purple-900-solid: #{$g-color-private-purple-900-solid-dark};
+  --g-color-private-purple-850-solid: #{$g-color-private-purple-850-solid-dark};
+  --g-color-private-purple-800-solid: #{$g-color-private-purple-800-solid-dark};
+  --g-color-private-purple-750-solid: #{$g-color-private-purple-750-solid-dark};
+  --g-color-private-purple-700-solid: #{$g-color-private-purple-700-solid-dark};
+  --g-color-private-purple-650-solid: #{$g-color-private-purple-650-solid-dark};
+  --g-color-private-purple-600-solid: #{$g-color-private-purple-600-solid-dark};
+  --g-color-private-purple-500-solid: #{$g-color-private-purple-500-solid-dark};
+  --g-color-private-purple-450-solid: #{$g-color-private-purple-450-solid-dark};
+  --g-color-private-purple-400-solid: #{$g-color-private-purple-400-solid-dark};
+  --g-color-private-purple-350-solid: #{$g-color-private-purple-350-solid-dark};
+  --g-color-private-purple-300-solid: #{$g-color-private-purple-300-solid-dark};
+  --g-color-private-purple-250-solid: #{$g-color-private-purple-250-solid-dark};
+  --g-color-private-purple-200-solid: #{$g-color-private-purple-200-solid-dark};
+  --g-color-private-purple-150-solid: #{$g-color-private-purple-150-solid-dark};
+  --g-color-private-purple-100-solid: #{$g-color-private-purple-100-solid-dark};
+  --g-color-private-purple-50-solid: #{$g-color-private-purple-50-solid-dark};
+
+  --g-color-private-brand-50: #{$g-color-private-brand-50-dark};
+  --g-color-private-brand-100: #{$g-color-private-brand-100-dark};
+  --g-color-private-brand-150: #{$g-color-private-brand-150-dark};
+  --g-color-private-brand-200: #{$g-color-private-brand-200-dark};
+  --g-color-private-brand-250: #{$g-color-private-brand-250-dark};
+  --g-color-private-brand-300: #{$g-color-private-brand-300-dark};
+  --g-color-private-brand-350: #{$g-color-private-brand-350-dark};
+  --g-color-private-brand-400: #{$g-color-private-brand-400-dark};
+  --g-color-private-brand-450: #{$g-color-private-brand-450-dark};
+  --g-color-private-brand-500: #{$g-color-private-brand-500-dark};
+  --g-color-private-brand-550-solid: #{$g-color-private-brand-550-solid-dark};
+  --g-color-private-brand-1000-solid: #{$g-color-private-brand-1000-solid-dark};
+  --g-color-private-brand-950-solid: #{$g-color-private-brand-950-solid-dark};
+  --g-color-private-brand-900-solid: #{$g-color-private-brand-900-solid-dark};
+  --g-color-private-brand-850-solid: #{$g-color-private-brand-850-solid-dark};
+  --g-color-private-brand-800-solid: #{$g-color-private-brand-800-solid-dark};
+  --g-color-private-brand-750-solid: #{$g-color-private-brand-750-solid-dark};
+  --g-color-private-brand-700-solid: #{$g-color-private-brand-700-solid-dark};
+  --g-color-private-brand-650-solid: #{$g-color-private-brand-650-solid-dark};
+  --g-color-private-brand-600-solid: #{$g-color-private-brand-600-solid-dark};
+  --g-color-private-brand-500-solid: #{$g-color-private-brand-500-solid-dark};
+  --g-color-private-brand-450-solid: #{$g-color-private-brand-450-solid-dark};
+  --g-color-private-brand-400-solid: #{$g-color-private-brand-400-solid-dark};
+  --g-color-private-brand-350-solid: #{$g-color-private-brand-350-solid-dark};
+  --g-color-private-brand-300-solid: #{$g-color-private-brand-300-solid-dark};
+  --g-color-private-brand-250-solid: #{$g-color-private-brand-250-solid-dark};
+  --g-color-private-brand-200-solid: #{$g-color-private-brand-200-solid-dark};
+  --g-color-private-brand-150-solid: #{$g-color-private-brand-150-solid-dark};
+  --g-color-private-brand-100-solid: #{$g-color-private-brand-100-solid-dark};
+  --g-color-private-brand-50-solid: #{$g-color-private-brand-50-solid-dark};
+
+  --g-color-text-brand: #{$g-color-text-brand-dark};
+  --g-color-text-brand-heavy: #{$g-color-text-brand-heavy-dark};
+  --g-color-text-brand-contrast: #{$g-color-text-brand-contrast-dark};
+  --g-color-text-link: #{$g-color-text-link-dark};
+  --g-color-text-link-hover: #{$g-color-text-link-hover-dark};
+  --g-color-text-link-visited: #{$g-color-text-link-visited-dark};
+  --g-color-text-link-visited-hover: #{$g-color-text-link-visited-hover-dark};
+  --g-color-base-background: #{$g-color-base-background-dark};
+  --g-color-base-brand: #{$g-color-base-brand-dark};
+  --g-color-base-brand-hover: #{$g-color-base-brand-hover-dark};
+  --g-color-base-selection: #{$g-color-base-selection-dark};
+  --g-color-base-selection-hover: #{$g-color-base-selection-hover-dark};
+  --g-color-line-brand: #{$g-color-line-brand-dark};
+}

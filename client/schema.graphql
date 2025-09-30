@@ -1,0 +1,1681 @@
+type Appeals {
+  client: User
+  clientId: Int
+  comment: String!
+  createdAt: DateTime!
+  house: House
+  houseId: Int
+  id: ID!
+  realtor: User
+  realtorId: Int
+  status: String!
+}
+
+input AppealsCreateInput {
+  client: UserCreateNestedOneWithoutAppealsAsClientInput
+  comment: String!
+  createdAt: DateTime
+  house: HouseCreateNestedOneWithoutAppealInput
+  realtor: UserCreateNestedOneWithoutAppealsAsRealtorInput
+  status: String
+}
+
+input AppealsCreateManyClientInput {
+  comment: String!
+  createdAt: DateTime
+  houseId: Int
+  id: Int
+  realtorId: Int
+  status: String
+}
+
+input AppealsCreateManyClientInputEnvelope {
+  data: [AppealsCreateManyClientInput!]!
+}
+
+input AppealsCreateManyRealtorInput {
+  clientId: Int
+  comment: String!
+  createdAt: DateTime
+  houseId: Int
+  id: Int
+  status: String
+}
+
+input AppealsCreateManyRealtorInputEnvelope {
+  data: [AppealsCreateManyRealtorInput!]!
+}
+
+input AppealsCreateNestedManyWithoutClientInput {
+  connect: [AppealsWhereUniqueInput!]
+  connectOrCreate: [AppealsCreateOrConnectWithoutClientInput!]
+  create: [AppealsCreateWithoutClientInput!]
+  createMany: AppealsCreateManyClientInputEnvelope
+}
+
+input AppealsCreateNestedManyWithoutRealtorInput {
+  connect: [AppealsWhereUniqueInput!]
+  connectOrCreate: [AppealsCreateOrConnectWithoutRealtorInput!]
+  create: [AppealsCreateWithoutRealtorInput!]
+  createMany: AppealsCreateManyRealtorInputEnvelope
+}
+
+input AppealsCreateNestedOneWithoutHouseInput {
+  connect: AppealsWhereUniqueInput
+  connectOrCreate: AppealsCreateOrConnectWithoutHouseInput
+  create: AppealsCreateWithoutHouseInput
+}
+
+input AppealsCreateOrConnectWithoutClientInput {
+  create: AppealsCreateWithoutClientInput!
+  where: AppealsWhereUniqueInput!
+}
+
+input AppealsCreateOrConnectWithoutHouseInput {
+  create: AppealsCreateWithoutHouseInput!
+  where: AppealsWhereUniqueInput!
+}
+
+input AppealsCreateOrConnectWithoutRealtorInput {
+  create: AppealsCreateWithoutRealtorInput!
+  where: AppealsWhereUniqueInput!
+}
+
+input AppealsCreateWithoutClientInput {
+  comment: String!
+  createdAt: DateTime
+  house: HouseCreateNestedOneWithoutAppealInput
+  realtor: UserCreateNestedOneWithoutAppealsAsRealtorInput
+  status: String
+}
+
+input AppealsCreateWithoutHouseInput {
+  client: UserCreateNestedOneWithoutAppealsAsClientInput
+  comment: String!
+  createdAt: DateTime
+  realtor: UserCreateNestedOneWithoutAppealsAsRealtorInput
+  status: String
+}
+
+input AppealsCreateWithoutRealtorInput {
+  client: UserCreateNestedOneWithoutAppealsAsClientInput
+  comment: String!
+  createdAt: DateTime
+  house: HouseCreateNestedOneWithoutAppealInput
+  status: String
+}
+
+input AppealsListRelationFilter {
+  every: AppealsWhereInput
+  none: AppealsWhereInput
+  some: AppealsWhereInput
+}
+
+input AppealsNullableScalarRelationFilter {
+  is: AppealsWhereInput
+  isNot: AppealsWhereInput
+}
+
+input AppealsScalarWhereInput {
+  AND: [AppealsScalarWhereInput!]
+  NOT: [AppealsScalarWhereInput!]
+  OR: [AppealsScalarWhereInput!]
+  clientId: IntNullableFilter
+  comment: StringFilter
+  createdAt: DateTimeFilter
+  houseId: IntNullableFilter
+  id: IntFilter
+  realtorId: IntNullableFilter
+  status: StringFilter
+}
+
+input AppealsUpdateInput {
+  client: UserUpdateOneWithoutAppealsAsClientNestedInput
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  house: HouseUpdateOneWithoutAppealNestedInput
+  realtor: UserUpdateOneWithoutAppealsAsRealtorNestedInput
+  status: StringFieldUpdateOperationsInput
+}
+
+input AppealsUpdateManyMutationInput {
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  status: StringFieldUpdateOperationsInput
+}
+
+input AppealsUpdateManyWithWhereWithoutClientInput {
+  data: AppealsUpdateManyMutationInput!
+  where: AppealsScalarWhereInput!
+}
+
+input AppealsUpdateManyWithWhereWithoutRealtorInput {
+  data: AppealsUpdateManyMutationInput!
+  where: AppealsScalarWhereInput!
+}
+
+input AppealsUpdateManyWithoutClientNestedInput {
+  connect: [AppealsWhereUniqueInput!]
+  connectOrCreate: [AppealsCreateOrConnectWithoutClientInput!]
+  create: [AppealsCreateWithoutClientInput!]
+  createMany: AppealsCreateManyClientInputEnvelope
+  delete: [AppealsWhereUniqueInput!]
+  deleteMany: [AppealsScalarWhereInput!]
+  disconnect: [AppealsWhereUniqueInput!]
+  set: [AppealsWhereUniqueInput!]
+  update: [AppealsUpdateWithWhereUniqueWithoutClientInput!]
+  updateMany: [AppealsUpdateManyWithWhereWithoutClientInput!]
+  upsert: [AppealsUpsertWithWhereUniqueWithoutClientInput!]
+}
+
+input AppealsUpdateManyWithoutRealtorNestedInput {
+  connect: [AppealsWhereUniqueInput!]
+  connectOrCreate: [AppealsCreateOrConnectWithoutRealtorInput!]
+  create: [AppealsCreateWithoutRealtorInput!]
+  createMany: AppealsCreateManyRealtorInputEnvelope
+  delete: [AppealsWhereUniqueInput!]
+  deleteMany: [AppealsScalarWhereInput!]
+  disconnect: [AppealsWhereUniqueInput!]
+  set: [AppealsWhereUniqueInput!]
+  update: [AppealsUpdateWithWhereUniqueWithoutRealtorInput!]
+  updateMany: [AppealsUpdateManyWithWhereWithoutRealtorInput!]
+  upsert: [AppealsUpsertWithWhereUniqueWithoutRealtorInput!]
+}
+
+input AppealsUpdateOneWithoutHouseNestedInput {
+  connect: AppealsWhereUniqueInput
+  connectOrCreate: AppealsCreateOrConnectWithoutHouseInput
+  create: AppealsCreateWithoutHouseInput
+  delete: AppealsWhereInput
+  disconnect: AppealsWhereInput
+  update: AppealsUpdateToOneWithWhereWithoutHouseInput
+  upsert: AppealsUpsertWithoutHouseInput
+}
+
+input AppealsUpdateToOneWithWhereWithoutHouseInput {
+  data: AppealsUpdateWithoutHouseInput!
+  where: AppealsWhereInput
+}
+
+input AppealsUpdateWithWhereUniqueWithoutClientInput {
+  data: AppealsUpdateWithoutClientInput!
+  where: AppealsWhereUniqueInput!
+}
+
+input AppealsUpdateWithWhereUniqueWithoutRealtorInput {
+  data: AppealsUpdateWithoutRealtorInput!
+  where: AppealsWhereUniqueInput!
+}
+
+input AppealsUpdateWithoutClientInput {
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  house: HouseUpdateOneWithoutAppealNestedInput
+  realtor: UserUpdateOneWithoutAppealsAsRealtorNestedInput
+  status: StringFieldUpdateOperationsInput
+}
+
+input AppealsUpdateWithoutHouseInput {
+  client: UserUpdateOneWithoutAppealsAsClientNestedInput
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  realtor: UserUpdateOneWithoutAppealsAsRealtorNestedInput
+  status: StringFieldUpdateOperationsInput
+}
+
+input AppealsUpdateWithoutRealtorInput {
+  client: UserUpdateOneWithoutAppealsAsClientNestedInput
+  comment: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  house: HouseUpdateOneWithoutAppealNestedInput
+  status: StringFieldUpdateOperationsInput
+}
+
+input AppealsUpsertWithWhereUniqueWithoutClientInput {
+  create: AppealsCreateWithoutClientInput!
+  update: AppealsUpdateWithoutClientInput!
+  where: AppealsWhereUniqueInput!
+}
+
+input AppealsUpsertWithWhereUniqueWithoutRealtorInput {
+  create: AppealsCreateWithoutRealtorInput!
+  update: AppealsUpdateWithoutRealtorInput!
+  where: AppealsWhereUniqueInput!
+}
+
+input AppealsUpsertWithoutHouseInput {
+  create: AppealsCreateWithoutHouseInput!
+  update: AppealsUpdateWithoutHouseInput!
+  where: AppealsWhereInput
+}
+
+input AppealsWhereInput {
+  AND: [AppealsWhereInput!]
+  NOT: [AppealsWhereInput!]
+  OR: [AppealsWhereInput!]
+  client: UserNullableScalarRelationFilter
+  clientId: IntNullableFilter
+  comment: StringFilter
+  createdAt: DateTimeFilter
+  house: HouseNullableScalarRelationFilter
+  houseId: IntNullableFilter
+  id: IntFilter
+  realtor: UserNullableScalarRelationFilter
+  realtorId: IntNullableFilter
+  status: StringFilter
+}
+
+input AppealsWhereUniqueInput {
+  AND: [AppealsWhereInput!]
+  NOT: [AppealsWhereInput!]
+  OR: [AppealsWhereInput!]
+  client: UserNullableScalarRelationFilter
+  clientId: Int
+  comment: StringFilter
+  createdAt: DateTimeFilter
+  house: HouseNullableScalarRelationFilter
+  houseId: Int
+  id: Int
+  realtor: UserNullableScalarRelationFilter
+  realtorId: Int
+  status: StringFilter
+}
+
+type AuthSuccessDto {
+  _count: UserCount!
+  appealsAsClient: [Appeals!]
+  appealsAsRealtor: [Appeals!]
+  avatar: File
+  avatarId: Int
+  createdAt: DateTime!
+  email: String!
+  firstname: String
+  houses: [House!]
+  id: ID!
+  lastname: String
+  middlename: String
+  password: String!
+  role: Role
+  roleId: Int
+  telephone: String
+  tg: String
+  token: String!
+}
+
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
+input DateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeFilter
+  notIn: [DateTime!]
+}
+
+type Feature {
+  house: House
+  houseId: Int
+  id: ID!
+  title: String!
+  value: String!
+}
+
+input FeatureCreateInput {
+  house: HouseCreateNestedOneWithoutFeaturesInput
+  title: String!
+  value: String!
+}
+
+input FeatureCreateManyHouseInput {
+  id: Int
+  title: String!
+  value: String!
+}
+
+input FeatureCreateManyHouseInputEnvelope {
+  data: [FeatureCreateManyHouseInput!]!
+}
+
+input FeatureCreateNestedManyWithoutHouseInput {
+  connect: [FeatureWhereUniqueInput!]
+  connectOrCreate: [FeatureCreateOrConnectWithoutHouseInput!]
+  create: [FeatureCreateWithoutHouseInput!]
+  createMany: FeatureCreateManyHouseInputEnvelope
+}
+
+input FeatureCreateOrConnectWithoutHouseInput {
+  create: FeatureCreateWithoutHouseInput!
+  where: FeatureWhereUniqueInput!
+}
+
+input FeatureCreateWithoutHouseInput {
+  title: String!
+  value: String!
+}
+
+input FeatureListRelationFilter {
+  every: FeatureWhereInput
+  none: FeatureWhereInput
+  some: FeatureWhereInput
+}
+
+input FeatureScalarWhereInput {
+  AND: [FeatureScalarWhereInput!]
+  NOT: [FeatureScalarWhereInput!]
+  OR: [FeatureScalarWhereInput!]
+  houseId: IntNullableFilter
+  id: IntFilter
+  title: StringFilter
+  value: StringFilter
+}
+
+input FeatureUpdateInput {
+  house: HouseUpdateOneWithoutFeaturesNestedInput
+  title: StringFieldUpdateOperationsInput
+  value: StringFieldUpdateOperationsInput
+}
+
+input FeatureUpdateManyMutationInput {
+  title: StringFieldUpdateOperationsInput
+  value: StringFieldUpdateOperationsInput
+}
+
+input FeatureUpdateManyWithWhereWithoutHouseInput {
+  data: FeatureUpdateManyMutationInput!
+  where: FeatureScalarWhereInput!
+}
+
+input FeatureUpdateManyWithoutHouseNestedInput {
+  connect: [FeatureWhereUniqueInput!]
+  connectOrCreate: [FeatureCreateOrConnectWithoutHouseInput!]
+  create: [FeatureCreateWithoutHouseInput!]
+  createMany: FeatureCreateManyHouseInputEnvelope
+  delete: [FeatureWhereUniqueInput!]
+  deleteMany: [FeatureScalarWhereInput!]
+  disconnect: [FeatureWhereUniqueInput!]
+  set: [FeatureWhereUniqueInput!]
+  update: [FeatureUpdateWithWhereUniqueWithoutHouseInput!]
+  updateMany: [FeatureUpdateManyWithWhereWithoutHouseInput!]
+  upsert: [FeatureUpsertWithWhereUniqueWithoutHouseInput!]
+}
+
+input FeatureUpdateWithWhereUniqueWithoutHouseInput {
+  data: FeatureUpdateWithoutHouseInput!
+  where: FeatureWhereUniqueInput!
+}
+
+input FeatureUpdateWithoutHouseInput {
+  title: StringFieldUpdateOperationsInput
+  value: StringFieldUpdateOperationsInput
+}
+
+input FeatureUpsertWithWhereUniqueWithoutHouseInput {
+  create: FeatureCreateWithoutHouseInput!
+  update: FeatureUpdateWithoutHouseInput!
+  where: FeatureWhereUniqueInput!
+}
+
+input FeatureWhereInput {
+  AND: [FeatureWhereInput!]
+  NOT: [FeatureWhereInput!]
+  OR: [FeatureWhereInput!]
+  house: HouseNullableScalarRelationFilter
+  houseId: IntNullableFilter
+  id: IntFilter
+  title: StringFilter
+  value: StringFilter
+}
+
+input FeatureWhereUniqueInput {
+  AND: [FeatureWhereInput!]
+  NOT: [FeatureWhereInput!]
+  OR: [FeatureWhereInput!]
+  house: HouseNullableScalarRelationFilter
+  houseId: IntNullableFilter
+  id: Int
+  title: StringFilter
+  value: StringFilter
+}
+
+type File {
+  house: House
+  houseId: Int
+  id: ID!
+  name: String
+  path: String!
+  size: Int
+  user: User
+}
+
+input FileCreateManyHouseInput {
+  id: Int
+  name: String
+  path: String!
+  size: Int
+}
+
+input FileCreateManyHouseInputEnvelope {
+  data: [FileCreateManyHouseInput!]!
+}
+
+input FileCreateNestedManyWithoutHouseInput {
+  connect: [FileWhereUniqueInput!]
+  connectOrCreate: [FileCreateOrConnectWithoutHouseInput!]
+  create: [FileCreateWithoutHouseInput!]
+  createMany: FileCreateManyHouseInputEnvelope
+}
+
+input FileCreateNestedOneWithoutUserInput {
+  connect: FileWhereUniqueInput
+  connectOrCreate: FileCreateOrConnectWithoutUserInput
+  create: FileCreateWithoutUserInput
+}
+
+input FileCreateOrConnectWithoutHouseInput {
+  create: FileCreateWithoutHouseInput!
+  where: FileWhereUniqueInput!
+}
+
+input FileCreateOrConnectWithoutUserInput {
+  create: FileCreateWithoutUserInput!
+  where: FileWhereUniqueInput!
+}
+
+input FileCreateWithoutHouseInput {
+  name: String
+  path: String!
+  size: Int
+  user: UserCreateNestedOneWithoutAvatarInput
+}
+
+input FileCreateWithoutUserInput {
+  house: HouseCreateNestedOneWithoutImagesInput
+  name: String
+  path: String!
+  size: Int
+}
+
+input FileListRelationFilter {
+  every: FileWhereInput
+  none: FileWhereInput
+  some: FileWhereInput
+}
+
+input FileNullableScalarRelationFilter {
+  is: FileWhereInput
+  isNot: FileWhereInput
+}
+
+input FileScalarWhereInput {
+  AND: [FileScalarWhereInput!]
+  NOT: [FileScalarWhereInput!]
+  OR: [FileScalarWhereInput!]
+  houseId: IntNullableFilter
+  id: IntFilter
+  name: StringNullableFilter
+  path: StringFilter
+  size: IntNullableFilter
+}
+
+input FileUpdateManyMutationInput {
+  name: NullableStringFieldUpdateOperationsInput
+  path: StringFieldUpdateOperationsInput
+  size: NullableIntFieldUpdateOperationsInput
+}
+
+input FileUpdateManyWithWhereWithoutHouseInput {
+  data: FileUpdateManyMutationInput!
+  where: FileScalarWhereInput!
+}
+
+input FileUpdateManyWithoutHouseNestedInput {
+  connect: [FileWhereUniqueInput!]
+  connectOrCreate: [FileCreateOrConnectWithoutHouseInput!]
+  create: [FileCreateWithoutHouseInput!]
+  createMany: FileCreateManyHouseInputEnvelope
+  delete: [FileWhereUniqueInput!]
+  deleteMany: [FileScalarWhereInput!]
+  disconnect: [FileWhereUniqueInput!]
+  set: [FileWhereUniqueInput!]
+  update: [FileUpdateWithWhereUniqueWithoutHouseInput!]
+  updateMany: [FileUpdateManyWithWhereWithoutHouseInput!]
+  upsert: [FileUpsertWithWhereUniqueWithoutHouseInput!]
+}
+
+input FileUpdateOneWithoutUserNestedInput {
+  connect: FileWhereUniqueInput
+  connectOrCreate: FileCreateOrConnectWithoutUserInput
+  create: FileCreateWithoutUserInput
+  delete: FileWhereInput
+  disconnect: FileWhereInput
+  update: FileUpdateToOneWithWhereWithoutUserInput
+  upsert: FileUpsertWithoutUserInput
+}
+
+input FileUpdateToOneWithWhereWithoutUserInput {
+  data: FileUpdateWithoutUserInput!
+  where: FileWhereInput
+}
+
+input FileUpdateWithWhereUniqueWithoutHouseInput {
+  data: FileUpdateWithoutHouseInput!
+  where: FileWhereUniqueInput!
+}
+
+input FileUpdateWithoutHouseInput {
+  name: NullableStringFieldUpdateOperationsInput
+  path: StringFieldUpdateOperationsInput
+  size: NullableIntFieldUpdateOperationsInput
+  user: UserUpdateOneWithoutAvatarNestedInput
+}
+
+input FileUpdateWithoutUserInput {
+  house: HouseUpdateOneWithoutImagesNestedInput
+  name: NullableStringFieldUpdateOperationsInput
+  path: StringFieldUpdateOperationsInput
+  size: NullableIntFieldUpdateOperationsInput
+}
+
+input FileUpsertWithWhereUniqueWithoutHouseInput {
+  create: FileCreateWithoutHouseInput!
+  update: FileUpdateWithoutHouseInput!
+  where: FileWhereUniqueInput!
+}
+
+input FileUpsertWithoutUserInput {
+  create: FileCreateWithoutUserInput!
+  update: FileUpdateWithoutUserInput!
+  where: FileWhereInput
+}
+
+input FileWhereInput {
+  AND: [FileWhereInput!]
+  NOT: [FileWhereInput!]
+  OR: [FileWhereInput!]
+  house: HouseNullableScalarRelationFilter
+  houseId: IntNullableFilter
+  id: IntFilter
+  name: StringNullableFilter
+  path: StringFilter
+  size: IntNullableFilter
+  user: UserNullableScalarRelationFilter
+}
+
+input FileWhereUniqueInput {
+  AND: [FileWhereInput!]
+  NOT: [FileWhereInput!]
+  OR: [FileWhereInput!]
+  house: HouseNullableScalarRelationFilter
+  houseId: IntNullableFilter
+  id: Int
+  name: StringNullableFilter
+  path: StringFilter
+  size: IntNullableFilter
+  user: UserNullableScalarRelationFilter
+}
+
+type House {
+  _count: HouseCount!
+  address: String!
+  appeal: Appeals
+  bio: String!
+  createdAt: DateTime!
+  description: String!
+  features: [Feature!]
+  floor: String
+  id: ID!
+  images: [File!]
+  isRent: Boolean!
+  isSell: Boolean!
+  price: String!
+  realtor: User!
+  realtorId: Int!
+  remont: String!
+  rooms: String
+  square: String!
+  title: String!
+}
+
+type HouseCount {
+  features: Int!
+  images: Int!
+}
+
+input HouseCreateDto {
+  address: String!
+  bio: String!
+  createdAt: DateTime
+  description: String!
+  isRent: Boolean
+  isSell: Boolean
+  price: String!
+  remont: String!
+  square: String!
+  title: String!
+}
+
+input HouseCreateManyRealtorInput {
+  address: String!
+  bio: String!
+  createdAt: DateTime
+  description: String!
+  floor: String
+  id: Int
+  isRent: Boolean
+  isSell: Boolean
+  price: String!
+  remont: String!
+  rooms: String
+  square: String!
+  title: String!
+}
+
+input HouseCreateManyRealtorInputEnvelope {
+  data: [HouseCreateManyRealtorInput!]!
+}
+
+input HouseCreateNestedManyWithoutRealtorInput {
+  connect: [HouseWhereUniqueInput!]
+  connectOrCreate: [HouseCreateOrConnectWithoutRealtorInput!]
+  create: [HouseCreateWithoutRealtorInput!]
+  createMany: HouseCreateManyRealtorInputEnvelope
+}
+
+input HouseCreateNestedOneWithoutAppealInput {
+  connect: HouseWhereUniqueInput
+  connectOrCreate: HouseCreateOrConnectWithoutAppealInput
+  create: HouseCreateWithoutAppealInput
+}
+
+input HouseCreateNestedOneWithoutFeaturesInput {
+  connect: HouseWhereUniqueInput
+  connectOrCreate: HouseCreateOrConnectWithoutFeaturesInput
+  create: HouseCreateWithoutFeaturesInput
+}
+
+input HouseCreateNestedOneWithoutImagesInput {
+  connect: HouseWhereUniqueInput
+  connectOrCreate: HouseCreateOrConnectWithoutImagesInput
+  create: HouseCreateWithoutImagesInput
+}
+
+input HouseCreateOrConnectWithoutAppealInput {
+  create: HouseCreateWithoutAppealInput!
+  where: HouseWhereUniqueInput!
+}
+
+input HouseCreateOrConnectWithoutFeaturesInput {
+  create: HouseCreateWithoutFeaturesInput!
+  where: HouseWhereUniqueInput!
+}
+
+input HouseCreateOrConnectWithoutImagesInput {
+  create: HouseCreateWithoutImagesInput!
+  where: HouseWhereUniqueInput!
+}
+
+input HouseCreateOrConnectWithoutRealtorInput {
+  create: HouseCreateWithoutRealtorInput!
+  where: HouseWhereUniqueInput!
+}
+
+input HouseCreateWithoutAppealInput {
+  address: String!
+  bio: String!
+  createdAt: DateTime
+  description: String!
+  features: FeatureCreateNestedManyWithoutHouseInput
+  floor: String
+  images: FileCreateNestedManyWithoutHouseInput
+  isRent: Boolean
+  isSell: Boolean
+  price: String!
+  realtor: UserCreateNestedOneWithoutHousesInput!
+  remont: String!
+  rooms: String
+  square: String!
+  title: String!
+}
+
+input HouseCreateWithoutFeaturesInput {
+  address: String!
+  appeal: AppealsCreateNestedOneWithoutHouseInput
+  bio: String!
+  createdAt: DateTime
+  description: String!
+  floor: String
+  images: FileCreateNestedManyWithoutHouseInput
+  isRent: Boolean
+  isSell: Boolean
+  price: String!
+  realtor: UserCreateNestedOneWithoutHousesInput!
+  remont: String!
+  rooms: String
+  square: String!
+  title: String!
+}
+
+input HouseCreateWithoutImagesInput {
+  address: String!
+  appeal: AppealsCreateNestedOneWithoutHouseInput
+  bio: String!
+  createdAt: DateTime
+  description: String!
+  features: FeatureCreateNestedManyWithoutHouseInput
+  floor: String
+  isRent: Boolean
+  isSell: Boolean
+  price: String!
+  realtor: UserCreateNestedOneWithoutHousesInput!
+  remont: String!
+  rooms: String
+  square: String!
+  title: String!
+}
+
+input HouseCreateWithoutRealtorInput {
+  address: String!
+  appeal: AppealsCreateNestedOneWithoutHouseInput
+  bio: String!
+  createdAt: DateTime
+  description: String!
+  features: FeatureCreateNestedManyWithoutHouseInput
+  floor: String
+  images: FileCreateNestedManyWithoutHouseInput
+  isRent: Boolean
+  isSell: Boolean
+  price: String!
+  remont: String!
+  rooms: String
+  square: String!
+  title: String!
+}
+
+input HouseListRelationFilter {
+  every: HouseWhereInput
+  none: HouseWhereInput
+  some: HouseWhereInput
+}
+
+input HouseNullableScalarRelationFilter {
+  is: HouseWhereInput
+  isNot: HouseWhereInput
+}
+
+input HouseScalarWhereInput {
+  AND: [HouseScalarWhereInput!]
+  NOT: [HouseScalarWhereInput!]
+  OR: [HouseScalarWhereInput!]
+  address: StringFilter
+  bio: StringFilter
+  createdAt: DateTimeFilter
+  description: StringFilter
+  floor: StringNullableFilter
+  id: IntFilter
+  isRent: BoolFilter
+  isSell: BoolFilter
+  price: StringFilter
+  realtorId: IntFilter
+  remont: StringFilter
+  rooms: StringNullableFilter
+  square: StringFilter
+  title: StringFilter
+}
+
+input HouseUpdateManyMutationInput {
+  address: StringFieldUpdateOperationsInput
+  bio: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  floor: NullableStringFieldUpdateOperationsInput
+  isRent: BoolFieldUpdateOperationsInput
+  isSell: BoolFieldUpdateOperationsInput
+  price: StringFieldUpdateOperationsInput
+  remont: StringFieldUpdateOperationsInput
+  rooms: NullableStringFieldUpdateOperationsInput
+  square: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input HouseUpdateManyWithWhereWithoutRealtorInput {
+  data: HouseUpdateManyMutationInput!
+  where: HouseScalarWhereInput!
+}
+
+input HouseUpdateManyWithoutRealtorNestedInput {
+  connect: [HouseWhereUniqueInput!]
+  connectOrCreate: [HouseCreateOrConnectWithoutRealtorInput!]
+  create: [HouseCreateWithoutRealtorInput!]
+  createMany: HouseCreateManyRealtorInputEnvelope
+  delete: [HouseWhereUniqueInput!]
+  deleteMany: [HouseScalarWhereInput!]
+  disconnect: [HouseWhereUniqueInput!]
+  set: [HouseWhereUniqueInput!]
+  update: [HouseUpdateWithWhereUniqueWithoutRealtorInput!]
+  updateMany: [HouseUpdateManyWithWhereWithoutRealtorInput!]
+  upsert: [HouseUpsertWithWhereUniqueWithoutRealtorInput!]
+}
+
+input HouseUpdateOneWithoutAppealNestedInput {
+  connect: HouseWhereUniqueInput
+  connectOrCreate: HouseCreateOrConnectWithoutAppealInput
+  create: HouseCreateWithoutAppealInput
+  delete: HouseWhereInput
+  disconnect: HouseWhereInput
+  update: HouseUpdateToOneWithWhereWithoutAppealInput
+  upsert: HouseUpsertWithoutAppealInput
+}
+
+input HouseUpdateOneWithoutFeaturesNestedInput {
+  connect: HouseWhereUniqueInput
+  connectOrCreate: HouseCreateOrConnectWithoutFeaturesInput
+  create: HouseCreateWithoutFeaturesInput
+  delete: HouseWhereInput
+  disconnect: HouseWhereInput
+  update: HouseUpdateToOneWithWhereWithoutFeaturesInput
+  upsert: HouseUpsertWithoutFeaturesInput
+}
+
+input HouseUpdateOneWithoutImagesNestedInput {
+  connect: HouseWhereUniqueInput
+  connectOrCreate: HouseCreateOrConnectWithoutImagesInput
+  create: HouseCreateWithoutImagesInput
+  delete: HouseWhereInput
+  disconnect: HouseWhereInput
+  update: HouseUpdateToOneWithWhereWithoutImagesInput
+  upsert: HouseUpsertWithoutImagesInput
+}
+
+input HouseUpdateToOneWithWhereWithoutAppealInput {
+  data: HouseUpdateWithoutAppealInput!
+  where: HouseWhereInput
+}
+
+input HouseUpdateToOneWithWhereWithoutFeaturesInput {
+  data: HouseUpdateWithoutFeaturesInput!
+  where: HouseWhereInput
+}
+
+input HouseUpdateToOneWithWhereWithoutImagesInput {
+  data: HouseUpdateWithoutImagesInput!
+  where: HouseWhereInput
+}
+
+input HouseUpdateWithWhereUniqueWithoutRealtorInput {
+  data: HouseUpdateWithoutRealtorInput!
+  where: HouseWhereUniqueInput!
+}
+
+input HouseUpdateWithoutAppealInput {
+  address: StringFieldUpdateOperationsInput
+  bio: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  features: FeatureUpdateManyWithoutHouseNestedInput
+  floor: NullableStringFieldUpdateOperationsInput
+  images: FileUpdateManyWithoutHouseNestedInput
+  isRent: BoolFieldUpdateOperationsInput
+  isSell: BoolFieldUpdateOperationsInput
+  price: StringFieldUpdateOperationsInput
+  realtor: UserUpdateOneRequiredWithoutHousesNestedInput
+  remont: StringFieldUpdateOperationsInput
+  rooms: NullableStringFieldUpdateOperationsInput
+  square: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input HouseUpdateWithoutFeaturesInput {
+  address: StringFieldUpdateOperationsInput
+  appeal: AppealsUpdateOneWithoutHouseNestedInput
+  bio: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  floor: NullableStringFieldUpdateOperationsInput
+  images: FileUpdateManyWithoutHouseNestedInput
+  isRent: BoolFieldUpdateOperationsInput
+  isSell: BoolFieldUpdateOperationsInput
+  price: StringFieldUpdateOperationsInput
+  realtor: UserUpdateOneRequiredWithoutHousesNestedInput
+  remont: StringFieldUpdateOperationsInput
+  rooms: NullableStringFieldUpdateOperationsInput
+  square: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input HouseUpdateWithoutImagesInput {
+  address: StringFieldUpdateOperationsInput
+  appeal: AppealsUpdateOneWithoutHouseNestedInput
+  bio: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  features: FeatureUpdateManyWithoutHouseNestedInput
+  floor: NullableStringFieldUpdateOperationsInput
+  isRent: BoolFieldUpdateOperationsInput
+  isSell: BoolFieldUpdateOperationsInput
+  price: StringFieldUpdateOperationsInput
+  realtor: UserUpdateOneRequiredWithoutHousesNestedInput
+  remont: StringFieldUpdateOperationsInput
+  rooms: NullableStringFieldUpdateOperationsInput
+  square: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input HouseUpdateWithoutRealtorInput {
+  address: StringFieldUpdateOperationsInput
+  appeal: AppealsUpdateOneWithoutHouseNestedInput
+  bio: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  features: FeatureUpdateManyWithoutHouseNestedInput
+  floor: NullableStringFieldUpdateOperationsInput
+  images: FileUpdateManyWithoutHouseNestedInput
+  isRent: BoolFieldUpdateOperationsInput
+  isSell: BoolFieldUpdateOperationsInput
+  price: StringFieldUpdateOperationsInput
+  remont: StringFieldUpdateOperationsInput
+  rooms: NullableStringFieldUpdateOperationsInput
+  square: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input HouseUpsertWithWhereUniqueWithoutRealtorInput {
+  create: HouseCreateWithoutRealtorInput!
+  update: HouseUpdateWithoutRealtorInput!
+  where: HouseWhereUniqueInput!
+}
+
+input HouseUpsertWithoutAppealInput {
+  create: HouseCreateWithoutAppealInput!
+  update: HouseUpdateWithoutAppealInput!
+  where: HouseWhereInput
+}
+
+input HouseUpsertWithoutFeaturesInput {
+  create: HouseCreateWithoutFeaturesInput!
+  update: HouseUpdateWithoutFeaturesInput!
+  where: HouseWhereInput
+}
+
+input HouseUpsertWithoutImagesInput {
+  create: HouseCreateWithoutImagesInput!
+  update: HouseUpdateWithoutImagesInput!
+  where: HouseWhereInput
+}
+
+input HouseWhereInput {
+  AND: [HouseWhereInput!]
+  NOT: [HouseWhereInput!]
+  OR: [HouseWhereInput!]
+  address: StringFilter
+  appeal: AppealsNullableScalarRelationFilter
+  bio: StringFilter
+  createdAt: DateTimeFilter
+  description: StringFilter
+  features: FeatureListRelationFilter
+  floor: StringNullableFilter
+  id: IntFilter
+  images: FileListRelationFilter
+  isRent: BoolFilter
+  isSell: BoolFilter
+  price: StringFilter
+  realtor: UserScalarRelationFilter
+  realtorId: IntFilter
+  remont: StringFilter
+  rooms: StringNullableFilter
+  square: StringFilter
+  title: StringFilter
+}
+
+input HouseWhereUniqueInput {
+  AND: [HouseWhereInput!]
+  NOT: [HouseWhereInput!]
+  OR: [HouseWhereInput!]
+  address: StringFilter
+  appeal: AppealsNullableScalarRelationFilter
+  bio: StringFilter
+  createdAt: DateTimeFilter
+  description: StringFilter
+  features: FeatureListRelationFilter
+  floor: StringNullableFilter
+  id: Int
+  images: FileListRelationFilter
+  isRent: BoolFilter
+  isSell: BoolFilter
+  price: StringFilter
+  realtor: UserScalarRelationFilter
+  realtorId: IntFilter
+  remont: StringFilter
+  rooms: StringNullableFilter
+  square: StringFilter
+  title: StringFilter
+}
+
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
+  notIn: [Int!]
+}
+
+type Mutation {
+  createAppeal(createAppealInput: AppealsCreateInput!): Appeals!
+  createFeature(createFeatureInput: FeatureCreateInput!): Feature!
+  createHouse(createHouseInput: HouseCreateDto!): House!
+  createUser(createUserInput: UserCreateInput!): User!
+  removeAnyUser(id: Float!): User!
+  removeAppeal(id: Int!): Appeals!
+  removeFeature(id: Int!): Feature!
+  removeHouse(id: Int!): House!
+  removeUser: User!
+  signIn(createUserInput: UserCreateInput!): AuthSuccessDto!
+  signUp(createUserInput: UserCreateInput!): AuthSuccessDto!
+  updateAnyUser(data: UserUpdateInput!, id: Float!): User!
+  updateAppeal(id: Int!, updateAppealInput: AppealsUpdateInput!): Appeals!
+  updateFeature(id: Int!, updateFeatureInput: FeatureUpdateInput!): Feature!
+  updateUser(data: UserUpdateInput!): User!
+  uploadFiles(files: [Upload!]!): [UploadDto!]!
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedDateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeFilter
+  notIn: [DateTime!]
+}
+
+input NestedIntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
+  notIn: [Int!]
+}
+
+input NestedStringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NullableIntFieldUpdateOperationsInput {
+  decrement: Int
+  divide: Int
+  increment: Int
+  multiply: Int
+  set: Int
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
+type Query {
+  appeal(id: Int!): Appeals!
+  appeals: [Appeals!]!
+  feature(title: String!): [Feature!]!
+  features: [Feature!]!
+  house(id: Int!): House!
+  housesRent: [House!]!
+  housesSell: [House!]!
+  me: User!
+  sayHello: String!
+  user(id: Int!): User!
+  users: [User!]!
+}
+
+type Role {
+  _count: RoleCount!
+  id: ID!
+  title: String!
+  users: [User!]
+}
+
+type RoleCount {
+  users: Int!
+}
+
+input RoleCreateNestedOneWithoutUsersInput {
+  connect: RoleWhereUniqueInput
+  connectOrCreate: RoleCreateOrConnectWithoutUsersInput
+  create: RoleCreateWithoutUsersInput
+}
+
+input RoleCreateOrConnectWithoutUsersInput {
+  create: RoleCreateWithoutUsersInput!
+  where: RoleWhereUniqueInput!
+}
+
+input RoleCreateWithoutUsersInput {
+  title: String!
+}
+
+input RoleNullableScalarRelationFilter {
+  is: RoleWhereInput
+  isNot: RoleWhereInput
+}
+
+input RoleUpdateOneWithoutUsersNestedInput {
+  connect: RoleWhereUniqueInput
+  connectOrCreate: RoleCreateOrConnectWithoutUsersInput
+  create: RoleCreateWithoutUsersInput
+  delete: RoleWhereInput
+  disconnect: RoleWhereInput
+  update: RoleUpdateToOneWithWhereWithoutUsersInput
+  upsert: RoleUpsertWithoutUsersInput
+}
+
+input RoleUpdateToOneWithWhereWithoutUsersInput {
+  data: RoleUpdateWithoutUsersInput!
+  where: RoleWhereInput
+}
+
+input RoleUpdateWithoutUsersInput {
+  title: StringFieldUpdateOperationsInput
+}
+
+input RoleUpsertWithoutUsersInput {
+  create: RoleCreateWithoutUsersInput!
+  update: RoleUpdateWithoutUsersInput!
+  where: RoleWhereInput
+}
+
+input RoleWhereInput {
+  AND: [RoleWhereInput!]
+  NOT: [RoleWhereInput!]
+  OR: [RoleWhereInput!]
+  id: IntFilter
+  title: StringFilter
+  users: UserListRelationFilter
+}
+
+input RoleWhereUniqueInput {
+  AND: [RoleWhereInput!]
+  NOT: [RoleWhereInput!]
+  OR: [RoleWhereInput!]
+  id: Int
+  title: String
+  users: UserListRelationFilter
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadDto {
+  id: Int!
+  url: String!
+}
+
+type User {
+  _count: UserCount!
+  appealsAsClient: [Appeals!]
+  appealsAsRealtor: [Appeals!]
+  avatar: File
+  avatarId: Int
+  createdAt: DateTime!
+  email: String!
+  firstname: String
+  houses: [House!]
+  id: ID!
+  lastname: String
+  middlename: String
+  password: String!
+  role: Role
+  roleId: Int
+  telephone: String
+  tg: String
+}
+
+type UserCount {
+  appealsAsClient: Int!
+  appealsAsRealtor: Int!
+  houses: Int!
+}
+
+input UserCreateInput {
+  appealsAsClient: AppealsCreateNestedManyWithoutClientInput
+  appealsAsRealtor: AppealsCreateNestedManyWithoutRealtorInput
+  avatar: FileCreateNestedOneWithoutUserInput
+  createdAt: DateTime
+  email: String!
+  firstname: String
+  houses: HouseCreateNestedManyWithoutRealtorInput
+  lastname: String
+  middlename: String
+  password: String!
+  role: RoleCreateNestedOneWithoutUsersInput
+  telephone: String
+  tg: String
+}
+
+input UserCreateNestedOneWithoutAppealsAsClientInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutAppealsAsClientInput
+  create: UserCreateWithoutAppealsAsClientInput
+}
+
+input UserCreateNestedOneWithoutAppealsAsRealtorInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutAppealsAsRealtorInput
+  create: UserCreateWithoutAppealsAsRealtorInput
+}
+
+input UserCreateNestedOneWithoutAvatarInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutAvatarInput
+  create: UserCreateWithoutAvatarInput
+}
+
+input UserCreateNestedOneWithoutHousesInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutHousesInput
+  create: UserCreateWithoutHousesInput
+}
+
+input UserCreateOrConnectWithoutAppealsAsClientInput {
+  create: UserCreateWithoutAppealsAsClientInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutAppealsAsRealtorInput {
+  create: UserCreateWithoutAppealsAsRealtorInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutAvatarInput {
+  create: UserCreateWithoutAvatarInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutHousesInput {
+  create: UserCreateWithoutHousesInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateWithoutAppealsAsClientInput {
+  appealsAsRealtor: AppealsCreateNestedManyWithoutRealtorInput
+  avatar: FileCreateNestedOneWithoutUserInput
+  createdAt: DateTime
+  email: String!
+  firstname: String
+  houses: HouseCreateNestedManyWithoutRealtorInput
+  lastname: String
+  middlename: String
+  password: String!
+  role: RoleCreateNestedOneWithoutUsersInput
+  telephone: String
+  tg: String
+}
+
+input UserCreateWithoutAppealsAsRealtorInput {
+  appealsAsClient: AppealsCreateNestedManyWithoutClientInput
+  avatar: FileCreateNestedOneWithoutUserInput
+  createdAt: DateTime
+  email: String!
+  firstname: String
+  houses: HouseCreateNestedManyWithoutRealtorInput
+  lastname: String
+  middlename: String
+  password: String!
+  role: RoleCreateNestedOneWithoutUsersInput
+  telephone: String
+  tg: String
+}
+
+input UserCreateWithoutAvatarInput {
+  appealsAsClient: AppealsCreateNestedManyWithoutClientInput
+  appealsAsRealtor: AppealsCreateNestedManyWithoutRealtorInput
+  createdAt: DateTime
+  email: String!
+  firstname: String
+  houses: HouseCreateNestedManyWithoutRealtorInput
+  lastname: String
+  middlename: String
+  password: String!
+  role: RoleCreateNestedOneWithoutUsersInput
+  telephone: String
+  tg: String
+}
+
+input UserCreateWithoutHousesInput {
+  appealsAsClient: AppealsCreateNestedManyWithoutClientInput
+  appealsAsRealtor: AppealsCreateNestedManyWithoutRealtorInput
+  avatar: FileCreateNestedOneWithoutUserInput
+  createdAt: DateTime
+  email: String!
+  firstname: String
+  lastname: String
+  middlename: String
+  password: String!
+  role: RoleCreateNestedOneWithoutUsersInput
+  telephone: String
+  tg: String
+}
+
+input UserListRelationFilter {
+  every: UserWhereInput
+  none: UserWhereInput
+  some: UserWhereInput
+}
+
+input UserNullableScalarRelationFilter {
+  is: UserWhereInput
+  isNot: UserWhereInput
+}
+
+input UserScalarRelationFilter {
+  is: UserWhereInput
+  isNot: UserWhereInput
+}
+
+input UserUpdateInput {
+  appealsAsClient: AppealsUpdateManyWithoutClientNestedInput
+  appealsAsRealtor: AppealsUpdateManyWithoutRealtorNestedInput
+  avatar: FileUpdateOneWithoutUserNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  firstname: NullableStringFieldUpdateOperationsInput
+  houses: HouseUpdateManyWithoutRealtorNestedInput
+  lastname: NullableStringFieldUpdateOperationsInput
+  middlename: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: RoleUpdateOneWithoutUsersNestedInput
+  telephone: NullableStringFieldUpdateOperationsInput
+  tg: NullableStringFieldUpdateOperationsInput
+}
+
+input UserUpdateOneRequiredWithoutHousesNestedInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutHousesInput
+  create: UserCreateWithoutHousesInput
+  update: UserUpdateToOneWithWhereWithoutHousesInput
+  upsert: UserUpsertWithoutHousesInput
+}
+
+input UserUpdateOneWithoutAppealsAsClientNestedInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutAppealsAsClientInput
+  create: UserCreateWithoutAppealsAsClientInput
+  delete: UserWhereInput
+  disconnect: UserWhereInput
+  update: UserUpdateToOneWithWhereWithoutAppealsAsClientInput
+  upsert: UserUpsertWithoutAppealsAsClientInput
+}
+
+input UserUpdateOneWithoutAppealsAsRealtorNestedInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutAppealsAsRealtorInput
+  create: UserCreateWithoutAppealsAsRealtorInput
+  delete: UserWhereInput
+  disconnect: UserWhereInput
+  update: UserUpdateToOneWithWhereWithoutAppealsAsRealtorInput
+  upsert: UserUpsertWithoutAppealsAsRealtorInput
+}
+
+input UserUpdateOneWithoutAvatarNestedInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutAvatarInput
+  create: UserCreateWithoutAvatarInput
+  delete: UserWhereInput
+  disconnect: UserWhereInput
+  update: UserUpdateToOneWithWhereWithoutAvatarInput
+  upsert: UserUpsertWithoutAvatarInput
+}
+
+input UserUpdateToOneWithWhereWithoutAppealsAsClientInput {
+  data: UserUpdateWithoutAppealsAsClientInput!
+  where: UserWhereInput
+}
+
+input UserUpdateToOneWithWhereWithoutAppealsAsRealtorInput {
+  data: UserUpdateWithoutAppealsAsRealtorInput!
+  where: UserWhereInput
+}
+
+input UserUpdateToOneWithWhereWithoutAvatarInput {
+  data: UserUpdateWithoutAvatarInput!
+  where: UserWhereInput
+}
+
+input UserUpdateToOneWithWhereWithoutHousesInput {
+  data: UserUpdateWithoutHousesInput!
+  where: UserWhereInput
+}
+
+input UserUpdateWithoutAppealsAsClientInput {
+  appealsAsRealtor: AppealsUpdateManyWithoutRealtorNestedInput
+  avatar: FileUpdateOneWithoutUserNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  firstname: NullableStringFieldUpdateOperationsInput
+  houses: HouseUpdateManyWithoutRealtorNestedInput
+  lastname: NullableStringFieldUpdateOperationsInput
+  middlename: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: RoleUpdateOneWithoutUsersNestedInput
+  telephone: NullableStringFieldUpdateOperationsInput
+  tg: NullableStringFieldUpdateOperationsInput
+}
+
+input UserUpdateWithoutAppealsAsRealtorInput {
+  appealsAsClient: AppealsUpdateManyWithoutClientNestedInput
+  avatar: FileUpdateOneWithoutUserNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  firstname: NullableStringFieldUpdateOperationsInput
+  houses: HouseUpdateManyWithoutRealtorNestedInput
+  lastname: NullableStringFieldUpdateOperationsInput
+  middlename: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: RoleUpdateOneWithoutUsersNestedInput
+  telephone: NullableStringFieldUpdateOperationsInput
+  tg: NullableStringFieldUpdateOperationsInput
+}
+
+input UserUpdateWithoutAvatarInput {
+  appealsAsClient: AppealsUpdateManyWithoutClientNestedInput
+  appealsAsRealtor: AppealsUpdateManyWithoutRealtorNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  firstname: NullableStringFieldUpdateOperationsInput
+  houses: HouseUpdateManyWithoutRealtorNestedInput
+  lastname: NullableStringFieldUpdateOperationsInput
+  middlename: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: RoleUpdateOneWithoutUsersNestedInput
+  telephone: NullableStringFieldUpdateOperationsInput
+  tg: NullableStringFieldUpdateOperationsInput
+}
+
+input UserUpdateWithoutHousesInput {
+  appealsAsClient: AppealsUpdateManyWithoutClientNestedInput
+  appealsAsRealtor: AppealsUpdateManyWithoutRealtorNestedInput
+  avatar: FileUpdateOneWithoutUserNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  firstname: NullableStringFieldUpdateOperationsInput
+  lastname: NullableStringFieldUpdateOperationsInput
+  middlename: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: RoleUpdateOneWithoutUsersNestedInput
+  telephone: NullableStringFieldUpdateOperationsInput
+  tg: NullableStringFieldUpdateOperationsInput
+}
+
+input UserUpsertWithoutAppealsAsClientInput {
+  create: UserCreateWithoutAppealsAsClientInput!
+  update: UserUpdateWithoutAppealsAsClientInput!
+  where: UserWhereInput
+}
+
+input UserUpsertWithoutAppealsAsRealtorInput {
+  create: UserCreateWithoutAppealsAsRealtorInput!
+  update: UserUpdateWithoutAppealsAsRealtorInput!
+  where: UserWhereInput
+}
+
+input UserUpsertWithoutAvatarInput {
+  create: UserCreateWithoutAvatarInput!
+  update: UserUpdateWithoutAvatarInput!
+  where: UserWhereInput
+}
+
+input UserUpsertWithoutHousesInput {
+  create: UserCreateWithoutHousesInput!
+  update: UserUpdateWithoutHousesInput!
+  where: UserWhereInput
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  appealsAsClient: AppealsListRelationFilter
+  appealsAsRealtor: AppealsListRelationFilter
+  avatar: FileNullableScalarRelationFilter
+  avatarId: IntNullableFilter
+  createdAt: DateTimeFilter
+  email: StringFilter
+  firstname: StringNullableFilter
+  houses: HouseListRelationFilter
+  id: IntFilter
+  lastname: StringNullableFilter
+  middlename: StringNullableFilter
+  password: StringFilter
+  role: RoleNullableScalarRelationFilter
+  roleId: IntNullableFilter
+  telephone: StringNullableFilter
+  tg: StringNullableFilter
+}
+
+input UserWhereUniqueInput {
+  AND: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  appealsAsClient: AppealsListRelationFilter
+  appealsAsRealtor: AppealsListRelationFilter
+  avatar: FileNullableScalarRelationFilter
+  avatarId: Int
+  createdAt: DateTimeFilter
+  email: String
+  firstname: StringNullableFilter
+  houses: HouseListRelationFilter
+  id: Int
+  lastname: StringNullableFilter
+  middlename: StringNullableFilter
+  password: StringFilter
+  role: RoleNullableScalarRelationFilter
+  roleId: IntNullableFilter
+  telephone: StringNullableFilter
+  tg: StringNullableFilter
+}
