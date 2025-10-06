@@ -5,8 +5,8 @@ import { HouseWhereInput } from './house-where.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { StringFilter } from '../prisma/string-filter.input';
 import { StringNullableFilter } from '../prisma/string-nullable-filter.input';
-import { BoolFilter } from '../prisma/bool-filter.input';
 import { IntFilter } from '../prisma/int-filter.input';
+import { BoolFilter } from '../prisma/bool-filter.input';
 import { UserScalarRelationFilter } from '../user/user-scalar-relation-filter.input';
 import { FileListRelationFilter } from '../file/file-list-relation-filter.input';
 import { FeatureListRelationFilter } from '../feature/feature-list-relation-filter.input';
@@ -54,8 +54,8 @@ export class HouseWhereUniqueInput {
     @Field(() => StringFilter, {nullable:true})
     bio?: StringFilter;
 
-    @Field(() => StringFilter, {nullable:true})
-    price?: StringFilter;
+    @Field(() => IntFilter, {nullable:true})
+    price?: IntFilter;
 
     @Field(() => BoolFilter, {nullable:true})
     isRent?: BoolFilter;

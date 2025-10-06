@@ -15,8 +15,5 @@ export class FeatureCountAggregate {
     value!: number;
 
     @Field(() => Int, {nullable:false})
-    houseId!: number;
-
-    @Field(() => Int, {nullable:false})
     _all!: number;
 }

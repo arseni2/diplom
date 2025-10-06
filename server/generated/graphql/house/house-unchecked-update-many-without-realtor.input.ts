@@ -39,8 +39,8 @@ export class HouseUncheckedUpdateManyWithoutRealtorInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     bio?: StringFieldUpdateOperationsInput;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    price?: StringFieldUpdateOperationsInput;
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    price?: IntFieldUpdateOperationsInput;
 
     @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
     isRent?: BoolFieldUpdateOperationsInput;

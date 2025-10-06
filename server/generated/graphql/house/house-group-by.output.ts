@@ -40,8 +40,8 @@ export class HouseGroupBy {
     @Field(() => String, {nullable:false})
     bio!: string;
 
-    @Field(() => String, {nullable:false})
-    price!: string;
+    @Field(() => Int, {nullable:false})
+    price!: number;
 
     @Field(() => Boolean, {nullable:false})
     isRent!: boolean;

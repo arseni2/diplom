@@ -1,10 +1,11 @@
 import Cookies from "js-cookie";
-import { redirect, RedirectType } from 'next/navigation'
+import {client} from "@/app-fsd/providers/apolloProvider/ui/MyApolloProvider";
 
 
-export const userLogout = () => {
+export const userLogout = async () => {
     Cookies.remove("authToken");
-    redirect('/auth/signin', RedirectType.replace)
+
+    await client.resetStore()
 }
 
 export const isAuthenticated = () => {

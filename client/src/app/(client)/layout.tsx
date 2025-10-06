@@ -8,12 +8,14 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <>
-            <Header/>
-            <div style={{maxWidth: '1200px', margin: 'auto', height: '100%'}}>
-                {children}
-            </div>
+        <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+            <Header />
+            <main style={{ flex: 1, padding: "20px 0" }}>
+                <div style={{ maxWidth: "1200px", margin: "auto", height: "100%" }}>
+                    {children}
+                </div>
+            </main>
             <Footer />
-        </>
+        </div>
     );
 }

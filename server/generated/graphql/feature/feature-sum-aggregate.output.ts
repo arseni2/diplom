@@ -7,7 +7,4 @@ export class FeatureSumAggregate {
 
     @Field(() => Int, {nullable:true})
     id?: number;
-
-    @Field(() => Int, {nullable:true})
-    houseId?: number;
 }

@@ -125,3 +125,25 @@ export const userChangeProfile = gql`
         }
     }
 `;
+
+export const getRealtorById = gql`
+    query user($id: Int!) {
+        user(id: $id) {
+            id
+            createdAt
+            email
+            firstname
+            lastname
+            middlename
+            password
+            telephone
+            tg
+            roleId
+            avatarId
+            avatar {
+                id
+                path
+            }
+        }
+    }
+`

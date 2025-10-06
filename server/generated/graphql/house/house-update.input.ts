@@ -3,10 +3,11 @@ import { InputType } from '@nestjs/graphql';
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
+import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { BoolFieldUpdateOperationsInput } from '../prisma/bool-field-update-operations.input';
 import { UserUpdateOneRequiredWithoutHousesNestedInput } from '../user/user-update-one-required-without-houses-nested.input';
 import { FileUpdateManyWithoutHouseNestedInput } from '../file/file-update-many-without-house-nested.input';
-import { FeatureUpdateManyWithoutHouseNestedInput } from '../feature/feature-update-many-without-house-nested.input';
+import { FeatureUpdateManyWithoutHousesNestedInput } from '../feature/feature-update-many-without-houses-nested.input';
 import { AppealsUpdateOneWithoutHouseNestedInput } from '../appeals/appeals-update-one-without-house-nested.input';
 
 @InputType()
@@ -39,8 +40,8 @@ export class HouseUpdateInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     bio?: StringFieldUpdateOperationsInput;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    price?: StringFieldUpdateOperationsInput;
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    price?: IntFieldUpdateOperationsInput;
 
     @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
     isRent?: BoolFieldUpdateOperationsInput;
@@ -54,8 +55,8 @@ export class HouseUpdateInput {
     @Field(() => FileUpdateManyWithoutHouseNestedInput, {nullable:true})
     images?: FileUpdateManyWithoutHouseNestedInput;
 
-    @Field(() => FeatureUpdateManyWithoutHouseNestedInput, {nullable:true})
-    features?: FeatureUpdateManyWithoutHouseNestedInput;
+    @Field(() => FeatureUpdateManyWithoutHousesNestedInput, {nullable:true})
+    features?: FeatureUpdateManyWithoutHousesNestedInput;
 
     @Field(() => AppealsUpdateOneWithoutHouseNestedInput, {nullable:true})
     appeal?: AppealsUpdateOneWithoutHouseNestedInput;

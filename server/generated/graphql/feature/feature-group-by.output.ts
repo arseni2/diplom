@@ -19,9 +19,6 @@ export class FeatureGroupBy {
     @Field(() => String, {nullable:false})
     value!: string;
 
-    @Field(() => Int, {nullable:true})
-    houseId?: number;
-
     @Field(() => FeatureCountAggregate, {nullable:true})
     _count?: FeatureCountAggregate;
 

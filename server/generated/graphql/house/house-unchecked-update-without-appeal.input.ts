@@ -6,7 +6,7 @@ import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-
 import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
 import { BoolFieldUpdateOperationsInput } from '../prisma/bool-field-update-operations.input';
 import { FileUncheckedUpdateManyWithoutHouseNestedInput } from '../file/file-unchecked-update-many-without-house-nested.input';
-import { FeatureUncheckedUpdateManyWithoutHouseNestedInput } from '../feature/feature-unchecked-update-many-without-house-nested.input';
+import { FeatureUncheckedUpdateManyWithoutHousesNestedInput } from '../feature/feature-unchecked-update-many-without-houses-nested.input';
 
 @InputType()
 export class HouseUncheckedUpdateWithoutAppealInput {
@@ -41,8 +41,8 @@ export class HouseUncheckedUpdateWithoutAppealInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     bio?: StringFieldUpdateOperationsInput;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    price?: StringFieldUpdateOperationsInput;
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    price?: IntFieldUpdateOperationsInput;
 
     @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
     isRent?: BoolFieldUpdateOperationsInput;
@@ -56,6 +56,6 @@ export class HouseUncheckedUpdateWithoutAppealInput {
     @Field(() => FileUncheckedUpdateManyWithoutHouseNestedInput, {nullable:true})
     images?: FileUncheckedUpdateManyWithoutHouseNestedInput;
 
-    @Field(() => FeatureUncheckedUpdateManyWithoutHouseNestedInput, {nullable:true})
-    features?: FeatureUncheckedUpdateManyWithoutHouseNestedInput;
+    @Field(() => FeatureUncheckedUpdateManyWithoutHousesNestedInput, {nullable:true})
+    features?: FeatureUncheckedUpdateManyWithoutHousesNestedInput;
 }

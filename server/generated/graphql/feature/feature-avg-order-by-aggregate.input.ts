@@ -7,7 +7,4 @@ export class FeatureAvgOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     id?: `${SortOrder}`;
-
-    @Field(() => SortOrder, {nullable:true})
-    houseId?: `${SortOrder}`;
 }

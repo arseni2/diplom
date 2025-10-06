@@ -14,8 +14,5 @@ export class FeatureCountAggregateInput {
     value?: true;
 
     @Field(() => Boolean, {nullable:true})
-    houseId?: true;
-
-    @Field(() => Boolean, {nullable:true})
     _all?: true;
 }

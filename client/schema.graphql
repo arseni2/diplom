@@ -332,42 +332,35 @@ input DateTimeFilter {
 }
 
 type Feature {
-  house: House
-  houseId: Int
+  _count: FeatureCount!
+  houses: [House!]
   id: ID!
   title: String!
   value: String!
 }
 
+type FeatureCount {
+  houses: Int!
+}
+
 input FeatureCreateInput {
-  house: HouseCreateNestedOneWithoutFeaturesInput
+  houses: HouseCreateNestedManyWithoutFeaturesInput
   title: String!
   value: String!
 }
 
-input FeatureCreateManyHouseInput {
-  id: Int
-  title: String!
-  value: String!
-}
-
-input FeatureCreateManyHouseInputEnvelope {
-  data: [FeatureCreateManyHouseInput!]!
-}
-
-input FeatureCreateNestedManyWithoutHouseInput {
+input FeatureCreateNestedManyWithoutHousesInput {
   connect: [FeatureWhereUniqueInput!]
-  connectOrCreate: [FeatureCreateOrConnectWithoutHouseInput!]
-  create: [FeatureCreateWithoutHouseInput!]
-  createMany: FeatureCreateManyHouseInputEnvelope
+  connectOrCreate: [FeatureCreateOrConnectWithoutHousesInput!]
+  create: [FeatureCreateWithoutHousesInput!]
 }
 
-input FeatureCreateOrConnectWithoutHouseInput {
-  create: FeatureCreateWithoutHouseInput!
+input FeatureCreateOrConnectWithoutHousesInput {
+  create: FeatureCreateWithoutHousesInput!
   where: FeatureWhereUniqueInput!
 }
 
-input FeatureCreateWithoutHouseInput {
+input FeatureCreateWithoutHousesInput {
   title: String!
   value: String!
 }
@@ -382,14 +375,13 @@ input FeatureScalarWhereInput {
   AND: [FeatureScalarWhereInput!]
   NOT: [FeatureScalarWhereInput!]
   OR: [FeatureScalarWhereInput!]
-  houseId: IntNullableFilter
   id: IntFilter
   title: StringFilter
   value: StringFilter
 }
 
 input FeatureUpdateInput {
-  house: HouseUpdateOneWithoutFeaturesNestedInput
+  houses: HouseUpdateManyWithoutFeaturesNestedInput
   title: StringFieldUpdateOperationsInput
   value: StringFieldUpdateOperationsInput
 }
@@ -399,38 +391,37 @@ input FeatureUpdateManyMutationInput {
   value: StringFieldUpdateOperationsInput
 }
 
-input FeatureUpdateManyWithWhereWithoutHouseInput {
+input FeatureUpdateManyWithWhereWithoutHousesInput {
   data: FeatureUpdateManyMutationInput!
   where: FeatureScalarWhereInput!
 }
 
-input FeatureUpdateManyWithoutHouseNestedInput {
+input FeatureUpdateManyWithoutHousesNestedInput {
   connect: [FeatureWhereUniqueInput!]
-  connectOrCreate: [FeatureCreateOrConnectWithoutHouseInput!]
-  create: [FeatureCreateWithoutHouseInput!]
-  createMany: FeatureCreateManyHouseInputEnvelope
+  connectOrCreate: [FeatureCreateOrConnectWithoutHousesInput!]
+  create: [FeatureCreateWithoutHousesInput!]
   delete: [FeatureWhereUniqueInput!]
   deleteMany: [FeatureScalarWhereInput!]
   disconnect: [FeatureWhereUniqueInput!]
   set: [FeatureWhereUniqueInput!]
-  update: [FeatureUpdateWithWhereUniqueWithoutHouseInput!]
-  updateMany: [FeatureUpdateManyWithWhereWithoutHouseInput!]
-  upsert: [FeatureUpsertWithWhereUniqueWithoutHouseInput!]
+  update: [FeatureUpdateWithWhereUniqueWithoutHousesInput!]
+  updateMany: [FeatureUpdateManyWithWhereWithoutHousesInput!]
+  upsert: [FeatureUpsertWithWhereUniqueWithoutHousesInput!]
 }
 
-input FeatureUpdateWithWhereUniqueWithoutHouseInput {
-  data: FeatureUpdateWithoutHouseInput!
+input FeatureUpdateWithWhereUniqueWithoutHousesInput {
+  data: FeatureUpdateWithoutHousesInput!
   where: FeatureWhereUniqueInput!
 }
 
-input FeatureUpdateWithoutHouseInput {
+input FeatureUpdateWithoutHousesInput {
   title: StringFieldUpdateOperationsInput
   value: StringFieldUpdateOperationsInput
 }
 
-input FeatureUpsertWithWhereUniqueWithoutHouseInput {
-  create: FeatureCreateWithoutHouseInput!
-  update: FeatureUpdateWithoutHouseInput!
+input FeatureUpsertWithWhereUniqueWithoutHousesInput {
+  create: FeatureCreateWithoutHousesInput!
+  update: FeatureUpdateWithoutHousesInput!
   where: FeatureWhereUniqueInput!
 }
 
@@ -438,8 +429,7 @@ input FeatureWhereInput {
   AND: [FeatureWhereInput!]
   NOT: [FeatureWhereInput!]
   OR: [FeatureWhereInput!]
-  house: HouseNullableScalarRelationFilter
-  houseId: IntNullableFilter
+  houses: HouseListRelationFilter
   id: IntFilter
   title: StringFilter
   value: StringFilter
@@ -449,8 +439,7 @@ input FeatureWhereUniqueInput {
   AND: [FeatureWhereInput!]
   NOT: [FeatureWhereInput!]
   OR: [FeatureWhereInput!]
-  house: HouseNullableScalarRelationFilter
-  houseId: IntNullableFilter
+  houses: HouseListRelationFilter
   id: Int
   title: StringFilter
   value: StringFilter
@@ -665,10 +654,12 @@ input HouseCreateDto {
   bio: String!
   createdAt: DateTime
   description: String!
+  floor: String
   isRent: Boolean
   isSell: Boolean
   price: String!
   remont: String!
+  rooms: String
   square: String!
   title: String!
 }
@@ -693,6 +684,12 @@ input HouseCreateManyRealtorInputEnvelope {
   data: [HouseCreateManyRealtorInput!]!
 }
 
+input HouseCreateNestedManyWithoutFeaturesInput {
+  connect: [HouseWhereUniqueInput!]
+  connectOrCreate: [HouseCreateOrConnectWithoutFeaturesInput!]
+  create: [HouseCreateWithoutFeaturesInput!]
+}
+
 input HouseCreateNestedManyWithoutRealtorInput {
   connect: [HouseWhereUniqueInput!]
   connectOrCreate: [HouseCreateOrConnectWithoutRealtorInput!]
@@ -704,12 +701,6 @@ input HouseCreateNestedOneWithoutAppealInput {
   connect: HouseWhereUniqueInput
   connectOrCreate: HouseCreateOrConnectWithoutAppealInput
   create: HouseCreateWithoutAppealInput
-}
-
-input HouseCreateNestedOneWithoutFeaturesInput {
-  connect: HouseWhereUniqueInput
-  connectOrCreate: HouseCreateOrConnectWithoutFeaturesInput
-  create: HouseCreateWithoutFeaturesInput
 }
 
 input HouseCreateNestedOneWithoutImagesInput {
@@ -743,7 +734,7 @@ input HouseCreateWithoutAppealInput {
   bio: String!
   createdAt: DateTime
   description: String!
-  features: FeatureCreateNestedManyWithoutHouseInput
+  features: FeatureCreateNestedManyWithoutHousesInput
   floor: String
   images: FileCreateNestedManyWithoutHouseInput
   isRent: Boolean
@@ -780,7 +771,7 @@ input HouseCreateWithoutImagesInput {
   bio: String!
   createdAt: DateTime
   description: String!
-  features: FeatureCreateNestedManyWithoutHouseInput
+  features: FeatureCreateNestedManyWithoutHousesInput
   floor: String
   isRent: Boolean
   isSell: Boolean
@@ -798,7 +789,7 @@ input HouseCreateWithoutRealtorInput {
   bio: String!
   createdAt: DateTime
   description: String!
-  features: FeatureCreateNestedManyWithoutHouseInput
+  features: FeatureCreateNestedManyWithoutHousesInput
   floor: String
   images: FileCreateNestedManyWithoutHouseInput
   isRent: Boolean
@@ -856,9 +847,27 @@ input HouseUpdateManyMutationInput {
   title: StringFieldUpdateOperationsInput
 }
 
+input HouseUpdateManyWithWhereWithoutFeaturesInput {
+  data: HouseUpdateManyMutationInput!
+  where: HouseScalarWhereInput!
+}
+
 input HouseUpdateManyWithWhereWithoutRealtorInput {
   data: HouseUpdateManyMutationInput!
   where: HouseScalarWhereInput!
+}
+
+input HouseUpdateManyWithoutFeaturesNestedInput {
+  connect: [HouseWhereUniqueInput!]
+  connectOrCreate: [HouseCreateOrConnectWithoutFeaturesInput!]
+  create: [HouseCreateWithoutFeaturesInput!]
+  delete: [HouseWhereUniqueInput!]
+  deleteMany: [HouseScalarWhereInput!]
+  disconnect: [HouseWhereUniqueInput!]
+  set: [HouseWhereUniqueInput!]
+  update: [HouseUpdateWithWhereUniqueWithoutFeaturesInput!]
+  updateMany: [HouseUpdateManyWithWhereWithoutFeaturesInput!]
+  upsert: [HouseUpsertWithWhereUniqueWithoutFeaturesInput!]
 }
 
 input HouseUpdateManyWithoutRealtorNestedInput {
@@ -885,16 +894,6 @@ input HouseUpdateOneWithoutAppealNestedInput {
   upsert: HouseUpsertWithoutAppealInput
 }
 
-input HouseUpdateOneWithoutFeaturesNestedInput {
-  connect: HouseWhereUniqueInput
-  connectOrCreate: HouseCreateOrConnectWithoutFeaturesInput
-  create: HouseCreateWithoutFeaturesInput
-  delete: HouseWhereInput
-  disconnect: HouseWhereInput
-  update: HouseUpdateToOneWithWhereWithoutFeaturesInput
-  upsert: HouseUpsertWithoutFeaturesInput
-}
-
 input HouseUpdateOneWithoutImagesNestedInput {
   connect: HouseWhereUniqueInput
   connectOrCreate: HouseCreateOrConnectWithoutImagesInput
@@ -910,14 +909,14 @@ input HouseUpdateToOneWithWhereWithoutAppealInput {
   where: HouseWhereInput
 }
 
-input HouseUpdateToOneWithWhereWithoutFeaturesInput {
-  data: HouseUpdateWithoutFeaturesInput!
-  where: HouseWhereInput
-}
-
 input HouseUpdateToOneWithWhereWithoutImagesInput {
   data: HouseUpdateWithoutImagesInput!
   where: HouseWhereInput
+}
+
+input HouseUpdateWithWhereUniqueWithoutFeaturesInput {
+  data: HouseUpdateWithoutFeaturesInput!
+  where: HouseWhereUniqueInput!
 }
 
 input HouseUpdateWithWhereUniqueWithoutRealtorInput {
@@ -930,7 +929,7 @@ input HouseUpdateWithoutAppealInput {
   bio: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
-  features: FeatureUpdateManyWithoutHouseNestedInput
+  features: FeatureUpdateManyWithoutHousesNestedInput
   floor: NullableStringFieldUpdateOperationsInput
   images: FileUpdateManyWithoutHouseNestedInput
   isRent: BoolFieldUpdateOperationsInput
@@ -967,7 +966,7 @@ input HouseUpdateWithoutImagesInput {
   bio: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
-  features: FeatureUpdateManyWithoutHouseNestedInput
+  features: FeatureUpdateManyWithoutHousesNestedInput
   floor: NullableStringFieldUpdateOperationsInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
@@ -985,7 +984,7 @@ input HouseUpdateWithoutRealtorInput {
   bio: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
-  features: FeatureUpdateManyWithoutHouseNestedInput
+  features: FeatureUpdateManyWithoutHousesNestedInput
   floor: NullableStringFieldUpdateOperationsInput
   images: FileUpdateManyWithoutHouseNestedInput
   isRent: BoolFieldUpdateOperationsInput
@@ -997,6 +996,12 @@ input HouseUpdateWithoutRealtorInput {
   title: StringFieldUpdateOperationsInput
 }
 
+input HouseUpsertWithWhereUniqueWithoutFeaturesInput {
+  create: HouseCreateWithoutFeaturesInput!
+  update: HouseUpdateWithoutFeaturesInput!
+  where: HouseWhereUniqueInput!
+}
+
 input HouseUpsertWithWhereUniqueWithoutRealtorInput {
   create: HouseCreateWithoutRealtorInput!
   update: HouseUpdateWithoutRealtorInput!
@@ -1006,12 +1011,6 @@ input HouseUpsertWithWhereUniqueWithoutRealtorInput {
 input HouseUpsertWithoutAppealInput {
   create: HouseCreateWithoutAppealInput!
   update: HouseUpdateWithoutAppealInput!
-  where: HouseWhereInput
-}
-
-input HouseUpsertWithoutFeaturesInput {
-  create: HouseCreateWithoutFeaturesInput!
-  update: HouseUpdateWithoutFeaturesInput!
   where: HouseWhereInput
 }
 
@@ -1107,7 +1106,7 @@ type Mutation {
   updateAppeal(id: Int!, updateAppealInput: AppealsUpdateInput!): Appeals!
   updateFeature(id: Int!, updateFeatureInput: FeatureUpdateInput!): Feature!
   updateUser(data: UserUpdateInput!): User!
-  uploadFiles(files: [Upload!]!): [UploadDto!]!
+  uploadFiles(files: [Upload!]!, houseId: String): [UploadDto!]!
 }
 
 input NestedBoolFilter {
@@ -1194,6 +1193,9 @@ type Query {
   feature(title: String!): [Feature!]!
   features: [Feature!]!
   house(id: Int!): House!
+  housesAll: [House!]!
+  housesFilter(address: String, isRent: Boolean, maxPrice: Float, minPrice: Float): [House!]!
+  housesRealtor(id: Int!): [House!]!
   housesRent: [House!]!
   housesSell: [House!]!
   me: User!

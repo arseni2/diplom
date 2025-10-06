@@ -13,7 +13,4 @@ export class FeatureMinAggregate {
 
     @Field(() => String, {nullable:true})
     value?: string;
-
-    @Field(() => Int, {nullable:true})
-    houseId?: number;
 }

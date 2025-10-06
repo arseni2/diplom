@@ -37,8 +37,8 @@ export class HouseUncheckedCreateWithoutFeaturesInput {
     @Field(() => String, {nullable:false})
     bio!: string;
 
-    @Field(() => String, {nullable:false})
-    price!: string;
+    @Field(() => Int, {nullable:false})
+    price!: number;
 
     @Field(() => Boolean, {nullable:true})
     isRent?: boolean;

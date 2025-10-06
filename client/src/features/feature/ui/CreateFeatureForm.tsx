@@ -1,16 +1,18 @@
-// src/features/feature/ui/FeatureForm.tsx
 "use client";
-
 import styles from "./CreateFeatureForm.module.scss";
 import {Input} from "@/shared/ui/input/ui/Input";
-import {Button} from "@gravity-ui/uikit";
-import {useForm} from "react-hook-form";
+import {Button, Select} from "@gravity-ui/uikit";
+import {Controller, useForm} from "react-hook-form";
 import {useCreateFeature} from "@/features/feature/hooks/useCreateFeature";
 import {useEditFeature} from "@/features/feature/hooks/useEditFeature";
 import {toaster} from "@gravity-ui/uikit/toaster-singleton";
+import {useQuery} from "@apollo/client/react";
+import {GetHousesAllQuery} from "@/gql/graphql";
+import {getHouseAllQuery} from "@/features/house/api/api";
 
 type FeatureFormData = {
     name: string;
+    houses: number[];
     value: string;
 };
 
@@ -22,16 +24,19 @@ type PropsType = {
 
 export const CreateFeatureForm = ({feature, refetch, setFeature}: PropsType) => {
     const isEditing = !!feature;
+    const {data: houses} = useQuery<GetHousesAllQuery>(getHouseAllQuery)
 
     const {
         register,
         handleSubmit,
+        control,
         formState: {errors, isSubmitting},
         reset,
     } = useForm<FeatureFormData>({
         defaultValues: {
             name: feature?.title || "",
             value: feature?.value || "",
+            houses: houses?.housesAll.map((item => Number(item.id))) || []
         },
     });
 
@@ -74,6 +79,9 @@ export const CreateFeatureForm = ({feature, refetch, setFeature}: PropsType) => 
                     variables: {
                         title: FeatureFormData.name,
                         value: FeatureFormData.value,
+                        houses: {
+                            connect: FeatureFormData.houses.map(id => ({ id: Number(id) }))
+                        }
                     },
                     onCompleted: () => {
                         toaster.add({
@@ -103,6 +111,25 @@ export const CreateFeatureForm = ({feature, refetch, setFeature}: PropsType) => 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
             <div className={styles.inputRow}>
+                <Controller
+                    name="houses"
+                    control={control}
+                    render={({ field: { onChange, value } }) => (
+                        <Select
+                            multiple
+                            placeholder="Дома"
+                            value={value.map((item) => String(item))}
+                            onUpdate={(selected) => onChange(selected)}
+                        >
+                            {houses?.housesAll.map((house) => (
+                                <Select.Option key={house.id} value={house.id}>
+                                    {house.title}
+                                </Select.Option>
+                            ))}
+                        </Select>
+                    )}
+                />
+
                 <div className={styles.inputWrapper}>
                     <Input
                         inputLabel="Название характеристики"

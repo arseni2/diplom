@@ -7,50 +7,9 @@ import Link from "next/link";
 import {useMutation, useQuery} from "@apollo/client/react";
 import {getAppeals, updateAppealMutation} from "@/features/appeal/api/api";
 import {Appeals, GetAppealsQuery, AppealsUpdateInput} from "@/gql/graphql";
+import {formatDate, formatPrice, getFullName, getStatusColor, getStatusLabel} from "../utils/utils";
 
 
-const getFullName = (client?: Appeals["client"]) => {
-    return [client?.lastname, client?.firstname, client?.middlename].filter(Boolean).join(" ");
-};
-
-const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("ru-RU").format(price) + " ₽";
-};
-
-const formatDate = (isoString: string) => {
-    return new Date(isoString).toLocaleString("ru-RU", {
-        day: "2-digit",
-        month: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-};
-
-const getStatusLabel = (status: string) => {
-    switch (status) {
-        case "new":
-            return "Новая";
-        case "in_progress":
-            return "В работе";
-        case "done":
-            return "Завершена";
-        default:
-            return status;
-    }
-};
-
-const getStatusColor = (status: string) => {
-    switch (status) {
-        case "Новая":
-            return styles.statusNew;
-        case "В работе":
-            return styles.statusInProgress;
-        case "Выполнено":
-            return styles.statusDone;
-        default:
-            return "";
-    }
-};
 
 
 const AppealFilters = ({
@@ -226,6 +185,7 @@ const AppealDetails = ({appeal}: { appeal: Appeals }) => {
                     onClick={() => {
                         mutate({
                             variables: {
+                                //@ts-ignore
                                 id: Number(appeal.id),
                                 input: {
                                     status: { set: "Отклонено" }
@@ -241,6 +201,7 @@ const AppealDetails = ({appeal}: { appeal: Appeals }) => {
                     onClick={() => {
                         mutate({
                             variables: {
+                                //@ts-ignore
                                 id: Number(appeal.id),
                                 input: {
                                     status: { set: "В работе" }
@@ -256,6 +217,7 @@ const AppealDetails = ({appeal}: { appeal: Appeals }) => {
                     onClick={() => {
                         mutate({
                             variables: {
+                                //@ts-ignore
                                 id: Number(appeal.id),
                                 input: {
                                     status: { set: "Выполнено" }

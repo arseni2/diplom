@@ -3,8 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 import { FeatureWhereInput } from './feature-where.input';
 import { StringFilter } from '../prisma/string-filter.input';
-import { IntNullableFilter } from '../prisma/int-nullable-filter.input';
-import { HouseNullableScalarRelationFilter } from '../house/house-nullable-scalar-relation-filter.input';
+import { HouseListRelationFilter } from '../house/house-list-relation-filter.input';
 
 @InputType()
 export class FeatureWhereUniqueInput {
@@ -27,9 +26,6 @@ export class FeatureWhereUniqueInput {
     @Field(() => StringFilter, {nullable:true})
     value?: StringFilter;
 
-    @Field(() => IntNullableFilter, {nullable:true})
-    houseId?: IntNullableFilter;
-
-    @Field(() => HouseNullableScalarRelationFilter, {nullable:true})
-    house?: HouseNullableScalarRelationFilter;
+    @Field(() => HouseListRelationFilter, {nullable:true})
+    houses?: HouseListRelationFilter;
 }

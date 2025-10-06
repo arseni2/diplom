@@ -55,7 +55,7 @@ class LocalStorage {
      * @param valueToRemove — значение для удаления из массива (опционально)
      * @returns удалённое значение или null, если ничего не удалено
      */
-    deleteItem<T>(key: string, valueToRemove?: T): T | T[] | null {
+    deleteItem<T extends {id: string}>(key: string, valueToRemove?: T): T | T[] | null {
         const current = this.getItem<StorageValue<T>>(key);
         if (current === null) return null;
 
@@ -66,9 +66,9 @@ class LocalStorage {
             }
 
             const index = current.findIndex(item =>
-                JSON.stringify(item) === JSON.stringify(valueToRemove)
+                item.id === valueToRemove.id
             );
-
+            console.log(index)
             if (index === -1) return null;
 
             const updated = [...current];

@@ -13,7 +13,4 @@ export class FeatureMaxOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     value?: `${SortOrder}`;
-
-    @Field(() => SortOrder, {nullable:true})
-    houseId?: `${SortOrder}`;
 }

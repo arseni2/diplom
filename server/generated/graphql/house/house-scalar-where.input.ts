@@ -48,8 +48,8 @@ export class HouseScalarWhereInput {
     @Field(() => StringFilter, {nullable:true})
     bio?: StringFilter;
 
-    @Field(() => StringFilter, {nullable:true})
-    price?: StringFilter;
+    @Field(() => IntFilter, {nullable:true})
+    price?: IntFilter;
 
     @Field(() => BoolFilter, {nullable:true})
     isRent?: BoolFilter;

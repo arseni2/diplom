@@ -17,11 +17,13 @@ export class FilesResolver {
 
     @Mutation(() => [UploadDto], {name: "uploadFiles"})
     async uploadFiles(
+        @Args('houseId', { type: () => String, nullable: true })
+        houseId: string | null,
         @Args({ name: 'files', type: () => [GraphQLUpload] })
-        filesUpload: Promise<FileUpload>[], // ⚠️ Важно: это массив промисов
+        filesUpload: Promise<FileUpload>[],
     ): Promise<UploadDto[]> {
         const uploadPromises = filesUpload.map(async (fileUploadPromise) => {
-            const { createReadStream, filename } = await fileUploadPromise; // ⚠️ ждём объект
+            const { createReadStream, filename } = await fileUploadPromise;
 
             const chunks: Buffer[] = [];
             const stream = createReadStream();
@@ -37,7 +39,7 @@ export class FilesResolver {
                 originalname: filename,
             };
 
-            return await this.filesService.upload(file);
+            return await this.filesService.upload(file, houseId);
         });
 
         return await Promise.all(uploadPromises);

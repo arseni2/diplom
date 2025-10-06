@@ -23,8 +23,8 @@ export class HouseCreateDto {
     @Field(() => String, {nullable:false})
     bio!: string;
 
-    @Field(() => String, {nullable:false})
-    price!: string;
+    @Field(() => Number, {nullable:false})
+    price!: number;
 
     @Field(() => Boolean, {nullable:true})
     isRent?: boolean;
@@ -32,9 +32,9 @@ export class HouseCreateDto {
     @Field(() => Boolean, {nullable:true})
     isSell?: boolean;
 
-    // @Field(() => FileCreateNestedManyWithoutHouseInput, {nullable:true})
-    // images?: FileCreateNestedManyWithoutHouseInput;
-    //
-    // @Field(() => FeatureCreateNestedManyWithoutHouseInput, {nullable:true})
-    // features?: FeatureCreateNestedManyWithoutHouseInput;
+    @Field(() => String, {nullable:true})
+    floor?: string;
+
+    @Field(() => String, {nullable:true})
+    rooms?: string;
 }

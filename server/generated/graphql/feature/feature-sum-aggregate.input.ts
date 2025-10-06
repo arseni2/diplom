@@ -6,7 +6,4 @@ export class FeatureSumAggregateInput {
 
     @Field(() => Boolean, {nullable:true})
     id?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    houseId?: true;
 }

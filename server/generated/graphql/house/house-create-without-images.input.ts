@@ -1,7 +1,8 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
+import { Int } from '@nestjs/graphql';
 import { UserCreateNestedOneWithoutHousesInput } from '../user/user-create-nested-one-without-houses.input';
-import { FeatureCreateNestedManyWithoutHouseInput } from '../feature/feature-create-nested-many-without-house.input';
+import { FeatureCreateNestedManyWithoutHousesInput } from '../feature/feature-create-nested-many-without-houses.input';
 import { AppealsCreateNestedOneWithoutHouseInput } from '../appeals/appeals-create-nested-one-without-house.input';
 
 @InputType()
@@ -34,8 +35,8 @@ export class HouseCreateWithoutImagesInput {
     @Field(() => String, {nullable:false})
     bio!: string;
 
-    @Field(() => String, {nullable:false})
-    price!: string;
+    @Field(() => Int, {nullable:false})
+    price!: number;
 
     @Field(() => Boolean, {nullable:true})
     isRent?: boolean;
@@ -46,8 +47,8 @@ export class HouseCreateWithoutImagesInput {
     @Field(() => UserCreateNestedOneWithoutHousesInput, {nullable:false})
     realtor!: UserCreateNestedOneWithoutHousesInput;
 
-    @Field(() => FeatureCreateNestedManyWithoutHouseInput, {nullable:true})
-    features?: FeatureCreateNestedManyWithoutHouseInput;
+    @Field(() => FeatureCreateNestedManyWithoutHousesInput, {nullable:true})
+    features?: FeatureCreateNestedManyWithoutHousesInput;
 
     @Field(() => AppealsCreateNestedOneWithoutHouseInput, {nullable:true})
     appeal?: AppealsCreateNestedOneWithoutHouseInput;

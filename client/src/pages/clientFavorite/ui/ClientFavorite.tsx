@@ -16,7 +16,7 @@ export const ClientFavorite = () => {
     }, []);
 
     const handleRemoveClick = (house: House) => {
-        localStorageService.deleteItem("houses", house.id)
+        localStorageService.deleteItem("houses", house)
         setHouses((prevState) => {
             return prevState ? prevState.filter((house) => house.id !== house.id) : prevState
         })

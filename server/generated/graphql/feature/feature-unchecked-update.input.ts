@@ -2,7 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
-import { NullableIntFieldUpdateOperationsInput } from '../prisma/nullable-int-field-update-operations.input';
+import { HouseUncheckedUpdateManyWithoutFeaturesNestedInput } from '../house/house-unchecked-update-many-without-features-nested.input';
 
 @InputType()
 export class FeatureUncheckedUpdateInput {
@@ -16,6 +16,6 @@ export class FeatureUncheckedUpdateInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     value?: StringFieldUpdateOperationsInput;
 
-    @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
-    houseId?: NullableIntFieldUpdateOperationsInput;
+    @Field(() => HouseUncheckedUpdateManyWithoutFeaturesNestedInput, {nullable:true})
+    houses?: HouseUncheckedUpdateManyWithoutFeaturesNestedInput;
 }

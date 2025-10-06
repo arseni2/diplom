@@ -9,5 +9,8 @@ export class HouseSumAggregate {
     id?: number;
 
     @Field(() => Int, {nullable:true})
+    price?: number;
+
+    @Field(() => Int, {nullable:true})
     realtorId?: number;
 }

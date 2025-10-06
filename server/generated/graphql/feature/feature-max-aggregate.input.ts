@@ -12,7 +12,4 @@ export class FeatureMaxAggregateInput {
 
     @Field(() => Boolean, {nullable:true})
     value?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    houseId?: true;
 }

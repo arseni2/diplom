@@ -1,8 +1,8 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { ID } from '@nestjs/graphql';
-import { Int } from '@nestjs/graphql';
 import { House } from '../house/house.model';
+import { FeatureCount } from './feature-count.output';
 
 @ObjectType()
 export class Feature {
@@ -16,9 +16,9 @@ export class Feature {
     @Field(() => String, {nullable:false})
     value!: string;
 
-    @Field(() => Int, {nullable:true})
-    houseId!: number | null;
+    @Field(() => [House], {nullable:true})
+    houses?: Array<House>;
 
-    @Field(() => House, {nullable:true})
-    house?: House | null;
+    @Field(() => FeatureCount, {nullable:false})
+    _count?: FeatureCount;
 }

@@ -10,6 +10,7 @@ import {useForm} from 'react-hook-form';
 import Cookies from 'js-cookie';
 import {useSignInMutation} from "@/features/auth/hooks/useSignInMutation";
 import {useRouter} from "next/navigation";
+import {client} from "@/app-fsd/providers/apolloProvider/ui/MyApolloProvider";
 
 
 export const LoginForm = () => {
@@ -35,29 +36,35 @@ export const LoginForm = () => {
                 variables: {
                     email: dataParam.email,
                     password: dataParam.password,
-                },
+                }
             });
 
-            const {token} = result.data?.signIn;
+            //@ts-ignore
+            const { token } = result.data?.signIn;
 
             if (!token) {
                 throw new Error('Token not received');
             }
 
+            // ✅ Устанавливаем куку
             Cookies.set('authToken', token, {
                 expires: 7,
                 path: '/',
             });
 
+            // ✅ Обновляем Apollo кэш
+            await client.refetchQueries({ include: ['UsersMe'] });
+
+            // ✅ Уведомление
             add({
-                title: 'Успешный входа',
+                title: 'Успешный вход',
                 name: "login-success",
-                content: 'Успешный входа',
+                content: 'Вы успешно вошли в систему',
                 theme: 'success',
             });
 
+            // ✅ Переход
             router.push('/');
-            console.log('Успешный вход:', result.data?.signIn);
         } catch (err) {
             add({
                 title: 'Ошибка входа',
@@ -66,7 +73,7 @@ export const LoginForm = () => {
                 theme: 'danger',
             });
         }
-    }
+    };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

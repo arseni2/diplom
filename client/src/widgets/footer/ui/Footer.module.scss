@@ -1,0 +1,119 @@
+@use "@/app-fsd/styles/variables" as var;
+
+.footer {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  margin-top: auto;
+
+  @media (max-width: 768px) {
+    padding-top: 30px;
+    padding-bottom: 15px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 40px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.brand {
+  flex: 1;
+  min-width: 200px;
+}
+
+.logo {
+  color: white;
+  margin-bottom: 12px;
+}
+
+.description {
+  color: var.$g-color-private-brand-400-solid;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.links {
+  display: flex;
+  gap: 60px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    gap: 30px;
+  }
+}
+
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 140px;
+}
+
+.groupTitle {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.link {
+  color: var.$gray_text;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+
+  &:hover {
+    color: black;
+  }
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 30px auto 0;
+  padding: 20px 20px 0;
+  border-top: 1px solid var.$g-color-private-brand-800-solid;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+
+.copyright {
+  color: var.$g-color-private-brand-500-solid;
+  font-size: 13px;
+}
+
+.social {
+  display: flex;
+  gap: 24px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.policy {
+  a {
+    color: var.$g-color-private-brand-400-solid;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+}

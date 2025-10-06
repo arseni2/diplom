@@ -352,42 +352,36 @@ export type DateTimeFilter = {
 
 export type Feature = {
   __typename?: 'Feature';
-  house?: Maybe<House>;
-  houseId?: Maybe<Scalars['Int']['output']>;
+  _count: FeatureCount;
+  houses?: Maybe<Array<House>>;
   id: Scalars['ID']['output'];
   title: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
+export type FeatureCount = {
+  __typename?: 'FeatureCount';
+  houses: Scalars['Int']['output'];
+};
+
 export type FeatureCreateInput = {
-  house?: InputMaybe<HouseCreateNestedOneWithoutFeaturesInput>;
+  houses?: InputMaybe<HouseCreateNestedManyWithoutFeaturesInput>;
   title: Scalars['String']['input'];
   value: Scalars['String']['input'];
 };
 
-export type FeatureCreateManyHouseInput = {
-  id?: InputMaybe<Scalars['Int']['input']>;
-  title: Scalars['String']['input'];
-  value: Scalars['String']['input'];
-};
-
-export type FeatureCreateManyHouseInputEnvelope = {
-  data: Array<FeatureCreateManyHouseInput>;
-};
-
-export type FeatureCreateNestedManyWithoutHouseInput = {
+export type FeatureCreateNestedManyWithoutHousesInput = {
   connect?: InputMaybe<Array<FeatureWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<FeatureCreateOrConnectWithoutHouseInput>>;
-  create?: InputMaybe<Array<FeatureCreateWithoutHouseInput>>;
-  createMany?: InputMaybe<FeatureCreateManyHouseInputEnvelope>;
+  connectOrCreate?: InputMaybe<Array<FeatureCreateOrConnectWithoutHousesInput>>;
+  create?: InputMaybe<Array<FeatureCreateWithoutHousesInput>>;
 };
 
-export type FeatureCreateOrConnectWithoutHouseInput = {
-  create: FeatureCreateWithoutHouseInput;
+export type FeatureCreateOrConnectWithoutHousesInput = {
+  create: FeatureCreateWithoutHousesInput;
   where: FeatureWhereUniqueInput;
 };
 
-export type FeatureCreateWithoutHouseInput = {
+export type FeatureCreateWithoutHousesInput = {
   title: Scalars['String']['input'];
   value: Scalars['String']['input'];
 };
@@ -402,14 +396,13 @@ export type FeatureScalarWhereInput = {
   AND?: InputMaybe<Array<FeatureScalarWhereInput>>;
   NOT?: InputMaybe<Array<FeatureScalarWhereInput>>;
   OR?: InputMaybe<Array<FeatureScalarWhereInput>>;
-  houseId?: InputMaybe<IntNullableFilter>;
   id?: InputMaybe<IntFilter>;
   title?: InputMaybe<StringFilter>;
   value?: InputMaybe<StringFilter>;
 };
 
 export type FeatureUpdateInput = {
-  house?: InputMaybe<HouseUpdateOneWithoutFeaturesNestedInput>;
+  houses?: InputMaybe<HouseUpdateManyWithoutFeaturesNestedInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   value?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
@@ -419,38 +412,37 @@ export type FeatureUpdateManyMutationInput = {
   value?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
-export type FeatureUpdateManyWithWhereWithoutHouseInput = {
+export type FeatureUpdateManyWithWhereWithoutHousesInput = {
   data: FeatureUpdateManyMutationInput;
   where: FeatureScalarWhereInput;
 };
 
-export type FeatureUpdateManyWithoutHouseNestedInput = {
+export type FeatureUpdateManyWithoutHousesNestedInput = {
   connect?: InputMaybe<Array<FeatureWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<FeatureCreateOrConnectWithoutHouseInput>>;
-  create?: InputMaybe<Array<FeatureCreateWithoutHouseInput>>;
-  createMany?: InputMaybe<FeatureCreateManyHouseInputEnvelope>;
+  connectOrCreate?: InputMaybe<Array<FeatureCreateOrConnectWithoutHousesInput>>;
+  create?: InputMaybe<Array<FeatureCreateWithoutHousesInput>>;
   delete?: InputMaybe<Array<FeatureWhereUniqueInput>>;
   deleteMany?: InputMaybe<Array<FeatureScalarWhereInput>>;
   disconnect?: InputMaybe<Array<FeatureWhereUniqueInput>>;
   set?: InputMaybe<Array<FeatureWhereUniqueInput>>;
-  update?: InputMaybe<Array<FeatureUpdateWithWhereUniqueWithoutHouseInput>>;
-  updateMany?: InputMaybe<Array<FeatureUpdateManyWithWhereWithoutHouseInput>>;
-  upsert?: InputMaybe<Array<FeatureUpsertWithWhereUniqueWithoutHouseInput>>;
+  update?: InputMaybe<Array<FeatureUpdateWithWhereUniqueWithoutHousesInput>>;
+  updateMany?: InputMaybe<Array<FeatureUpdateManyWithWhereWithoutHousesInput>>;
+  upsert?: InputMaybe<Array<FeatureUpsertWithWhereUniqueWithoutHousesInput>>;
 };
 
-export type FeatureUpdateWithWhereUniqueWithoutHouseInput = {
-  data: FeatureUpdateWithoutHouseInput;
+export type FeatureUpdateWithWhereUniqueWithoutHousesInput = {
+  data: FeatureUpdateWithoutHousesInput;
   where: FeatureWhereUniqueInput;
 };
 
-export type FeatureUpdateWithoutHouseInput = {
+export type FeatureUpdateWithoutHousesInput = {
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   value?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
-export type FeatureUpsertWithWhereUniqueWithoutHouseInput = {
-  create: FeatureCreateWithoutHouseInput;
-  update: FeatureUpdateWithoutHouseInput;
+export type FeatureUpsertWithWhereUniqueWithoutHousesInput = {
+  create: FeatureCreateWithoutHousesInput;
+  update: FeatureUpdateWithoutHousesInput;
   where: FeatureWhereUniqueInput;
 };
 
@@ -458,8 +450,7 @@ export type FeatureWhereInput = {
   AND?: InputMaybe<Array<FeatureWhereInput>>;
   NOT?: InputMaybe<Array<FeatureWhereInput>>;
   OR?: InputMaybe<Array<FeatureWhereInput>>;
-  house?: InputMaybe<HouseNullableScalarRelationFilter>;
-  houseId?: InputMaybe<IntNullableFilter>;
+  houses?: InputMaybe<HouseListRelationFilter>;
   id?: InputMaybe<IntFilter>;
   title?: InputMaybe<StringFilter>;
   value?: InputMaybe<StringFilter>;
@@ -469,8 +460,7 @@ export type FeatureWhereUniqueInput = {
   AND?: InputMaybe<Array<FeatureWhereInput>>;
   NOT?: InputMaybe<Array<FeatureWhereInput>>;
   OR?: InputMaybe<Array<FeatureWhereInput>>;
-  house?: InputMaybe<HouseNullableScalarRelationFilter>;
-  houseId?: InputMaybe<IntNullableFilter>;
+  houses?: InputMaybe<HouseListRelationFilter>;
   id?: InputMaybe<Scalars['Int']['input']>;
   title?: InputMaybe<StringFilter>;
   value?: InputMaybe<StringFilter>;
@@ -688,10 +678,12 @@ export type HouseCreateDto = {
   bio: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   description: Scalars['String']['input'];
+  floor?: InputMaybe<Scalars['String']['input']>;
   isRent?: InputMaybe<Scalars['Boolean']['input']>;
   isSell?: InputMaybe<Scalars['Boolean']['input']>;
   price: Scalars['String']['input'];
   remont: Scalars['String']['input'];
+  rooms?: InputMaybe<Scalars['String']['input']>;
   square: Scalars['String']['input'];
   title: Scalars['String']['input'];
 };
@@ -716,6 +708,12 @@ export type HouseCreateManyRealtorInputEnvelope = {
   data: Array<HouseCreateManyRealtorInput>;
 };
 
+export type HouseCreateNestedManyWithoutFeaturesInput = {
+  connect?: InputMaybe<Array<HouseWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<HouseCreateOrConnectWithoutFeaturesInput>>;
+  create?: InputMaybe<Array<HouseCreateWithoutFeaturesInput>>;
+};
+
 export type HouseCreateNestedManyWithoutRealtorInput = {
   connect?: InputMaybe<Array<HouseWhereUniqueInput>>;
   connectOrCreate?: InputMaybe<Array<HouseCreateOrConnectWithoutRealtorInput>>;
@@ -727,12 +725,6 @@ export type HouseCreateNestedOneWithoutAppealInput = {
   connect?: InputMaybe<HouseWhereUniqueInput>;
   connectOrCreate?: InputMaybe<HouseCreateOrConnectWithoutAppealInput>;
   create?: InputMaybe<HouseCreateWithoutAppealInput>;
-};
-
-export type HouseCreateNestedOneWithoutFeaturesInput = {
-  connect?: InputMaybe<HouseWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<HouseCreateOrConnectWithoutFeaturesInput>;
-  create?: InputMaybe<HouseCreateWithoutFeaturesInput>;
 };
 
 export type HouseCreateNestedOneWithoutImagesInput = {
@@ -766,7 +758,7 @@ export type HouseCreateWithoutAppealInput = {
   bio: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   description: Scalars['String']['input'];
-  features?: InputMaybe<FeatureCreateNestedManyWithoutHouseInput>;
+  features?: InputMaybe<FeatureCreateNestedManyWithoutHousesInput>;
   floor?: InputMaybe<Scalars['String']['input']>;
   images?: InputMaybe<FileCreateNestedManyWithoutHouseInput>;
   isRent?: InputMaybe<Scalars['Boolean']['input']>;
@@ -803,7 +795,7 @@ export type HouseCreateWithoutImagesInput = {
   bio: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   description: Scalars['String']['input'];
-  features?: InputMaybe<FeatureCreateNestedManyWithoutHouseInput>;
+  features?: InputMaybe<FeatureCreateNestedManyWithoutHousesInput>;
   floor?: InputMaybe<Scalars['String']['input']>;
   isRent?: InputMaybe<Scalars['Boolean']['input']>;
   isSell?: InputMaybe<Scalars['Boolean']['input']>;
@@ -821,7 +813,7 @@ export type HouseCreateWithoutRealtorInput = {
   bio: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   description: Scalars['String']['input'];
-  features?: InputMaybe<FeatureCreateNestedManyWithoutHouseInput>;
+  features?: InputMaybe<FeatureCreateNestedManyWithoutHousesInput>;
   floor?: InputMaybe<Scalars['String']['input']>;
   images?: InputMaybe<FileCreateNestedManyWithoutHouseInput>;
   isRent?: InputMaybe<Scalars['Boolean']['input']>;
@@ -879,9 +871,27 @@ export type HouseUpdateManyMutationInput = {
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
+export type HouseUpdateManyWithWhereWithoutFeaturesInput = {
+  data: HouseUpdateManyMutationInput;
+  where: HouseScalarWhereInput;
+};
+
 export type HouseUpdateManyWithWhereWithoutRealtorInput = {
   data: HouseUpdateManyMutationInput;
   where: HouseScalarWhereInput;
+};
+
+export type HouseUpdateManyWithoutFeaturesNestedInput = {
+  connect?: InputMaybe<Array<HouseWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<HouseCreateOrConnectWithoutFeaturesInput>>;
+  create?: InputMaybe<Array<HouseCreateWithoutFeaturesInput>>;
+  delete?: InputMaybe<Array<HouseWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<HouseScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<HouseWhereUniqueInput>>;
+  set?: InputMaybe<Array<HouseWhereUniqueInput>>;
+  update?: InputMaybe<Array<HouseUpdateWithWhereUniqueWithoutFeaturesInput>>;
+  updateMany?: InputMaybe<Array<HouseUpdateManyWithWhereWithoutFeaturesInput>>;
+  upsert?: InputMaybe<Array<HouseUpsertWithWhereUniqueWithoutFeaturesInput>>;
 };
 
 export type HouseUpdateManyWithoutRealtorNestedInput = {
@@ -908,16 +918,6 @@ export type HouseUpdateOneWithoutAppealNestedInput = {
   upsert?: InputMaybe<HouseUpsertWithoutAppealInput>;
 };
 
-export type HouseUpdateOneWithoutFeaturesNestedInput = {
-  connect?: InputMaybe<HouseWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<HouseCreateOrConnectWithoutFeaturesInput>;
-  create?: InputMaybe<HouseCreateWithoutFeaturesInput>;
-  delete?: InputMaybe<HouseWhereInput>;
-  disconnect?: InputMaybe<HouseWhereInput>;
-  update?: InputMaybe<HouseUpdateToOneWithWhereWithoutFeaturesInput>;
-  upsert?: InputMaybe<HouseUpsertWithoutFeaturesInput>;
-};
-
 export type HouseUpdateOneWithoutImagesNestedInput = {
   connect?: InputMaybe<HouseWhereUniqueInput>;
   connectOrCreate?: InputMaybe<HouseCreateOrConnectWithoutImagesInput>;
@@ -933,14 +933,14 @@ export type HouseUpdateToOneWithWhereWithoutAppealInput = {
   where?: InputMaybe<HouseWhereInput>;
 };
 
-export type HouseUpdateToOneWithWhereWithoutFeaturesInput = {
-  data: HouseUpdateWithoutFeaturesInput;
-  where?: InputMaybe<HouseWhereInput>;
-};
-
 export type HouseUpdateToOneWithWhereWithoutImagesInput = {
   data: HouseUpdateWithoutImagesInput;
   where?: InputMaybe<HouseWhereInput>;
+};
+
+export type HouseUpdateWithWhereUniqueWithoutFeaturesInput = {
+  data: HouseUpdateWithoutFeaturesInput;
+  where: HouseWhereUniqueInput;
 };
 
 export type HouseUpdateWithWhereUniqueWithoutRealtorInput = {
@@ -953,7 +953,7 @@ export type HouseUpdateWithoutAppealInput = {
   bio?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
-  features?: InputMaybe<FeatureUpdateManyWithoutHouseNestedInput>;
+  features?: InputMaybe<FeatureUpdateManyWithoutHousesNestedInput>;
   floor?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   images?: InputMaybe<FileUpdateManyWithoutHouseNestedInput>;
   isRent?: InputMaybe<BoolFieldUpdateOperationsInput>;
@@ -990,7 +990,7 @@ export type HouseUpdateWithoutImagesInput = {
   bio?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
-  features?: InputMaybe<FeatureUpdateManyWithoutHouseNestedInput>;
+  features?: InputMaybe<FeatureUpdateManyWithoutHousesNestedInput>;
   floor?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   isRent?: InputMaybe<BoolFieldUpdateOperationsInput>;
   isSell?: InputMaybe<BoolFieldUpdateOperationsInput>;
@@ -1008,7 +1008,7 @@ export type HouseUpdateWithoutRealtorInput = {
   bio?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
-  features?: InputMaybe<FeatureUpdateManyWithoutHouseNestedInput>;
+  features?: InputMaybe<FeatureUpdateManyWithoutHousesNestedInput>;
   floor?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   images?: InputMaybe<FileUpdateManyWithoutHouseNestedInput>;
   isRent?: InputMaybe<BoolFieldUpdateOperationsInput>;
@@ -1020,6 +1020,12 @@ export type HouseUpdateWithoutRealtorInput = {
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
+export type HouseUpsertWithWhereUniqueWithoutFeaturesInput = {
+  create: HouseCreateWithoutFeaturesInput;
+  update: HouseUpdateWithoutFeaturesInput;
+  where: HouseWhereUniqueInput;
+};
+
 export type HouseUpsertWithWhereUniqueWithoutRealtorInput = {
   create: HouseCreateWithoutRealtorInput;
   update: HouseUpdateWithoutRealtorInput;
@@ -1029,12 +1035,6 @@ export type HouseUpsertWithWhereUniqueWithoutRealtorInput = {
 export type HouseUpsertWithoutAppealInput = {
   create: HouseCreateWithoutAppealInput;
   update: HouseUpdateWithoutAppealInput;
-  where?: InputMaybe<HouseWhereInput>;
-};
-
-export type HouseUpsertWithoutFeaturesInput = {
-  create: HouseCreateWithoutFeaturesInput;
-  update: HouseUpdateWithoutFeaturesInput;
   where?: InputMaybe<HouseWhereInput>;
 };
 
@@ -1210,6 +1210,7 @@ export type MutationUpdateUserArgs = {
 
 export type MutationUploadFilesArgs = {
   files: Array<Scalars['Upload']['input']>;
+  houseId?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type NestedBoolFilter = {
@@ -1297,6 +1298,9 @@ export type Query = {
   feature: Array<Feature>;
   features: Array<Feature>;
   house: House;
+  housesAll: Array<House>;
+  housesFilter: Array<House>;
+  housesRealtor: Array<House>;
   housesRent: Array<House>;
   housesSell: Array<House>;
   me: User;
@@ -1317,6 +1321,19 @@ export type QueryFeatureArgs = {
 
 
 export type QueryHouseArgs = {
+  id: Scalars['Int']['input'];
+};
+
+
+export type QueryHousesFilterArgs = {
+  address?: InputMaybe<Scalars['String']['input']>;
+  isRent?: InputMaybe<Scalars['Boolean']['input']>;
+  maxPrice?: InputMaybe<Scalars['Float']['input']>;
+  minPrice?: InputMaybe<Scalars['Float']['input']>;
+};
+
+
+export type QueryHousesRealtorArgs = {
   id: Scalars['Int']['input'];
 };
 
@@ -1847,6 +1864,7 @@ export type SignUpMutation = { __typename?: 'Mutation', signUp: { __typename?: '
 export type CreateFeatureMutationMutationVariables = Exact<{
   title: Scalars['String']['input'];
   value: Scalars['String']['input'];
+  houses?: InputMaybe<HouseCreateNestedManyWithoutFeaturesInput>;
 }>;
 
 
@@ -1874,6 +1892,7 @@ export type GetFeaturesQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetFeaturesQuery = { __typename?: 'Query', features: Array<{ __typename?: 'Feature', id: string, title: string, value: string }> };
 
 export type UploadFilesMutationVariables = Exact<{
+  houseId?: InputMaybe<Scalars['String']['input']>;
   files: Array<Scalars['Upload']['input']> | Scalars['Upload']['input'];
 }>;
 
@@ -1885,12 +1904,41 @@ export type GetHousesRentQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetHousesRentQuery = { __typename?: 'Query', housesRent: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: string, realtorId: number, floor?: string | null, rooms?: string | null, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null }> };
 
+export type GetHousesAllQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetHousesAllQuery = { __typename?: 'Query', housesAll: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: string, realtorId: number, floor?: string | null, rooms?: string | null, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null }> };
+
 export type GetHouseDetailQueryVariables = Exact<{
   id: Scalars['Int']['input'];
 }>;
 
 
-export type GetHouseDetailQuery = { __typename?: 'Query', house: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number, realtor: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null, role?: { __typename?: 'Role', id: string, title: string } | null, avatar?: { __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null } | null, houses?: Array<{ __typename?: 'House', id: string, title: string, address: string }> | null, appealsAsClient?: Array<{ __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, clientId?: number | null, realtorId?: number | null, houseId?: number | null }> | null, appealsAsRealtor?: Array<{ __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, clientId?: number | null, realtorId?: number | null, houseId?: number | null }> | null }, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null, features?: Array<{ __typename?: 'Feature', id: string, title: string, value: string, houseId?: number | null }> | null } };
+export type GetHouseDetailQuery = { __typename?: 'Query', house: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number, realtor: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null, role?: { __typename?: 'Role', id: string, title: string } | null, avatar?: { __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null } | null, houses?: Array<{ __typename?: 'House', id: string, title: string, address: string }> | null, appealsAsClient?: Array<{ __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, clientId?: number | null, realtorId?: number | null, houseId?: number | null }> | null, appealsAsRealtor?: Array<{ __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, clientId?: number | null, realtorId?: number | null, houseId?: number | null }> | null }, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null, features?: Array<{ __typename?: 'Feature', id: string, title: string, value: string }> | null } };
+
+export type CreateHouseMutationVariables = Exact<{
+  input: HouseCreateDto;
+}>;
+
+
+export type CreateHouseMutation = { __typename?: 'Mutation', createHouse: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number, realtor: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null }, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null, features?: Array<{ __typename?: 'Feature', id: string, title: string, value: string }> | null, appeal?: { __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, houseId?: number | null, clientId?: number | null, realtorId?: number | null } | null } };
+
+export type GetHousesByRealtorIdQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+
+export type GetHousesByRealtorIdQuery = { __typename?: 'Query', housesRealtor: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null, features?: Array<{ __typename?: 'Feature', id: string, title: string, value: string }> | null }> };
+
+export type HousesFilterQueryVariables = Exact<{
+  address?: InputMaybe<Scalars['String']['input']>;
+  minPrice?: InputMaybe<Scalars['Float']['input']>;
+  maxPrice?: InputMaybe<Scalars['Float']['input']>;
+  isRent?: InputMaybe<Scalars['Boolean']['input']>;
+}>;
+
+
+export type HousesFilterQuery = { __typename?: 'Query', housesFilter: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number, images?: Array<{ __typename?: 'File', id: string, path: string }> | null }> };
 
 export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1924,21 +1972,33 @@ export type UpdateUserMutationVariables = Exact<{
 
 export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null, avatar?: { __typename?: 'File', id: string, path: string } | null } };
 
+export type UserQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+
+export type UserQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null, avatar?: { __typename?: 'File', id: string, path: string } | null } };
+
 
 export const CreateAppealDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAppeal"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AppealsCreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAppeal"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"createAppealInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"comment"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"house"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"price"}}]}},{"kind":"Field","name":{"kind":"Name","value":"client"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}},{"kind":"Field","name":{"kind":"Name","value":"realtor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]}}]} as unknown as DocumentNode<CreateAppealMutation, CreateAppealMutationVariables>;
 export const GetAppealsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetAppeals"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"appeals"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"comment"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"house"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"floor"}},{"kind":"Field","name":{"kind":"Name","value":"rooms"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"client"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"telephone"}},{"kind":"Field","name":{"kind":"Name","value":"tg"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"realtor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"telephone"}},{"kind":"Field","name":{"kind":"Name","value":"tg"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}}]}}]}}]}}]} as unknown as DocumentNode<GetAppealsQuery, GetAppealsQueryVariables>;
 export const UpdateAppealDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAppeal"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AppealsUpdateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAppeal"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"updateAppealInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"comment"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"house"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"floor"}},{"kind":"Field","name":{"kind":"Name","value":"rooms"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"client"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"telephone"}},{"kind":"Field","name":{"kind":"Name","value":"tg"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"realtor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"telephone"}},{"kind":"Field","name":{"kind":"Name","value":"tg"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}}]}}]}}]}}]} as unknown as DocumentNode<UpdateAppealMutation, UpdateAppealMutationVariables>;
 export const SignInDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SignIn"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"signIn"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"createUserInput"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"role"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"houses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"token"}}]}}]}}]} as unknown as DocumentNode<SignInMutation, SignInMutationVariables>;
 export const SignUpDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SignUp"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"firstname"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lastname"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"middlename"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"signUp"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"createUserInput"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"firstname"},"value":{"kind":"Variable","name":{"kind":"Name","value":"firstname"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"lastname"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lastname"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"middlename"},"value":{"kind":"Variable","name":{"kind":"Name","value":"middlename"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"role"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"houses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"token"}}]}}]}}]} as unknown as DocumentNode<SignUpMutation, SignUpMutationVariables>;
-export const CreateFeatureMutationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateFeatureMutation"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"title"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"value"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createFeature"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"createFeatureInput"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"title"},"value":{"kind":"Variable","name":{"kind":"Name","value":"title"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"Variable","name":{"kind":"Name","value":"value"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]} as unknown as DocumentNode<CreateFeatureMutationMutation, CreateFeatureMutationMutationVariables>;
+export const CreateFeatureMutationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateFeatureMutation"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"title"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"value"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"houses"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"HouseCreateNestedManyWithoutFeaturesInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createFeature"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"createFeatureInput"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"title"},"value":{"kind":"Variable","name":{"kind":"Name","value":"title"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"Variable","name":{"kind":"Name","value":"value"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"houses"},"value":{"kind":"Variable","name":{"kind":"Name","value":"houses"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]} as unknown as DocumentNode<CreateFeatureMutationMutation, CreateFeatureMutationMutationVariables>;
 export const EditFeatureMutationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"EditFeatureMutation"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"title"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"value"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateFeature"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"updateFeatureInput"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"title"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"set"},"value":{"kind":"Variable","name":{"kind":"Name","value":"title"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"value"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"set"},"value":{"kind":"Variable","name":{"kind":"Name","value":"value"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]} as unknown as DocumentNode<EditFeatureMutationMutation, EditFeatureMutationMutationVariables>;
 export const DeleteFeatureMutationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DeleteFeatureMutation"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"removeFeature"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]} as unknown as DocumentNode<DeleteFeatureMutationMutation, DeleteFeatureMutationMutationVariables>;
 export const GetFeaturesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetFeatures"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"features"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]} as unknown as DocumentNode<GetFeaturesQuery, GetFeaturesQueryVariables>;
-export const UploadFilesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"uploadFiles"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"files"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Upload"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uploadFiles"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"files"},"value":{"kind":"Variable","name":{"kind":"Name","value":"files"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]} as unknown as DocumentNode<UploadFilesMutation, UploadFilesMutationVariables>;
+export const UploadFilesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"uploadFiles"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"houseId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"files"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Upload"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uploadFiles"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"houseId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"houseId"}}},{"kind":"Argument","name":{"kind":"Name","value":"files"},"value":{"kind":"Variable","name":{"kind":"Name","value":"files"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]} as unknown as DocumentNode<UploadFilesMutation, UploadFilesMutationVariables>;
 export const GetHousesRentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHousesRent"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"housesRent"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"floor"}},{"kind":"Field","name":{"kind":"Name","value":"rooms"}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}}]}}]}}]} as unknown as DocumentNode<GetHousesRentQuery, GetHousesRentQueryVariables>;
-export const GetHouseDetailDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHouseDetail"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"house"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"realtor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"telephone"}},{"kind":"Field","name":{"kind":"Name","value":"tg"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}},{"kind":"Field","name":{"kind":"Name","value":"role"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}},{"kind":"Field","name":{"kind":"Name","value":"houses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"appealsAsClient"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"comment"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"appealsAsRealtor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"comment"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"features"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}}]}}]}}]} as unknown as DocumentNode<GetHouseDetailQuery, GetHouseDetailQueryVariables>;
+export const GetHousesAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHousesAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"housesAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"floor"}},{"kind":"Field","name":{"kind":"Name","value":"rooms"}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}}]}}]}}]} as unknown as DocumentNode<GetHousesAllQuery, GetHousesAllQueryVariables>;
+export const GetHouseDetailDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHouseDetail"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"house"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"realtor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"telephone"}},{"kind":"Field","name":{"kind":"Name","value":"tg"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}},{"kind":"Field","name":{"kind":"Name","value":"role"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}},{"kind":"Field","name":{"kind":"Name","value":"houses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"appealsAsClient"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"comment"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"appealsAsRealtor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"comment"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"features"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]}}]} as unknown as DocumentNode<GetHouseDetailQuery, GetHouseDetailQueryVariables>;
+export const CreateHouseDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"createHouse"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"HouseCreateDto"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createHouse"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"createHouseInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"floor"}},{"kind":"Field","name":{"kind":"Name","value":"rooms"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"realtor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"telephone"}},{"kind":"Field","name":{"kind":"Name","value":"tg"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"features"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"appeal"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"comment"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}}]}}]}}]}}]} as unknown as DocumentNode<CreateHouseMutation, CreateHouseMutationVariables>;
+export const GetHousesByRealtorIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getHousesByRealtorId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"housesRealtor"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"floor"}},{"kind":"Field","name":{"kind":"Name","value":"rooms"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"features"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]}}]} as unknown as DocumentNode<GetHousesByRealtorIdQuery, GetHousesByRealtorIdQueryVariables>;
+export const HousesFilterDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"HousesFilter"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"address"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"minPrice"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"maxPrice"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isRent"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"housesFilter"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"address"},"value":{"kind":"Variable","name":{"kind":"Name","value":"address"}}},{"kind":"Argument","name":{"kind":"Name","value":"minPrice"},"value":{"kind":"Variable","name":{"kind":"Name","value":"minPrice"}}},{"kind":"Argument","name":{"kind":"Name","value":"maxPrice"},"value":{"kind":"Variable","name":{"kind":"Name","value":"maxPrice"}}},{"kind":"Argument","name":{"kind":"Name","value":"isRent"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isRent"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"floor"}},{"kind":"Field","name":{"kind":"Name","value":"rooms"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}}]}}]}}]}}]} as unknown as DocumentNode<HousesFilterQuery, HousesFilterQueryVariables>;
 export const UsersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Users"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"houses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}},{"kind":"Field","name":{"kind":"Name","value":"role"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}}]}}]}}]}}]} as unknown as DocumentNode<UsersQuery, UsersQueryVariables>;
 export const ChangeUserRoleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ChangeUserRole"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"roleId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAnyUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"role"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"connect"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"roleId"}}}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}},{"kind":"Field","name":{"kind":"Name","value":"role"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"houses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}}]}}]}}]}}]} as unknown as DocumentNode<ChangeUserRoleMutation, ChangeUserRoleMutationVariables>;
 export const RemoveUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RemoveUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"removeAnyUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<RemoveUserMutation, RemoveUserMutationVariables>;
 export const UsersMeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"UsersMe"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"me"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"telephone"}},{"kind":"Field","name":{"kind":"Name","value":"tg"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}},{"kind":"Field","name":{"kind":"Name","value":"role"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}}]}}]}}]} as unknown as DocumentNode<UsersMeQuery, UsersMeQueryVariables>;
 export const UpdateUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserUpdateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"telephone"}},{"kind":"Field","name":{"kind":"Name","value":"tg"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}}]}}]}}]}}]} as unknown as DocumentNode<UpdateUserMutation, UpdateUserMutationVariables>;
+export const UserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"user"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"telephone"}},{"kind":"Field","name":{"kind":"Name","value":"tg"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}}]}}]}}]}}]} as unknown as DocumentNode<UserQuery, UserQueryVariables>;

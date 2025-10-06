@@ -8,5 +8,8 @@ export class HouseAvgAggregateInput {
     id?: true;
 
     @Field(() => Boolean, {nullable:true})
+    price?: true;
+
+    @Field(() => Boolean, {nullable:true})
     realtorId?: true;
 }

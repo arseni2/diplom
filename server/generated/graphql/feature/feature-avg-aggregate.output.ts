@@ -7,7 +7,4 @@ export class FeatureAvgAggregate {
 
     @Field(() => Float, {nullable:true})
     id?: number;
-
-    @Field(() => Float, {nullable:true})
-    houseId?: number;
 }

@@ -19,7 +19,7 @@ type ProfileFormData = {
     tg: string;
     avatar?: FileList;
 };
-
+//e2e tests
 export const ClientProfile = () => {
     const {data, loading, error, refetch} = useQuery<UsersMeQuery>(getCurrentUser);
     const [uploadFiles] = useMutation<UploadFilesMutation>(fileUploadMutation);
@@ -132,6 +132,7 @@ export const ClientProfile = () => {
                 <Input
                     {...register("firstname", {required: "Имя обязательно для заполнения"})}
                     inputLabel="Имя"
+                    data-testid={"input-first-name"}
                     error={errors.firstname?.message}
                     className={styles.input}
                 />
@@ -208,7 +209,7 @@ export const ClientProfile = () => {
                     )}
                 </div>
 
-                <Button view={"action"} type="submit">
+                <Button role={"button"} view={"action"} type="submit">
                     Сохранить изменения
                 </Button>
             </form>

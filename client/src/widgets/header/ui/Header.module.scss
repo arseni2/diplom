@@ -13,6 +13,7 @@
     text-decoration: none;
   }
   &_logo_title {
+    text-decoration: none;
     font-size: 18px;
     font-weight: 700;
     color: #000;
@@ -40,4 +41,8 @@
   .dekstopOnly {
     display: none;
   }
+}
+
+.link {
+  text-decoration: none;
 }

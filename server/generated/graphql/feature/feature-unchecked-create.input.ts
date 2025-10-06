@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { HouseUncheckedCreateNestedManyWithoutFeaturesInput } from '../house/house-unchecked-create-nested-many-without-features.input';
 
 @InputType()
 export class FeatureUncheckedCreateInput {
@@ -14,6 +15,6 @@ export class FeatureUncheckedCreateInput {
     @Field(() => String, {nullable:false})
     value!: string;
 
-    @Field(() => Int, {nullable:true})
-    houseId?: number;
+    @Field(() => HouseUncheckedCreateNestedManyWithoutFeaturesInput, {nullable:true})
+    houses?: HouseUncheckedCreateNestedManyWithoutFeaturesInput;
 }

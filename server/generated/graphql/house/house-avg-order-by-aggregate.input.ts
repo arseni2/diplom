@@ -9,5 +9,8 @@ export class HouseAvgOrderByAggregateInput {
     id?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
+    price?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
     realtorId?: `${SortOrder}`;
 }

@@ -13,7 +13,4 @@ export class FeatureMaxAggregate {
 
     @Field(() => String, {nullable:true})
     value?: string;
-
-    @Field(() => Int, {nullable:true})
-    houseId?: number;
 }

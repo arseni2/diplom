@@ -1,0 +1,62 @@
+@use "@/app-fsd/styles/variables" as var;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &_houses {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill,minmax(14rem,300px))
+  }
+}
+
+.realtor {
+  &_container {
+    border: 1px solid var.$g-color-private-brand-250-solid;
+    border-radius: 10px;
+    padding: 15px 10px;
+  }
+
+  &_avatar {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &_container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+    }
+
+    &_names {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &_name {
+      font-weight: bold;
+    }
+  }
+}

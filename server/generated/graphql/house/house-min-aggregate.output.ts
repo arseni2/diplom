@@ -35,8 +35,8 @@ export class HouseMinAggregate {
     @Field(() => String, {nullable:true})
     bio?: string;
 
-    @Field(() => String, {nullable:true})
-    price?: string;
+    @Field(() => Int, {nullable:true})
+    price?: number;
 
     @Field(() => Boolean, {nullable:true})
     isRent?: boolean;

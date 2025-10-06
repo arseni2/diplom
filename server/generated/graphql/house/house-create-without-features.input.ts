@@ -1,5 +1,6 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
+import { Int } from '@nestjs/graphql';
 import { UserCreateNestedOneWithoutHousesInput } from '../user/user-create-nested-one-without-houses.input';
 import { FileCreateNestedManyWithoutHouseInput } from '../file/file-create-nested-many-without-house.input';
 import { AppealsCreateNestedOneWithoutHouseInput } from '../appeals/appeals-create-nested-one-without-house.input';
@@ -34,8 +35,8 @@ export class HouseCreateWithoutFeaturesInput {
     @Field(() => String, {nullable:false})
     bio!: string;
 
-    @Field(() => String, {nullable:false})
-    price!: string;
+    @Field(() => Int, {nullable:false})
+    price!: number;
 
     @Field(() => Boolean, {nullable:true})
     isRent?: boolean;

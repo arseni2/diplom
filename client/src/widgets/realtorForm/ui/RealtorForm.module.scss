@@ -1,0 +1,38 @@
+@use "@/app-fsd/styles/variables" as var;
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &_item {
+    border: 1px solid var.$gray_border;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &_fields {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    &_header {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+
+      &_icon {
+        padding: 10px;
+        border-radius: 5px;
+        background: var.$g-color-private-brand-100;
+        color: var.$g-color-private-brand-600-solid;
+      }
+    }
+  }
+}

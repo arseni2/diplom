@@ -1,0 +1,41 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+  }
+}
+
+.select {
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: auto;
+    min-width: 200px;
+  }
+}
+
+.rangeInputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    min-width: 200px;
+    justify-content: center;
+  }
+}
+
+.rangeSeparator {
+  font-size: 16px;
+  color: #333;
+}

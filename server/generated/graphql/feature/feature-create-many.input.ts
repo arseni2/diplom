@@ -13,7 +13,4 @@ export class FeatureCreateManyInput {
 
     @Field(() => String, {nullable:false})
     value!: string;
-
-    @Field(() => Int, {nullable:true})
-    houseId?: number;
 }

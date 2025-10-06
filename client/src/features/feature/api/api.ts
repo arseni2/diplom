@@ -1,8 +1,12 @@
 import gql from "graphql-tag";
 
 export const createFeature = gql`
-    mutation CreateFeatureMutation($title: String!, $value: String!) {
-        createFeature(createFeatureInput: { title: $title, value: $value }) {
+    mutation CreateFeatureMutation($title: String!, $value: String!, $houses: HouseCreateNestedManyWithoutFeaturesInput) {
+        createFeature(createFeatureInput: { 
+            title: $title, 
+            value: $value,
+            houses: $houses
+        }) {
             id
             title
             value

@@ -24,6 +24,12 @@ export class HousesResolver {
         return this.housesService.findRent();
     }
 
+    @Query(() => [House], {name: 'housesAll'})
+    @UseGuards(AuthGuard)
+    findAll(@GetUserDecorator() user: IPayload) {
+        return this.housesService.findAll(user);
+    }
+
     @Query(() => [House], {name: 'housesSell'})
     findSell() {
         return this.housesService.findSell();
@@ -34,6 +40,20 @@ export class HousesResolver {
         return this.housesService.findOne(id);
     }
 
+    @Query(() => [House], {name: 'housesRealtor'})
+    findAllByRealtorId(@Args('id', {type: () => Int}) id: number) {
+        return this.housesService.findAllByRealtorId(id)
+    }
+
+    @Query(() => [House], {name: 'housesFilter'})
+    filterHouses(
+        @Args('address', {type: () => String, nullable: true}) address?: string,
+        @Args('minPrice', {type: () => Number, nullable: true}) minPrice?: number,
+        @Args('maxPrice', {type: () => Number, nullable: true}) maxPrice?: number,
+        @Args('isRent', {type: () => Boolean, nullable: true}) isRent?: boolean,
+    ) {
+        return this.housesService.housesFilter(address, minPrice, maxPrice, isRent);
+    }
     // @Mutation(() => House)
     // updateHouse(@Args('updateHouseInput') updateHouseInput: UpdateHouseInput) {
     //   return this.housesService.update(updateHouseInput.id, updateHouseInput);

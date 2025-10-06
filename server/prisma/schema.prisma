@@ -75,10 +75,7 @@ model Feature {
   title String
   value String
 
-  house   House? @relation(fields: [houseId], references: [id])
-  houseId Int?
-
-  @@index([houseId])
+  houses House[] @relation("HouseFeatures")
 }
 
 // ======================
@@ -95,15 +92,16 @@ model House {
   floor       String?
   rooms       String?
   bio         String
-  price       String
+  price       Int
   isRent      Boolean  @default(true)
   isSell      Boolean  @default(true)
 
   realtor   User      @relation(fields: [realtorId], references: [id])
   realtorId Int
   images    File[]
-  features  Feature[]
+  features  Feature[] @relation("HouseFeatures")
   appeal    Appeals?
+  // Feature   Feature[]
 
   @@index([realtorId])
   @@index([isRent])

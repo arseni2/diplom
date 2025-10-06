@@ -1,8 +1,8 @@
+import {RealtorForm} from "@/widgets/realtorForm/ui/RealtorForm";
+
 const Page = () => {
     return (
-        <div>
-            заявка для становления риелтором
-        </div>
+        <RealtorForm/>
     );
 };
 

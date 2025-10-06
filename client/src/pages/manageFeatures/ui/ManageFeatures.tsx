@@ -1,18 +1,18 @@
 "use client";
-
 import styles from "./ManageFeatures.module.scss";
-import { Input } from "@/shared/ui/input/ui/Input";
-import { Button, Select, Text } from "@gravity-ui/uikit";
-import { TrashBin, Pencil } from '@gravity-ui/icons'; // ← Добавил Pencil
-import { useState } from 'react';
-import { CreateFeatureForm } from "@/features/feature/ui/CreateFeatureForm"; // ← Обновлённое имя
-import { useGetFeatures } from "@/features/feature/hooks/useQueryFeatures";
-import { useDeleteFeature } from "@/features/feature/hooks/useDeleteFeature";
-import { toaster } from "@gravity-ui/uikit/toaster-singleton";
+import {Input} from "@/shared/ui/input/ui/Input";
+import {Button, Select, Text} from "@gravity-ui/uikit";
+import {Pencil, TrashBin} from '@gravity-ui/icons';
+import {useState} from 'react';
+import {CreateFeatureForm} from "@/features/feature/ui/CreateFeatureForm";
+import {useGetFeatures} from "@/features/feature/hooks/useQueryFeatures";
+import {useDeleteFeature} from "@/features/feature/hooks/useDeleteFeature";
+import {toaster} from "@gravity-ui/uikit/toaster-singleton";
+
 
 export const ManageFeatures = () => {
-    const { data, loading, error, refetch } = useGetFeatures();
-    const { mutate: deleteFeatureMutation } = useDeleteFeature();
+    const {data, loading, error, refetch} = useGetFeatures();
+    const {mutate: deleteFeatureMutation} = useDeleteFeature();
 
     const [search, setSearch] = useState("");
     const [editingFeature, setEditingFeature] = useState<{
@@ -23,7 +23,7 @@ export const ManageFeatures = () => {
 
     const handleClickDelete = async (id: number) => {
         await deleteFeatureMutation({
-            variables: { id },
+            variables: {id},
             onCompleted: () => {
                 toaster.add({
                     name: "featureDeleteSuccess",
@@ -63,12 +63,12 @@ export const ManageFeatures = () => {
     return (
         <div className={styles.container}>
             <div className={styles.filter}>
-                <div style={{ flex: 1 }}>
+                <div style={{flex: 1}}>
                     <Input
                         placeholder="Поиск"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        style={{ width: '100%' }}
+                        style={{width: '100%'}}
                     />
                 </div>
                 <Select className={styles.filter_input} label="Сортировка">
@@ -99,7 +99,7 @@ export const ManageFeatures = () => {
             {/* Форма создания (всегда показываем) */}
             {!editingFeature && (
                 <div className={styles.createFormWrapper}>
-                    <CreateFeatureForm refetch={refetch} />
+                    <CreateFeatureForm refetch={refetch}/>
                 </div>
             )}
 
@@ -123,7 +123,7 @@ export const ManageFeatures = () => {
                                     className={styles.features_container_item_btns_wrapper_edit}
                                     title="Редактировать"
                                 >
-                                    <Pencil className={styles.btn_edit} />
+                                    <Pencil className={styles.btn_edit}/>
                                 </div>
 
                                 <div
@@ -131,7 +131,7 @@ export const ManageFeatures = () => {
                                     className={styles.features_container_item_btns_wrapper_del}
                                     title="Удалить"
                                 >
-                                    <TrashBin className={styles.btn_delete} />
+                                    <TrashBin className={styles.btn_delete}/>
                                 </div>
                             </div>
                         </div>

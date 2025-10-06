@@ -60,7 +60,6 @@ export const HouseCard = (props: PropsType) => {
                                 width={100}
                                 height={100}
                                 alt={file.name || ""}
-                                // unoptimized
                                 style={{width: '100%', height: 'auto', objectFit: 'cover'}}
                             />
                         </SwiperSlide>

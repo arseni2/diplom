@@ -66,7 +66,10 @@ export const HeaderUser = ({ items, firstname, imgUrl }: PropsType) => {
             ))}
 
             <div
-                onClick={userLogout}
+                onClick={async () => {
+                    await userLogout()
+                    router.push("/auth/login");
+                }}
                 className={clsx(styles.dropdown_item, styles.dropdown_item_out)}
             >
                 <Text>Выйти</Text>

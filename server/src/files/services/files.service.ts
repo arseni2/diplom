@@ -19,7 +19,7 @@ export class FilesService {
         });
     }
 
-    async upload(file: UploadFile): Promise<UploadDto> {
+    async upload(file: UploadFile, houseId?: string | null): Promise<UploadDto> {
         try {
             const result = await this.imageKit.upload({
                 file: file.buffer,
@@ -28,7 +28,8 @@ export class FilesService {
             });
             const fileFromDb = await this.prismaService.file.create({
                 data: {
-                    path: result.url
+                    path: result.url,
+                    houseId: Number(houseId) ?? undefined
                 }
             })
             return {url: result.url, id: fileFromDb.id};
@@ -37,9 +38,4 @@ export class FilesService {
             throw new Error('Failed to upload image');
         }
     }
-
-    // async uploadMultiple(files: UploadFile[]): Promise<string[]> {
-    //     const uploadPromises = files.map(file => this.upload(file));
-    //     return await Promise.all(uploadPromises);
-    // }
 }

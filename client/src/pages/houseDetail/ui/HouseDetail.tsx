@@ -1,22 +1,32 @@
 "use client"
 import styles from "./HouseDetail.module.scss"
 import {Avatar, Button, Dialog, Text} from "@gravity-ui/uikit";
-import {Globe, FileText, Heart, Magnifier, NodesRight, Hammer, LocationArrow, SquareDot} from '@gravity-ui/icons';
+import {FileText, Globe, Hammer, Heart, LocationArrow, HeartFill, SquareDot} from '@gravity-ui/icons';
 import Image from "next/image";
-import {HouseCard} from "@/widgets/houseCard/ui/HouseCard";
 import {getHouseDetailQuery} from "@/features/house/api/api";
 import {useQuery} from "@apollo/client/react";
-import {GetHouseDetailQuery} from "@/gql/graphql";
+import {GetHouseDetailQuery, House} from "@/gql/graphql";
 import {useParams} from "next/navigation";
 import Link from "next/link";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Input} from "@/shared/ui/input/ui/Input";
 import {useCreateAppeal} from "@/features/appeal/hooks/createAppeal";
 import {useForm} from "react-hook-form";
+import {localStorageService} from "@/services/localStorage/LocalStorage";
 
 export const HouseDetail = () => {
     const [open, setOpen] = useState(false);
+    const [isFill, setisFill] = useState<boolean>(false);
+    const [houses, setHouses] = useState<House[] | null>(null);
+
     const params = useParams<{ id?: string }>();
+
+    useEffect(() => {
+        setHouses(localStorageService.getItem("houses"))
+        const data = houses?.find((item) => item.id === params?.id);
+        console.log(data)
+        setisFill(data != undefined)
+    }, [])
 
     const {data} = useQuery<GetHouseDetailQuery>(getHouseDetailQuery, {
         variables: {id: Number(params?.id)},
@@ -44,6 +54,14 @@ export const HouseDetail = () => {
         }
     ]
 
+    const handleAddFavClick = () => {
+        setisFill(true)
+        localStorageService.setItem("houses", data?.house);
+    }
+    const handleDeleteFavClick = () => {
+        setisFill(false)
+        localStorageService.deleteItem("houses", data?.house);
+    }
     return (
         <div>
             <div className={styles.header}>
@@ -52,40 +70,59 @@ export const HouseDetail = () => {
                     <Text className={styles.header_title_desc}>{data?.house.address}</Text>
                 </div>
                 <DialogAppeal
-
                     realtorId={data?.house.realtorId || 1}
                     houseId={data?.house.id || ""}
                     open={open}
                     setOpen={setOpen}
                 />
                 <div className={styles.header_buttons}>
-                    <Button className={styles.header_buttons_btn} size={"l"}
-                            view={"outlined"}><NodesRight/> Share</Button>
-                    <Button className={styles.header_buttons_btn} size={"l"} view={"outlined"}><Heart/>Favorite</Button>
+                    <Button
+                        onClick={isFill ? handleDeleteFavClick : handleAddFavClick}
+                        className={styles.header_buttons_btn}
+                        size={"l"}
+                        view={"outlined"}
+                    >
+                        {isFill ? <HeartFill/> : <Heart/>}
+                        Favorite
+                    </Button>
                 </div>
             </div>
 
             <div className={styles.gallery}>
                 <div>
-                    <Image className={styles.gallery_big}
-                           src={data?.house?.images?.[0]?.path || ""}
-                           layout="responsive"
-                           width={100}
-                           height={100}
-                           alt=""/>
+                    {data?.house?.images?.[0]?.path ? (
+                        <Image
+                            className={styles.gallery_big}
+                            src={data.house.images[0].path}
+                            alt={data.house.title || "Изображение дома"}
+                            layout="responsive"
+                            width={100}
+                            height={100}
+                        />
+                    ) : (
+                        <div>Нет изображения</div>
+                    )}
                 </div>
 
                 <div className={styles.gallery_min}>
-                    <Image src={data?.house?.images?.[1]?.path || ""}
-                           layout="responsive"
-                           width={100}
-                           height={100}
-                           alt=""/>
-                    <Image src={data?.house?.images?.[2]?.path || ""}
-                           layout="responsive"
-                           width={100}
-                           height={100}
-                           alt=""/>
+                    {data?.house?.images?.[1]?.path && (
+                        <Image
+                            src={data.house.images[1].path}
+                            alt="Изображение 2"
+                            layout="responsive"
+                            width={100}
+                            height={100}
+                        />
+                    )}
+                    {data?.house?.images?.[2]?.path && (
+                        <Image
+                            src={data.house.images[2].path}
+                            alt="Изображение 3"
+                            layout="responsive"
+                            width={100}
+                            height={100}
+                        />
+                    )}
                 </div>
             </div>
 
@@ -149,7 +186,7 @@ type PropsRealtorType = {
     email: string
     id: string
 }
-const RealtorCard = ({avatar, email, lastname, firstname, id}: PropsRealtorType) => {
+export const RealtorCard = ({avatar, email, lastname, firstname, id}: PropsRealtorType) => {
     return (
         <div className={styles.realtor_container}>
             <Text className={styles.main_price_secondary}>Опубликовано риелтором</Text>
@@ -186,8 +223,8 @@ const Features = ({features}: PropsFeatureType) => {
         <div>
             <Text variant={"header-1"}>Характеристики</Text>
             <div className={styles.features}>
-                {features.map(feature => (
-                    <div className={styles.features_item}>
+                {features.map((feature, i) => (
+                    <div key={i} className={styles.features_item}>
                         <Text className={styles.main_price_secondary}>{feature.title}</Text>
                         <div className={styles.divider}></div>
                         <Text className={styles.realtor_avatar_name}>{feature.value}</Text>
@@ -201,7 +238,7 @@ const Features = ({features}: PropsFeatureType) => {
 const Map = () => {
     return (
         <div>
-            map????
+
         </div>
     )
 }
@@ -291,7 +328,6 @@ const DialogAppeal = ({open, setOpen, houseId, realtorId}: PropsDialogType) => {
                         inputLabel="Комментарий"
                         placeholder="Напишите ваш комментарий..."
                         error={errors.comment?.message}
-                        rows={4}
                     />
 
                     {result.typedError && (

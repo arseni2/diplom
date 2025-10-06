@@ -6,6 +6,8 @@ import {HeaderUser} from "@/widgets/headerUser/ui/HeaderUser";
 import {useQuery} from "@apollo/client/react";
 import {UsersMeQuery} from "@/gql/graphql";
 import {getCurrentUser} from "@/features/users/api/api";
+import {RoleEnum} from "@/features/users/enum/RoleEnum";
+import {useEffect} from "react";
 
 
 export const HeaderManage = () => {
@@ -19,6 +21,11 @@ export const HeaderManage = () => {
     const pathname = usePathname();
     const {data} = useQuery<UsersMeQuery>(getCurrentUser)
 
+    useEffect(() => {
+        if (data?.me.roleId != RoleEnum.Admin) {
+            router.push("/auth/signin");
+        }
+    }, [data]);
     return (
         <div className={styles.headerManage}>
             <div style={{display: "flex", alignItems: "center", gap: '20px'}}>
