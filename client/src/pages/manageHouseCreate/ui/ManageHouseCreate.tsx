@@ -3,16 +3,26 @@
 import styles from "./ManageHouseCreate.module.scss";
 import { Button, Select, Text } from "@gravity-ui/uikit";
 import { useForm } from "react-hook-form";
-import { useState, useRef, ChangeEvent } from "react";
+import { useState, useRef, ChangeEvent, useEffect } from "react";
 import { Input } from "@/shared/ui/input/ui/Input";
-import {useMutation} from "@apollo/client/react";
-import {createHouseMutation} from "@/features/house/api/api";
-import {CreateHouseMutation, HouseCreateDto, MutationCreateHouseArgs, UploadFilesMutation} from "@/gql/graphql";
-import {fileUploadMutation} from "@/features/file/api/api";
-import {useGetFeatures} from "@/features/feature/hooks/useQueryFeatures";
+import { useMutation, useQuery } from "@apollo/client/react";
+import {
+    createHouseMutation,
+    updateHouseMutation,
+    getHouseDetailQuery,
+} from "@/features/house/api/api";
+import {
+    CreateHouseMutation,
+    HouseCreateDto,
+    UpdateHouseMutation,
+    UploadFilesMutation,
+    House,
+} from "@/gql/graphql";
+import { fileUploadMutation } from "@/features/file/api/api";
+import { useGetFeatures } from "@/features/feature/hooks/useQueryFeatures";
 
+type FileWithMetadata = { file: File; houseId?: string };
 
-type FileWithMetadata = { file: File; houseId?: string; }
 const REMONT_OPTIONS = [
     { value: "без ремонта", content: "Без ремонта" },
     { value: "косметический", content: "Косметический" },
@@ -26,7 +36,62 @@ const OFFER_TYPE_OPTIONS = [
     { value: "both", content: "Аренда и продажа" },
 ];
 
-export const ManageHouseCreate = () => {
+interface ManageHouseFormProps {
+    houseId?: number; // если передан — режим редактирования
+}
+
+export const ManageHouseCreate = ({ houseId }: ManageHouseFormProps) => {
+    const [submitError, setSubmitError] = useState<string | null>(null);
+    const [images, setImages] = useState<FileWithMetadata[]>([]);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const { data: featuresData, loading: featuresLoading } = useGetFeatures();
+
+    const [createHouse] = useMutation<CreateHouseMutation>(createHouseMutation);
+    const [updateHouse] = useMutation<UpdateHouseMutation>(updateHouseMutation);
+    const [uploadFiles] = useMutation<UploadFilesMutation>(fileUploadMutation);
+
+    const { data: houseData, loading: houseLoading } = useQuery(getHouseDetailQuery, {
+        variables: { id: houseId },
+        skip: !houseId,
+    });
+
+    const isEditMode = !!houseId;
+    const isLoading = featuresLoading || (isEditMode && houseLoading);
+
+    // Определяем начальные значения
+    const getDefaultValues = (): HouseCreateDto => {
+        if (isEditMode && houseData?.house) {
+            const h = houseData.house as House;
+            return {
+                title: h.title || "",
+                description: h.description || "",
+                bio: h.bio || "",
+                address: h.address || "",
+                price: h.price,
+                square: String(h.square || "0"),
+                floor: String(h.floor || "0"),
+                rooms: String(h.rooms || "1"),
+                remont: h.remont || "без ремонта",
+                isRent: h.isRent || false,
+                isSell: h.isSell || false,
+            };
+        }
+        return {
+            title: "",
+            description: "",
+            bio: "",
+            address: "",
+            price: 0,
+            square: "0",
+            floor: "0",
+            rooms: "1",
+            remont: "без ремонта",
+            isRent: false,
+            isSell: false,
+        };
+    };
+
     const {
         register,
         handleSubmit,
@@ -34,27 +99,16 @@ export const ManageHouseCreate = () => {
         reset,
         watch,
     } = useForm<HouseCreateDto>({
-        defaultValues: {
-            title: "",
-            description: "",
-            address: "",
-            price: '0',
-            square: '0',
-            floor: '0',
-            rooms: '1',
-            remont: "без ремонта",
-            isRent: false,
-            isSell: false,
-        },
+        defaultValues: getDefaultValues(),
     });
 
-    const [submitError, setSubmitError] = useState<string | null>(null);
-    const [images, setImages] = useState<FileWithMetadata[]>([]);
-    const fileInputRef = useRef<HTMLInputElement>(null);
-
-    const { data, loading, error, refetch } = useGetFeatures();
-    const [mutate] = useMutation<CreateHouseMutation>(createHouseMutation)
-    const [uploadFiles] = useMutation<UploadFilesMutation>(fileUploadMutation);
+    // Синхронизация формы при загрузке данных
+    useEffect(() => {
+        if (isEditMode && houseData?.house) {
+            reset(getDefaultValues());
+            // TODO: загрузить текущие изображения (если нужно отображать)
+        }
+    }, [houseData, isEditMode, reset]);
 
     const offerType = watch("isRent") && watch("isSell")
         ? "both"
@@ -82,12 +136,12 @@ export const ManageHouseCreate = () => {
         }
 
         const fileList = Array.from(files);
-        if (fileList.length < 3) {
-            setImages([]);
-            return;
+        if (fileList.length < 3 && isEditMode) {
+            // В режиме редактирования можно разрешить меньше 3, если уже есть фото?
+            // Но пока оставим требование как в оригинале
         }
 
-        const newImages: FileWithMetadata[] = fileList.slice(0, 10).map(file => ({
+        const newImages: FileWithMetadata[] = fileList.slice(0, 10).map((file) => ({
             file,
             houseId: undefined,
         }));
@@ -95,52 +149,73 @@ export const ManageHouseCreate = () => {
         setImages(newImages);
     };
 
-    const onSubmit = async (HouseFormData: any) => {
+    const onSubmit = async (formData: HouseCreateDto) => {
         setSubmitError(null);
 
-        if (images.length < 3) {
+        // В режиме редактирования можно разрешить не загружать новые фото
+        if (!isEditMode && images.length < 3) {
             setSubmitError("Загрузите минимум 3 фотографии");
             return;
         }
 
         try {
-            console.log("Данные формы:", HouseFormData);
-            // console.log("Изображения:", images);
+            let houseIdResult: string;
 
-            const {data} = await mutate({
-                variables: {
-                    input: HouseFormData
+            if (isEditMode) {
+                const formDataToRequest: any = {}
+                for(const key in formData) {
+                    formDataToRequest[key] = {set: formData[key]};
                 }
-            })
-            setImages((prevState) => {
-                return prevState.map((item) => {
-                    item.houseId = data?.createHouse.id
-                    return item
-                })
-            })
-            const houseId = data?.createHouse?.id;
-            setImages(prev => prev.map(img => ({ ...img, houseId })));
+                const { data } = await updateHouse({
+                    variables: {
+                        id: houseId,
+                        input: formDataToRequest,
+                    },
+                });
+                houseIdResult = data?.updateHouse.id || houseId;
+            } else {
+                const { data } = await createHouse({
+                    variables: { input: formData },
+                });
+                houseIdResult = data?.createHouse.id;
+                if (!houseIdResult) throw new Error("Не удалось создать объект");
+            }
 
-            await uploadFiles({
-                variables: {
-                    files: images.map(img => img.file),
-                    houseId,
-                },
-            });
-            alert("Объект успешно создан!");
+            // Загрузка изображений (только если есть новые файлы)
+            if (images.length > 0) {
+                await uploadFiles({
+                    variables: {
+                        files: images.map((img) => img.file),
+                        houseId: houseIdResult,
+                    },
+                });
+            }
+
+            alert(isEditMode ? "Объект успешно обновлён!" : "Объект успешно создан!");
             reset();
             setImages([]);
             if (fileInputRef.current) fileInputRef.current.value = "";
         } catch (err) {
             console.error(err);
-            setSubmitError("Не удалось создать объект.");
+            setSubmitError(
+                isEditMode
+                    ? "Не удалось обновить объект."
+                    : "Не удалось создать объект."
+            );
         }
     };
+
+    const title = isEditMode ? "Редактировать объект" : "Создать объект недвижимости";
+    const submitButtonText = isEditMode ? "Сохранить изменения" : "Создать объект";
+
+    if (isLoading) {
+        return <Text>Загрузка...</Text>;
+    }
 
     return (
         <div className={styles.container}>
             <Text variant="display-1" className={styles.title}>
-                Создать объект недвижимости
+                {title}
             </Text>
 
             <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -162,9 +237,9 @@ export const ManageHouseCreate = () => {
 
                 <Input
                     inputLabel="Атмосфера"
-                    {...register("bio", { required: "Атмосфера обязателен" })}
-                    placeholder="Атмосфера"
-                    error={errors.address?.message}
+                    {...register("bio", { required: "Атмосфера обязательна" })}
+                    placeholder="Уютная, светлая квартира..."
+                    error={errors.bio?.message}
                     size="l"
                 />
 
@@ -186,9 +261,7 @@ export const ManageHouseCreate = () => {
 
                 <Input
                     inputLabel="Цена (₽)"
-                    {...register("price", {
-                        required: "Цена обязательна",
-                    })}
+                    {...register("price", { required: "Цена обязательна" })}
                     placeholder="10000000"
                     type="text"
                     error={errors.price?.message}
@@ -197,9 +270,7 @@ export const ManageHouseCreate = () => {
 
                 <Input
                     inputLabel="Площадь (м²)"
-                    {...register("square", {
-                        required: "Площадь обязательна",
-                    })}
+                    {...register("square", { required: "Площадь обязательна" })}
                     placeholder="54"
                     type="text"
                     error={errors.square?.message}
@@ -208,9 +279,7 @@ export const ManageHouseCreate = () => {
 
                 <Input
                     inputLabel="Этаж"
-                    {...register("floor", {
-                        required: "Этаж обязателен",
-                    })}
+                    {...register("floor", { required: "Этаж обязателен" })}
                     placeholder="3"
                     type="text"
                     error={errors.floor?.message}
@@ -219,9 +288,7 @@ export const ManageHouseCreate = () => {
 
                 <Input
                     inputLabel="Комнаты"
-                    {...register("rooms", {
-                        required: "Количество комнат обязательно",
-                    })}
+                    {...register("rooms", { required: "Количество комнат обязательно" })}
                     placeholder="2"
                     type="text"
                     error={errors.rooms?.message}
@@ -231,14 +298,20 @@ export const ManageHouseCreate = () => {
                 <Select
                     label="Ремонт"
                     value={[watch("remont")]}
-                    onUpdate={(vals) => reset((prev) => ({ ...prev, remont: vals[0] || "без ремонта" }))}
+                    onUpdate={(vals) =>
+                        reset((prev) => ({ ...prev, remont: vals[0] || "без ремонта" }))
+                    }
                     options={REMONT_OPTIONS}
                     size="l"
                 />
 
                 <div className={styles.imageUpload}>
                     <label className={styles.imageUploadLabel}>
-                        <Text>Фотографии объекта (минимум 3)</Text>
+                        <Text>
+                            {isEditMode
+                                ? "Новые фотографии (оставьте пустым, чтобы не менять)"
+                                : "Фотографии объекта (минимум 3)"}
+                        </Text>
                         <input
                             ref={fileInputRef}
                             type="file"
@@ -266,7 +339,7 @@ export const ManageHouseCreate = () => {
                         </div>
                     )}
 
-                    {images.length > 0 && images.length < 3 && (
+                    {!isEditMode && images.length > 0 && images.length < 3 && (
                         <Text color="danger" className={styles.error}>
                             Загрузите минимум 3 изображения
                         </Text>
@@ -285,7 +358,7 @@ export const ManageHouseCreate = () => {
                         view="outlined"
                         size="l"
                         onClick={() => {
-                            reset();
+                            reset(getDefaultValues());
                             setImages([]);
                             if (fileInputRef.current) fileInputRef.current.value = "";
                         }}
@@ -294,7 +367,7 @@ export const ManageHouseCreate = () => {
                         Сбросить
                     </Button>
                     <Button type="submit" view="action" size="l" loading={isSubmitting}>
-                        Создать объект
+                        {submitButtonText}
                     </Button>
                 </div>
             </form>

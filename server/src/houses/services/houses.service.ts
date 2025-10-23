@@ -5,6 +5,7 @@ import {UserService} from "../../user/services/user.service";
 import {RoleEnum} from "../../auth/enums/role.enum";
 import {AppException} from "../../common/exceptions/App.exception";
 import {HouseCreateDto} from "../dto/HouseCreate.dto";
+import {HouseUpdateInput} from "../../../generated/graphql/house/house-update.input";
 
 @Injectable()
 export class HousesService {
@@ -150,5 +151,17 @@ export class HousesService {
                 features: true,
             }
         });
+    }
+
+    async update(user: IPayload, id: number, dto: HouseUpdateInput) {
+        const dbUser = await this.userService.findOne(user.id)
+        if(dbUser?.roleId == RoleEnum.USER) {
+            throw new AppException({"user": ["нет прав"]}, HttpStatus.FORBIDDEN);
+        }
+
+        return this.prisma.house.update({
+            where: { id },
+            data: dto
+        })
     }
 }

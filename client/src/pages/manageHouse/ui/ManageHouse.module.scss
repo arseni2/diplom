@@ -1,3 +1,4 @@
+@use "@/app-fsd/styles/variables" as var;
 .main_container {
   padding: 10px 0 0 10px;
   display: flex;
@@ -26,4 +27,9 @@
       width: 100% !important;
     }
   }
+}
+
+.link {
+  text-decoration: none;
+  color: var.$g-color-private-brand-650-solid;
 }

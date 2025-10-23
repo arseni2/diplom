@@ -2,7 +2,7 @@
 import styles from "./ManageUsers.module.scss"
 import {Input} from "@/shared/ui/input/ui/Input";
 import {Avatar, DropdownMenu, Select, Text} from "@gravity-ui/uikit";
-import {useState} from "react";
+import {useMemo, useState} from "react";
 import {EllipsisVertical} from '@gravity-ui/icons';
 import clsx from "clsx";
 import {useGetUsersQuery} from "@/features/users/hooks/getUsers";
@@ -15,6 +15,7 @@ import {toaster} from "@gravity-ui/uikit/toaster-singleton";
 
 export const ManageUsers = () => {
     const [search, setSearch] = useState("");
+    const [sort, setSort] = useState<"name" | "position" | "status">("name");
     const {data, typedError, refetch} = useGetUsersQuery()
     const {mutate: deleteUserMutation} = useDeleteUser()
     const {mutate: changeUserRole} = useChangeUserRole()
@@ -65,7 +66,26 @@ export const ManageUsers = () => {
         refetch()
     }
 
+    const filteredAndSortedUsers = useMemo(() => {
+        if (!data?.users) return [];
 
+        const filtered = data.users.filter(user =>
+            (user.firstname?.toLowerCase().includes(search.toLowerCase()) ||
+                user.lastname?.toLowerCase().includes(search.toLowerCase()) ||
+                user.email.toLowerCase().includes(search.toLowerCase()))
+        );
+
+        return filtered.sort((a, b) => {
+            switch (sort) {
+                case "name":
+                    return (a.lastname || "").localeCompare(b.lastname || "");
+                case "position":
+                    return (a.role?.title || "").localeCompare(b.role?.title || "");
+                default:
+                    return 0;
+            }
+        });
+    }, [data?.users, search, sort]);
     return (
         <div className={styles.container}>
             <div className={styles.filterBar}>
@@ -79,10 +99,12 @@ export const ManageUsers = () => {
                 <div className={styles.sortBox}>
                     <Select
                         label="Сортировка"
+                        value={[sort]}
+                        multiple={false}
+                        onUpdate={(value) => setSort(value[0] as "name" | "position" | "status")}
                     >
                         <Select.Option value="name">По имени</Select.Option>
                         <Select.Option value="position">По должности</Select.Option>
-                        <Select.Option value="status">По статусу</Select.Option>
                     </Select>
                 </div>
             </div>
@@ -98,7 +120,7 @@ export const ManageUsers = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {data?.users?.map((user) => (
+                    {filteredAndSortedUsers.map((user) => (
                         <tr key={user.id} className={styles.tr}>
                             <td className={styles.td}>
                                 <div className={styles.userInfo}>

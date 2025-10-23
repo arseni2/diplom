@@ -6,6 +6,7 @@ import {UseGuards} from "@nestjs/common";
 import {GetUserDecorator} from "../../auth/decorators/GetUser.decorator";
 import {type IPayload} from "../../auth/interfaces/payload.interface";
 import {HouseCreateDto} from "../dto/HouseCreate.dto";
+import {HouseUpdateInput} from "../../../generated/graphql/house/house-update.input";
 
 
 @Resolver(() => House)
@@ -54,10 +55,16 @@ export class HousesResolver {
     ) {
         return this.housesService.housesFilter(address, minPrice, maxPrice, isRent);
     }
-    // @Mutation(() => House)
-    // updateHouse(@Args('updateHouseInput') updateHouseInput: UpdateHouseInput) {
-    //   return this.housesService.update(updateHouseInput.id, updateHouseInput);
-    // }
+
+    @Mutation(() => House)
+    @UseGuards(AuthGuard)
+    updateHouse(
+        @Args('updateHouseInput') updateHouseInput: HouseUpdateInput,
+        @Args('id') id: number,
+        @GetUserDecorator() user: IPayload
+    ) {
+      return this.housesService.update(user, id, updateHouseInput);
+    }
 
     @Mutation(() => House)
     @UseGuards(AuthGuard)

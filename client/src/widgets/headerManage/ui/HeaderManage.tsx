@@ -22,7 +22,9 @@ export const HeaderManage = () => {
     const {data} = useQuery<UsersMeQuery>(getCurrentUser)
 
     useEffect(() => {
+        if (data === undefined) return;
         if (data?.me.roleId != RoleEnum.Admin) {
+            console.log(data)
             router.push("/auth/signin");
         }
     }, [data]);

@@ -243,3 +243,36 @@ export const filterHouseQuery = gql`
         }
     }
 `
+
+export const updateHouseMutation = gql`
+mutation updateHouse($id: Float!, $input: HouseUpdateInput!) {
+    updateHouse(id: $id, updateHouseInput: $input) {
+        id
+        createdAt
+        title
+        description
+        address
+        square
+        remont
+        floor
+        rooms
+        bio
+        price
+        isRent
+        isSell
+        realtorId
+        images {
+            id
+            path
+            name
+            size
+            houseId
+        }
+        features {
+            id
+            title
+            value
+        }
+    }
+}
+`

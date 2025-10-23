@@ -635,7 +635,7 @@ type House {
   images: [File!]
   isRent: Boolean!
   isSell: Boolean!
-  price: String!
+  price: Int!
   realtor: User!
   realtorId: Int!
   remont: String!
@@ -657,7 +657,7 @@ input HouseCreateDto {
   floor: String
   isRent: Boolean
   isSell: Boolean
-  price: String!
+  price: Float!
   remont: String!
   rooms: String
   square: String!
@@ -673,7 +673,7 @@ input HouseCreateManyRealtorInput {
   id: Int
   isRent: Boolean
   isSell: Boolean
-  price: String!
+  price: Int!
   remont: String!
   rooms: String
   square: String!
@@ -739,7 +739,7 @@ input HouseCreateWithoutAppealInput {
   images: FileCreateNestedManyWithoutHouseInput
   isRent: Boolean
   isSell: Boolean
-  price: String!
+  price: Int!
   realtor: UserCreateNestedOneWithoutHousesInput!
   remont: String!
   rooms: String
@@ -757,7 +757,7 @@ input HouseCreateWithoutFeaturesInput {
   images: FileCreateNestedManyWithoutHouseInput
   isRent: Boolean
   isSell: Boolean
-  price: String!
+  price: Int!
   realtor: UserCreateNestedOneWithoutHousesInput!
   remont: String!
   rooms: String
@@ -775,7 +775,7 @@ input HouseCreateWithoutImagesInput {
   floor: String
   isRent: Boolean
   isSell: Boolean
-  price: String!
+  price: Int!
   realtor: UserCreateNestedOneWithoutHousesInput!
   remont: String!
   rooms: String
@@ -794,7 +794,7 @@ input HouseCreateWithoutRealtorInput {
   images: FileCreateNestedManyWithoutHouseInput
   isRent: Boolean
   isSell: Boolean
-  price: String!
+  price: Int!
   remont: String!
   rooms: String
   square: String!
@@ -824,12 +824,31 @@ input HouseScalarWhereInput {
   id: IntFilter
   isRent: BoolFilter
   isSell: BoolFilter
-  price: StringFilter
+  price: IntFilter
   realtorId: IntFilter
   remont: StringFilter
   rooms: StringNullableFilter
   square: StringFilter
   title: StringFilter
+}
+
+input HouseUpdateInput {
+  address: StringFieldUpdateOperationsInput
+  appeal: AppealsUpdateOneWithoutHouseNestedInput
+  bio: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  features: FeatureUpdateManyWithoutHousesNestedInput
+  floor: NullableStringFieldUpdateOperationsInput
+  images: FileUpdateManyWithoutHouseNestedInput
+  isRent: BoolFieldUpdateOperationsInput
+  isSell: BoolFieldUpdateOperationsInput
+  price: IntFieldUpdateOperationsInput
+  realtor: UserUpdateOneRequiredWithoutHousesNestedInput
+  remont: StringFieldUpdateOperationsInput
+  rooms: NullableStringFieldUpdateOperationsInput
+  square: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
 }
 
 input HouseUpdateManyMutationInput {
@@ -840,7 +859,7 @@ input HouseUpdateManyMutationInput {
   floor: NullableStringFieldUpdateOperationsInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
-  price: StringFieldUpdateOperationsInput
+  price: IntFieldUpdateOperationsInput
   remont: StringFieldUpdateOperationsInput
   rooms: NullableStringFieldUpdateOperationsInput
   square: StringFieldUpdateOperationsInput
@@ -934,7 +953,7 @@ input HouseUpdateWithoutAppealInput {
   images: FileUpdateManyWithoutHouseNestedInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
-  price: StringFieldUpdateOperationsInput
+  price: IntFieldUpdateOperationsInput
   realtor: UserUpdateOneRequiredWithoutHousesNestedInput
   remont: StringFieldUpdateOperationsInput
   rooms: NullableStringFieldUpdateOperationsInput
@@ -952,7 +971,7 @@ input HouseUpdateWithoutFeaturesInput {
   images: FileUpdateManyWithoutHouseNestedInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
-  price: StringFieldUpdateOperationsInput
+  price: IntFieldUpdateOperationsInput
   realtor: UserUpdateOneRequiredWithoutHousesNestedInput
   remont: StringFieldUpdateOperationsInput
   rooms: NullableStringFieldUpdateOperationsInput
@@ -970,7 +989,7 @@ input HouseUpdateWithoutImagesInput {
   floor: NullableStringFieldUpdateOperationsInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
-  price: StringFieldUpdateOperationsInput
+  price: IntFieldUpdateOperationsInput
   realtor: UserUpdateOneRequiredWithoutHousesNestedInput
   remont: StringFieldUpdateOperationsInput
   rooms: NullableStringFieldUpdateOperationsInput
@@ -989,7 +1008,7 @@ input HouseUpdateWithoutRealtorInput {
   images: FileUpdateManyWithoutHouseNestedInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
-  price: StringFieldUpdateOperationsInput
+  price: IntFieldUpdateOperationsInput
   remont: StringFieldUpdateOperationsInput
   rooms: NullableStringFieldUpdateOperationsInput
   square: StringFieldUpdateOperationsInput
@@ -1035,7 +1054,7 @@ input HouseWhereInput {
   images: FileListRelationFilter
   isRent: BoolFilter
   isSell: BoolFilter
-  price: StringFilter
+  price: IntFilter
   realtor: UserScalarRelationFilter
   realtorId: IntFilter
   remont: StringFilter
@@ -1059,13 +1078,21 @@ input HouseWhereUniqueInput {
   images: FileListRelationFilter
   isRent: BoolFilter
   isSell: BoolFilter
-  price: StringFilter
+  price: IntFilter
   realtor: UserScalarRelationFilter
   realtorId: IntFilter
   remont: StringFilter
   rooms: StringNullableFilter
   square: StringFilter
   title: StringFilter
+}
+
+input IntFieldUpdateOperationsInput {
+  decrement: Int
+  divide: Int
+  increment: Int
+  multiply: Int
+  set: Int
 }
 
 input IntFilter {
@@ -1105,6 +1132,7 @@ type Mutation {
   updateAnyUser(data: UserUpdateInput!, id: Float!): User!
   updateAppeal(id: Int!, updateAppealInput: AppealsUpdateInput!): Appeals!
   updateFeature(id: Int!, updateFeatureInput: FeatureUpdateInput!): Feature!
+  updateHouse(id: Float!, updateHouseInput: HouseUpdateInput!): House!
   updateUser(data: UserUpdateInput!): User!
   uploadFiles(files: [Upload!]!, houseId: String): [UploadDto!]!
 }

@@ -658,7 +658,7 @@ export type House = {
   images?: Maybe<Array<File>>;
   isRent: Scalars['Boolean']['output'];
   isSell: Scalars['Boolean']['output'];
-  price: Scalars['String']['output'];
+  price: Scalars['Int']['output'];
   realtor: User;
   realtorId: Scalars['Int']['output'];
   remont: Scalars['String']['output'];
@@ -681,7 +681,7 @@ export type HouseCreateDto = {
   floor?: InputMaybe<Scalars['String']['input']>;
   isRent?: InputMaybe<Scalars['Boolean']['input']>;
   isSell?: InputMaybe<Scalars['Boolean']['input']>;
-  price: Scalars['String']['input'];
+  price: Scalars['Float']['input'];
   remont: Scalars['String']['input'];
   rooms?: InputMaybe<Scalars['String']['input']>;
   square: Scalars['String']['input'];
@@ -697,7 +697,7 @@ export type HouseCreateManyRealtorInput = {
   id?: InputMaybe<Scalars['Int']['input']>;
   isRent?: InputMaybe<Scalars['Boolean']['input']>;
   isSell?: InputMaybe<Scalars['Boolean']['input']>;
-  price: Scalars['String']['input'];
+  price: Scalars['Int']['input'];
   remont: Scalars['String']['input'];
   rooms?: InputMaybe<Scalars['String']['input']>;
   square: Scalars['String']['input'];
@@ -763,7 +763,7 @@ export type HouseCreateWithoutAppealInput = {
   images?: InputMaybe<FileCreateNestedManyWithoutHouseInput>;
   isRent?: InputMaybe<Scalars['Boolean']['input']>;
   isSell?: InputMaybe<Scalars['Boolean']['input']>;
-  price: Scalars['String']['input'];
+  price: Scalars['Int']['input'];
   realtor: UserCreateNestedOneWithoutHousesInput;
   remont: Scalars['String']['input'];
   rooms?: InputMaybe<Scalars['String']['input']>;
@@ -781,7 +781,7 @@ export type HouseCreateWithoutFeaturesInput = {
   images?: InputMaybe<FileCreateNestedManyWithoutHouseInput>;
   isRent?: InputMaybe<Scalars['Boolean']['input']>;
   isSell?: InputMaybe<Scalars['Boolean']['input']>;
-  price: Scalars['String']['input'];
+  price: Scalars['Int']['input'];
   realtor: UserCreateNestedOneWithoutHousesInput;
   remont: Scalars['String']['input'];
   rooms?: InputMaybe<Scalars['String']['input']>;
@@ -799,7 +799,7 @@ export type HouseCreateWithoutImagesInput = {
   floor?: InputMaybe<Scalars['String']['input']>;
   isRent?: InputMaybe<Scalars['Boolean']['input']>;
   isSell?: InputMaybe<Scalars['Boolean']['input']>;
-  price: Scalars['String']['input'];
+  price: Scalars['Int']['input'];
   realtor: UserCreateNestedOneWithoutHousesInput;
   remont: Scalars['String']['input'];
   rooms?: InputMaybe<Scalars['String']['input']>;
@@ -818,7 +818,7 @@ export type HouseCreateWithoutRealtorInput = {
   images?: InputMaybe<FileCreateNestedManyWithoutHouseInput>;
   isRent?: InputMaybe<Scalars['Boolean']['input']>;
   isSell?: InputMaybe<Scalars['Boolean']['input']>;
-  price: Scalars['String']['input'];
+  price: Scalars['Int']['input'];
   remont: Scalars['String']['input'];
   rooms?: InputMaybe<Scalars['String']['input']>;
   square: Scalars['String']['input'];
@@ -848,12 +848,31 @@ export type HouseScalarWhereInput = {
   id?: InputMaybe<IntFilter>;
   isRent?: InputMaybe<BoolFilter>;
   isSell?: InputMaybe<BoolFilter>;
-  price?: InputMaybe<StringFilter>;
+  price?: InputMaybe<IntFilter>;
   realtorId?: InputMaybe<IntFilter>;
   remont?: InputMaybe<StringFilter>;
   rooms?: InputMaybe<StringNullableFilter>;
   square?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
+};
+
+export type HouseUpdateInput = {
+  address?: InputMaybe<StringFieldUpdateOperationsInput>;
+  appeal?: InputMaybe<AppealsUpdateOneWithoutHouseNestedInput>;
+  bio?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  features?: InputMaybe<FeatureUpdateManyWithoutHousesNestedInput>;
+  floor?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  images?: InputMaybe<FileUpdateManyWithoutHouseNestedInput>;
+  isRent?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  isSell?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  price?: InputMaybe<IntFieldUpdateOperationsInput>;
+  realtor?: InputMaybe<UserUpdateOneRequiredWithoutHousesNestedInput>;
+  remont?: InputMaybe<StringFieldUpdateOperationsInput>;
+  rooms?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  square?: InputMaybe<StringFieldUpdateOperationsInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
 export type HouseUpdateManyMutationInput = {
@@ -864,7 +883,7 @@ export type HouseUpdateManyMutationInput = {
   floor?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   isRent?: InputMaybe<BoolFieldUpdateOperationsInput>;
   isSell?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  price?: InputMaybe<StringFieldUpdateOperationsInput>;
+  price?: InputMaybe<IntFieldUpdateOperationsInput>;
   remont?: InputMaybe<StringFieldUpdateOperationsInput>;
   rooms?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   square?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -958,7 +977,7 @@ export type HouseUpdateWithoutAppealInput = {
   images?: InputMaybe<FileUpdateManyWithoutHouseNestedInput>;
   isRent?: InputMaybe<BoolFieldUpdateOperationsInput>;
   isSell?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  price?: InputMaybe<StringFieldUpdateOperationsInput>;
+  price?: InputMaybe<IntFieldUpdateOperationsInput>;
   realtor?: InputMaybe<UserUpdateOneRequiredWithoutHousesNestedInput>;
   remont?: InputMaybe<StringFieldUpdateOperationsInput>;
   rooms?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
@@ -976,7 +995,7 @@ export type HouseUpdateWithoutFeaturesInput = {
   images?: InputMaybe<FileUpdateManyWithoutHouseNestedInput>;
   isRent?: InputMaybe<BoolFieldUpdateOperationsInput>;
   isSell?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  price?: InputMaybe<StringFieldUpdateOperationsInput>;
+  price?: InputMaybe<IntFieldUpdateOperationsInput>;
   realtor?: InputMaybe<UserUpdateOneRequiredWithoutHousesNestedInput>;
   remont?: InputMaybe<StringFieldUpdateOperationsInput>;
   rooms?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
@@ -994,7 +1013,7 @@ export type HouseUpdateWithoutImagesInput = {
   floor?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   isRent?: InputMaybe<BoolFieldUpdateOperationsInput>;
   isSell?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  price?: InputMaybe<StringFieldUpdateOperationsInput>;
+  price?: InputMaybe<IntFieldUpdateOperationsInput>;
   realtor?: InputMaybe<UserUpdateOneRequiredWithoutHousesNestedInput>;
   remont?: InputMaybe<StringFieldUpdateOperationsInput>;
   rooms?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
@@ -1013,7 +1032,7 @@ export type HouseUpdateWithoutRealtorInput = {
   images?: InputMaybe<FileUpdateManyWithoutHouseNestedInput>;
   isRent?: InputMaybe<BoolFieldUpdateOperationsInput>;
   isSell?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  price?: InputMaybe<StringFieldUpdateOperationsInput>;
+  price?: InputMaybe<IntFieldUpdateOperationsInput>;
   remont?: InputMaybe<StringFieldUpdateOperationsInput>;
   rooms?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   square?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -1059,7 +1078,7 @@ export type HouseWhereInput = {
   images?: InputMaybe<FileListRelationFilter>;
   isRent?: InputMaybe<BoolFilter>;
   isSell?: InputMaybe<BoolFilter>;
-  price?: InputMaybe<StringFilter>;
+  price?: InputMaybe<IntFilter>;
   realtor?: InputMaybe<UserScalarRelationFilter>;
   realtorId?: InputMaybe<IntFilter>;
   remont?: InputMaybe<StringFilter>;
@@ -1083,13 +1102,21 @@ export type HouseWhereUniqueInput = {
   images?: InputMaybe<FileListRelationFilter>;
   isRent?: InputMaybe<BoolFilter>;
   isSell?: InputMaybe<BoolFilter>;
-  price?: InputMaybe<StringFilter>;
+  price?: InputMaybe<IntFilter>;
   realtor?: InputMaybe<UserScalarRelationFilter>;
   realtorId?: InputMaybe<IntFilter>;
   remont?: InputMaybe<StringFilter>;
   rooms?: InputMaybe<StringNullableFilter>;
   square?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
+};
+
+export type IntFieldUpdateOperationsInput = {
+  decrement?: InputMaybe<Scalars['Int']['input']>;
+  divide?: InputMaybe<Scalars['Int']['input']>;
+  increment?: InputMaybe<Scalars['Int']['input']>;
+  multiply?: InputMaybe<Scalars['Int']['input']>;
+  set?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type IntFilter = {
@@ -1130,6 +1157,7 @@ export type Mutation = {
   updateAnyUser: User;
   updateAppeal: Appeals;
   updateFeature: Feature;
+  updateHouse: House;
   updateUser: User;
   uploadFiles: Array<UploadDto>;
 };
@@ -1200,6 +1228,12 @@ export type MutationUpdateAppealArgs = {
 export type MutationUpdateFeatureArgs = {
   id: Scalars['Int']['input'];
   updateFeatureInput: FeatureUpdateInput;
+};
+
+
+export type MutationUpdateHouseArgs = {
+  id: Scalars['Float']['input'];
+  updateHouseInput: HouseUpdateInput;
 };
 
 
@@ -1827,12 +1861,12 @@ export type CreateAppealMutationVariables = Exact<{
 }>;
 
 
-export type CreateAppealMutation = { __typename?: 'Mutation', createAppeal: { __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, houseId?: number | null, clientId?: number | null, realtorId?: number | null, house?: { __typename?: 'House', id: string, title: string, address: string, price: string } | null, client?: { __typename?: 'User', id: string, firstname?: string | null, lastname?: string | null, email: string } | null, realtor?: { __typename?: 'User', id: string, firstname?: string | null, lastname?: string | null, email: string } | null } };
+export type CreateAppealMutation = { __typename?: 'Mutation', createAppeal: { __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, houseId?: number | null, clientId?: number | null, realtorId?: number | null, house?: { __typename?: 'House', id: string, title: string, address: string, price: number } | null, client?: { __typename?: 'User', id: string, firstname?: string | null, lastname?: string | null, email: string } | null, realtor?: { __typename?: 'User', id: string, firstname?: string | null, lastname?: string | null, email: string } | null } };
 
 export type GetAppealsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAppealsQuery = { __typename?: 'Query', appeals: Array<{ __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, houseId?: number | null, clientId?: number | null, realtorId?: number | null, house?: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number } | null, client?: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null } | null, realtor?: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null } | null }> };
+export type GetAppealsQuery = { __typename?: 'Query', appeals: Array<{ __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, houseId?: number | null, clientId?: number | null, realtorId?: number | null, house?: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: number, isRent: boolean, isSell: boolean, realtorId: number } | null, client?: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null } | null, realtor?: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null } | null }> };
 
 export type UpdateAppealMutationVariables = Exact<{
   id: Scalars['Int']['input'];
@@ -1840,7 +1874,7 @@ export type UpdateAppealMutationVariables = Exact<{
 }>;
 
 
-export type UpdateAppealMutation = { __typename?: 'Mutation', updateAppeal: { __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, houseId?: number | null, clientId?: number | null, realtorId?: number | null, house?: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number } | null, client?: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null } | null, realtor?: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null } | null } };
+export type UpdateAppealMutation = { __typename?: 'Mutation', updateAppeal: { __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, houseId?: number | null, clientId?: number | null, realtorId?: number | null, house?: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: number, isRent: boolean, isSell: boolean, realtorId: number } | null, client?: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null } | null, realtor?: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null } | null } };
 
 export type SignInMutationVariables = Exact<{
   email: Scalars['String']['input'];
@@ -1848,7 +1882,7 @@ export type SignInMutationVariables = Exact<{
 }>;
 
 
-export type SignInMutation = { __typename?: 'Mutation', signIn: { __typename?: 'AuthSuccessDto', id: string, createdAt: any, email: string, password: string, roleId?: number | null, token: string, role?: { __typename?: 'Role', id: string, title: string } | null, houses?: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number }> | null } };
+export type SignInMutation = { __typename?: 'Mutation', signIn: { __typename?: 'AuthSuccessDto', id: string, createdAt: any, email: string, password: string, roleId?: number | null, token: string, role?: { __typename?: 'Role', id: string, title: string } | null, houses?: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: number, isRent: boolean, isSell: boolean, realtorId: number }> | null } };
 
 export type SignUpMutationVariables = Exact<{
   email: Scalars['String']['input'];
@@ -1859,7 +1893,7 @@ export type SignUpMutationVariables = Exact<{
 }>;
 
 
-export type SignUpMutation = { __typename?: 'Mutation', signUp: { __typename?: 'AuthSuccessDto', id: string, createdAt: any, email: string, password: string, roleId?: number | null, token: string, role?: { __typename?: 'Role', id: string, title: string } | null, houses?: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number }> | null } };
+export type SignUpMutation = { __typename?: 'Mutation', signUp: { __typename?: 'AuthSuccessDto', id: string, createdAt: any, email: string, password: string, roleId?: number | null, token: string, role?: { __typename?: 'Role', id: string, title: string } | null, houses?: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: number, isRent: boolean, isSell: boolean, realtorId: number }> | null } };
 
 export type CreateFeatureMutationMutationVariables = Exact<{
   title: Scalars['String']['input'];
@@ -1902,33 +1936,33 @@ export type UploadFilesMutation = { __typename?: 'Mutation', uploadFiles: Array<
 export type GetHousesRentQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHousesRentQuery = { __typename?: 'Query', housesRent: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: string, realtorId: number, floor?: string | null, rooms?: string | null, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null }> };
+export type GetHousesRentQuery = { __typename?: 'Query', housesRent: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: number, realtorId: number, floor?: string | null, rooms?: string | null, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null }> };
 
 export type GetHousesAllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHousesAllQuery = { __typename?: 'Query', housesAll: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: string, realtorId: number, floor?: string | null, rooms?: string | null, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null }> };
+export type GetHousesAllQuery = { __typename?: 'Query', housesAll: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: number, realtorId: number, floor?: string | null, rooms?: string | null, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null }> };
 
 export type GetHouseDetailQueryVariables = Exact<{
   id: Scalars['Int']['input'];
 }>;
 
 
-export type GetHouseDetailQuery = { __typename?: 'Query', house: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number, realtor: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null, role?: { __typename?: 'Role', id: string, title: string } | null, avatar?: { __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null } | null, houses?: Array<{ __typename?: 'House', id: string, title: string, address: string }> | null, appealsAsClient?: Array<{ __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, clientId?: number | null, realtorId?: number | null, houseId?: number | null }> | null, appealsAsRealtor?: Array<{ __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, clientId?: number | null, realtorId?: number | null, houseId?: number | null }> | null }, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null, features?: Array<{ __typename?: 'Feature', id: string, title: string, value: string }> | null } };
+export type GetHouseDetailQuery = { __typename?: 'Query', house: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: number, isRent: boolean, isSell: boolean, realtorId: number, realtor: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null, role?: { __typename?: 'Role', id: string, title: string } | null, avatar?: { __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null } | null, houses?: Array<{ __typename?: 'House', id: string, title: string, address: string }> | null, appealsAsClient?: Array<{ __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, clientId?: number | null, realtorId?: number | null, houseId?: number | null }> | null, appealsAsRealtor?: Array<{ __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, clientId?: number | null, realtorId?: number | null, houseId?: number | null }> | null }, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null, features?: Array<{ __typename?: 'Feature', id: string, title: string, value: string }> | null } };
 
 export type CreateHouseMutationVariables = Exact<{
   input: HouseCreateDto;
 }>;
 
 
-export type CreateHouseMutation = { __typename?: 'Mutation', createHouse: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number, realtor: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null }, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null, features?: Array<{ __typename?: 'Feature', id: string, title: string, value: string }> | null, appeal?: { __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, houseId?: number | null, clientId?: number | null, realtorId?: number | null } | null } };
+export type CreateHouseMutation = { __typename?: 'Mutation', createHouse: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: number, isRent: boolean, isSell: boolean, realtorId: number, realtor: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, password: string, telephone?: string | null, tg?: string | null, roleId?: number | null, avatarId?: number | null }, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null, features?: Array<{ __typename?: 'Feature', id: string, title: string, value: string }> | null, appeal?: { __typename?: 'Appeals', id: string, createdAt: any, status: string, comment: string, houseId?: number | null, clientId?: number | null, realtorId?: number | null } | null } };
 
 export type GetHousesByRealtorIdQueryVariables = Exact<{
   id: Scalars['Int']['input'];
 }>;
 
 
-export type GetHousesByRealtorIdQuery = { __typename?: 'Query', housesRealtor: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null, features?: Array<{ __typename?: 'Feature', id: string, title: string, value: string }> | null }> };
+export type GetHousesByRealtorIdQuery = { __typename?: 'Query', housesRealtor: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: number, isRent: boolean, isSell: boolean, realtorId: number, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null, features?: Array<{ __typename?: 'Feature', id: string, title: string, value: string }> | null }> };
 
 export type HousesFilterQueryVariables = Exact<{
   address?: InputMaybe<Scalars['String']['input']>;
@@ -1938,7 +1972,15 @@ export type HousesFilterQueryVariables = Exact<{
 }>;
 
 
-export type HousesFilterQuery = { __typename?: 'Query', housesFilter: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number, images?: Array<{ __typename?: 'File', id: string, path: string }> | null }> };
+export type HousesFilterQuery = { __typename?: 'Query', housesFilter: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: number, isRent: boolean, isSell: boolean, realtorId: number, images?: Array<{ __typename?: 'File', id: string, path: string }> | null }> };
+
+export type UpdateHouseMutationVariables = Exact<{
+  id: Scalars['Float']['input'];
+  input: HouseUpdateInput;
+}>;
+
+
+export type UpdateHouseMutation = { __typename?: 'Mutation', updateHouse: { __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, floor?: string | null, rooms?: string | null, bio: string, price: number, isRent: boolean, isSell: boolean, realtorId: number, images?: Array<{ __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null }> | null, features?: Array<{ __typename?: 'Feature', id: string, title: string, value: string }> | null } };
 
 export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1951,7 +1993,7 @@ export type ChangeUserRoleMutationVariables = Exact<{
 }>;
 
 
-export type ChangeUserRoleMutation = { __typename?: 'Mutation', updateAnyUser: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, roleId?: number | null, avatarId?: number | null, role?: { __typename?: 'Role', id: string, title: string } | null, avatar?: { __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null } | null, houses?: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: string, isRent: boolean, isSell: boolean, realtorId: number }> | null } };
+export type ChangeUserRoleMutation = { __typename?: 'Mutation', updateAnyUser: { __typename?: 'User', id: string, createdAt: any, email: string, firstname?: string | null, lastname?: string | null, middlename?: string | null, roleId?: number | null, avatarId?: number | null, role?: { __typename?: 'Role', id: string, title: string } | null, avatar?: { __typename?: 'File', id: string, path: string, name?: string | null, size?: number | null, houseId?: number | null } | null, houses?: Array<{ __typename?: 'House', id: string, createdAt: any, title: string, description: string, address: string, square: string, remont: string, bio: string, price: number, isRent: boolean, isSell: boolean, realtorId: number }> | null } };
 
 export type RemoveUserMutationVariables = Exact<{
   id: Scalars['Float']['input'];
@@ -1996,6 +2038,7 @@ export const GetHouseDetailDocument = {"kind":"Document","definitions":[{"kind":
 export const CreateHouseDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"createHouse"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"HouseCreateDto"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createHouse"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"createHouseInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"floor"}},{"kind":"Field","name":{"kind":"Name","value":"rooms"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"realtor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"telephone"}},{"kind":"Field","name":{"kind":"Name","value":"tg"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"features"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"appeal"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"comment"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}},{"kind":"Field","name":{"kind":"Name","value":"clientId"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}}]}}]}}]}}]} as unknown as DocumentNode<CreateHouseMutation, CreateHouseMutationVariables>;
 export const GetHousesByRealtorIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getHousesByRealtorId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"housesRealtor"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"floor"}},{"kind":"Field","name":{"kind":"Name","value":"rooms"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"features"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]}}]} as unknown as DocumentNode<GetHousesByRealtorIdQuery, GetHousesByRealtorIdQueryVariables>;
 export const HousesFilterDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"HousesFilter"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"address"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"minPrice"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"maxPrice"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isRent"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"housesFilter"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"address"},"value":{"kind":"Variable","name":{"kind":"Name","value":"address"}}},{"kind":"Argument","name":{"kind":"Name","value":"minPrice"},"value":{"kind":"Variable","name":{"kind":"Name","value":"minPrice"}}},{"kind":"Argument","name":{"kind":"Name","value":"maxPrice"},"value":{"kind":"Variable","name":{"kind":"Name","value":"maxPrice"}}},{"kind":"Argument","name":{"kind":"Name","value":"isRent"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isRent"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"floor"}},{"kind":"Field","name":{"kind":"Name","value":"rooms"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}}]}}]}}]}}]} as unknown as DocumentNode<HousesFilterQuery, HousesFilterQueryVariables>;
+export const UpdateHouseDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"updateHouse"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"HouseUpdateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateHouse"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"updateHouseInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"floor"}},{"kind":"Field","name":{"kind":"Name","value":"rooms"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"features"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]}}]} as unknown as DocumentNode<UpdateHouseMutation, UpdateHouseMutationVariables>;
 export const UsersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Users"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"houses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}},{"kind":"Field","name":{"kind":"Name","value":"role"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}}]}}]}}]}}]} as unknown as DocumentNode<UsersQuery, UsersQueryVariables>;
 export const ChangeUserRoleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ChangeUserRole"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"roleId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAnyUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"role"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"connect"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"roleId"}}}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}},{"kind":"Field","name":{"kind":"Name","value":"middlename"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"avatarId"}},{"kind":"Field","name":{"kind":"Name","value":"role"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"houseId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"houses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"square"}},{"kind":"Field","name":{"kind":"Name","value":"remont"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"isRent"}},{"kind":"Field","name":{"kind":"Name","value":"isSell"}},{"kind":"Field","name":{"kind":"Name","value":"realtorId"}}]}}]}}]}}]} as unknown as DocumentNode<ChangeUserRoleMutation, ChangeUserRoleMutationVariables>;
 export const RemoveUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RemoveUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"removeAnyUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<RemoveUserMutation, RemoveUserMutationVariables>;
