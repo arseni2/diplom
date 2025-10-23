@@ -16,6 +16,7 @@
     "@gravity-ui/icons": "^2.16.0",
     "@gravity-ui/navigation": "^3.7.1",
     "@gravity-ui/uikit": "^7.21.0",
+    "@netlify/plugin-nextjs": "^5.14.3",
     "apollo-upload-client": "^19.0.0",
     "clsx": "^2.1.1",
     "graphql": "^16.11.0",
