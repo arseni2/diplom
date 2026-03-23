@@ -1,8 +1,8 @@
-import {formatDate, formatPrice, getFullName, getStatusColor, getStatusLabel,} from "@/pages/manageMessages/utils/utils";
-import styles from "@/pages/manageMessages/ui/ManageMessages.module.scss";
+import {formatDate, formatPrice, getFullName, getStatusColor, getStatusLabel,} from "@/utils/utils";
+import styles from "@/pages-fsd/manageMessages/ui/ManageMessages.module.scss";
 
 
-jest.mock("@/pages/manageMessages/ui/ManageMessages.module.scss", () => ({
+jest.mock("@/pages-fsd/manageMessages/ui/ManageMessages.module.scss", () => ({
     statusNew: "mocked-status-new",
     statusInProgress: "mocked-status-in-progress",
     statusDone: "mocked-status-done",

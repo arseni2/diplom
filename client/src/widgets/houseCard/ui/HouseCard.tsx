@@ -45,6 +45,8 @@ export const HouseCard = (props: PropsType) => {
         <div className={styles.container}>
             <div className={styles.swiper_container}>
                 <Swiper
+                    style={{height: "250px"}}
+
                     modules={[]}
                     slidesPerView={1}
                     spaceBetween={0}
@@ -56,15 +58,11 @@ export const HouseCard = (props: PropsType) => {
                             <Image
                                 className={styles.container_img}
                                 src={file.path}
-                                layout="responsive"
-                                width={100}
-                                height={100}
-                                alt={file.name || ""}
-                                style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+                                alt={file.path}
+                                fill
                             />
                         </SwiperSlide>
                     ))}
-
                     {/* Линейная пагинация */}
                     <div
                         className={styles.pagination}
@@ -84,14 +82,16 @@ export const HouseCard = (props: PropsType) => {
                     </div>
                 </Swiper>
 
-
             </div>
 
             <div className={styles.container_card}>
-                <div className={styles.popular_badge}>
-                    <Star width={15}/>
-                    <Text variant="caption-2">Популярный</Text>
-                </div>
+                {props.isPopular &&
+                    <div className={styles.popular_badge}>
+                        <Star width={15}/>
+                        <Text variant="caption-2">Популярный</Text>
+                    </div>
+                }
+
                 <div className={styles.container_text}>
                     <div className={styles.container_text_container}>
                         {props.isRent ?

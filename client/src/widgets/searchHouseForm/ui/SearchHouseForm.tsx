@@ -1,5 +1,5 @@
 import styles from "./SearchHouseForm.module.scss";
-import { Button } from "@gravity-ui/uikit";
+import {Button, Select} from "@gravity-ui/uikit";
 import { Controller, useForm } from "react-hook-form";
 import { Input } from "@/shared/ui/input/ui/Input";
 
@@ -13,9 +13,10 @@ export type SearchFormValues = {
 type PropsType = {
     isRent?: boolean;
     onSubmit?: (data: SearchFormValues) => void;
+    addresses?: string[]
 };
 
-export const SearchHouseForm = ({ isRent, onSubmit }: PropsType) => {
+export const SearchHouseForm = ({ isRent, onSubmit, addresses }: PropsType) => {
     const {
         control,
         handleSubmit,
@@ -43,17 +44,23 @@ export const SearchHouseForm = ({ isRent, onSubmit }: PropsType) => {
         onSubmit?.(payload);
     };
 
+    console.log(addresses)
     return (
         <form className={styles.formContainer} onSubmit={handleSubmit(onSubmitForm)}>
             <Controller
                 name="address"
                 control={control}
                 render={({ field }) => (
-                    <Input
+                    <Select
+                        filterable={true}
                         placeholder="Адрес"
-                        value={field.value || ""}
-                        onChange={(e) => field.onChange(e.target.value)}
-                    />
+                        value={[field.value || ""]}
+                        onUpdate={(data) => {field.onChange(data[0])}}
+                    >
+                        {addresses?.map((item) => {
+                            return <Select.Option value={item}>{item}</Select.Option>
+                        })}
+                    </Select>
                 )}
             />
 
@@ -91,17 +98,17 @@ export const SearchHouseForm = ({ isRent, onSubmit }: PropsType) => {
                 />
             </div>
 
-            <Controller
-                name="propertyType"
-                control={control}
-                render={({ field }) => (
-                    <Input
-                        placeholder="Вид"
-                        value={field.value || ""}
-                        onChange={(e) => field.onChange(e.target.value)}
-                    />
-                )}
-            />
+            {/*<Controller*/}
+            {/*    name="propertyType"*/}
+            {/*    control={control}*/}
+            {/*    render={({ field }) => (*/}
+            {/*        <Input*/}
+            {/*            placeholder="Вид"*/}
+            {/*            value={field.value || ""}*/}
+            {/*            onChange={(e) => field.onChange(e.target.value)}*/}
+            {/*        />*/}
+            {/*    )}*/}
+            {/*/>*/}
 
             <Button type="submit" view={"action"}>
                 Найти

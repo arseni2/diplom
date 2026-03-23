@@ -38,6 +38,9 @@ export class User {
     @Field(() => String, {nullable:true})
     tg!: string | null;
 
+    @Field(() => String, {nullable:true})
+    token!: string | null;
+
     @Field(() => Int, {defaultValue:1,nullable:true})
     roleId!: number | null;
 

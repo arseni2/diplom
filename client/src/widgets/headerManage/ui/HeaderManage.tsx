@@ -16,15 +16,18 @@ export const HeaderManage = () => {
         ["/manage/features", "Характеристики"],
         ["/manage/users", "Пользователи"],
         ["/manage/houses", "Недвижимость"],
+        ["/manage/houses/edit", "Редактирование недвижимости"],
+        ["/manage/houses/create", "Создание недвижимости"],
         ["/manage/appeals", "Сообщения"],
     ])
     const pathname = usePathname();
+    const cleaned = pathname.replace(/\/\d+(\/|$)/g, '/').replace(/\/$/, '');
+
     const {data} = useQuery<UsersMeQuery>(getCurrentUser)
 
     useEffect(() => {
         if (data === undefined) return;
-        if (data?.me.roleId != RoleEnum.Admin) {
-            console.log(data)
+        if (data?.me.roleId == RoleEnum.User) {
             router.push("/auth/signin");
         }
     }, [data]);
@@ -45,17 +48,15 @@ export const HeaderManage = () => {
                         </defs>
                     </svg>
                 </div>
-                <Text variant={"display-1"}>{map.get(pathname || "")}</Text>
+                <Text variant={"display-1"}>{map.get(cleaned || "")}</Text>
             </div>
 
 
             <div className={styles.headerManage_container}>
                 <HeaderUser
-                    items={[
-                        {label: "Перейти на сайт", action: "home"}
-                    ]}
-                    firstname={data?.me.firstname || ""}
-                    imgUrl={(data?.me.avatar?.path || data?.me.firstname) || ""}
+                    firstname={data?.me?.firstname || ""}
+                    imgUrl={data?.me?.avatar?.path}
+                    items={[{label: "Перейти на сайт", action: "home"}]}
                 />
             </div>
         </div>

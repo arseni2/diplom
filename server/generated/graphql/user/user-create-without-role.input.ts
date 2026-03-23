@@ -32,6 +32,9 @@ export class UserCreateWithoutRoleInput {
     @Field(() => String, {nullable:true})
     tg?: string;
 
+    @Field(() => String, {nullable:true})
+    token?: string;
+
     @Field(() => FileCreateNestedOneWithoutUserInput, {nullable:true})
     avatar?: FileCreateNestedOneWithoutUserInput;
 

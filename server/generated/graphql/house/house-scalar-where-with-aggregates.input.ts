@@ -5,6 +5,7 @@ import { DateTimeWithAggregatesFilter } from '../prisma/date-time-with-aggregate
 import { StringWithAggregatesFilter } from '../prisma/string-with-aggregates-filter.input';
 import { StringNullableWithAggregatesFilter } from '../prisma/string-nullable-with-aggregates-filter.input';
 import { BoolWithAggregatesFilter } from '../prisma/bool-with-aggregates-filter.input';
+import { FloatNullableWithAggregatesFilter } from '../prisma/float-nullable-with-aggregates-filter.input';
 
 @InputType()
 export class HouseScalarWhereWithAggregatesInput {
@@ -55,7 +56,16 @@ export class HouseScalarWhereWithAggregatesInput {
     isRent?: BoolWithAggregatesFilter;
 
     @Field(() => BoolWithAggregatesFilter, {nullable:true})
+    isPopular?: BoolWithAggregatesFilter;
+
+    @Field(() => BoolWithAggregatesFilter, {nullable:true})
     isSell?: BoolWithAggregatesFilter;
+
+    @Field(() => FloatNullableWithAggregatesFilter, {nullable:true})
+    lat?: FloatNullableWithAggregatesFilter;
+
+    @Field(() => FloatNullableWithAggregatesFilter, {nullable:true})
+    lng?: FloatNullableWithAggregatesFilter;
 
     @Field(() => IntWithAggregatesFilter, {nullable:true})
     realtorId?: IntWithAggregatesFilter;

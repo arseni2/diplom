@@ -9,4 +9,7 @@ export class FileCreateManyHouseInputEnvelope {
     @Field(() => [FileCreateManyHouseInput], {nullable:false})
     @Type(() => FileCreateManyHouseInput)
     data!: Array<FileCreateManyHouseInput>;
+
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }

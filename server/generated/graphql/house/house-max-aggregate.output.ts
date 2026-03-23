@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { Float } from '@nestjs/graphql';
 
 @ObjectType()
 export class HouseMaxAggregate {
@@ -42,7 +43,16 @@ export class HouseMaxAggregate {
     isRent?: boolean;
 
     @Field(() => Boolean, {nullable:true})
+    isPopular?: boolean;
+
+    @Field(() => Boolean, {nullable:true})
     isSell?: boolean;
+
+    @Field(() => Float, {nullable:true})
+    lat?: number;
+
+    @Field(() => Float, {nullable:true})
+    lng?: number;
 
     @Field(() => Int, {nullable:true})
     realtorId?: number;

@@ -39,6 +39,9 @@ export class UserOrderByWithAggregationInput {
     tg?: SortOrderInput;
 
     @Field(() => SortOrderInput, {nullable:true})
+    token?: SortOrderInput;
+
+    @Field(() => SortOrderInput, {nullable:true})
     roleId?: SortOrderInput;
 
     @Field(() => SortOrderInput, {nullable:true})

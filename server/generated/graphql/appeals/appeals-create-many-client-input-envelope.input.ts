@@ -9,4 +9,7 @@ export class AppealsCreateManyClientInputEnvelope {
     @Field(() => [AppealsCreateManyClientInput], {nullable:false})
     @Type(() => AppealsCreateManyClientInput)
     data!: Array<AppealsCreateManyClientInput>;
+
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }

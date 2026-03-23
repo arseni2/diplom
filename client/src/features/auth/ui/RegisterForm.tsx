@@ -10,7 +10,15 @@ import {useSignUpMutation} from "@/features/auth/hooks/useSignUpMutation";
 import Cookies from 'js-cookie';
 import {toaster} from '@gravity-ui/uikit/toaster-singleton';
 import { useRouter } from "next/navigation";
+import {client} from "@/app-fsd/providers/apolloProvider/ui/MyApolloProvider";
 
+interface IFormData {
+    email: string;
+    password: string;
+    firstName: string,
+    lastName: string,
+    middleName: string,
+}
 export const RegisterForm = () => {
     const [isInputPasswordType, setIsInputPasswordType] = useState(true);
     const [signUpMutation] = useSignUpMutation();
@@ -35,30 +43,26 @@ export const RegisterForm = () => {
         }
     });
 
-    const onSubmit = async (data) => {
+    const onSubmit = async (data: IFormData) => {
         try {
-            console.log('Данные для регистрации:', data);
-
-            // Выполняем мутацию регистрации
             const result = await signUpMutation({
                 variables: {
                     email: data.email,
                     password: data.password,
-                    // Обратите внимание: firstname не поддерживается бэкендом согласно схеме
+                    firstname: data.firstName,
+                    lastname: data.lastName,
+                    middlename: data.middleName,
                 },
             });
 
-            // Получаем токен из ответа
             const { token } = result.data?.signUp;
 
             if (token) {
-                // Сохраняем токен в cookies
                 Cookies.set('authToken', token, {
                     expires: 7,
                     path: '/',
                 });
 
-                // Показываем уведомление об успешной регистрации
                 toaster.add({
                     title: 'Регистрация успешна!',
                     name: "registration-success",
@@ -66,17 +70,13 @@ export const RegisterForm = () => {
                     theme: 'success',
                 });
 
-                console.log('Успешная регистрация:', result.data?.signUp);
+                await client.refetchQueries({ include: ['UsersMe'] });
 
-                // Здесь можно добавить редирект на главную страницу или личный кабинет
                 router.push('/');
             } else {
                 throw new Error('Token not received from server');
             }
         } catch (error) {
-            console.error('Ошибка регистрации:', error);
-
-            // Показываем пользователю сообщение об ошибке
             toaster.add({
                 title: 'Ошибка регистрации',
                 name: "registration-error",

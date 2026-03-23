@@ -1,11 +1,54 @@
+"use client"
 import styles from "./Contact.module.scss"
-import {Handset, Envelope, ListUl} from '@gravity-ui/icons';
+import {Envelope, Handset, ListUl} from '@gravity-ui/icons';
 import {Button, Text} from "@gravity-ui/uikit"
 import {Input} from "@/shared/ui/input/ui/Input";
 import Link from "next/link";
+import {useForm} from "react-hook-form";
+import {toaster} from "@gravity-ui/uikit/toaster-singleton";
 
 
+type FormValues = {
+    email: string;
+    phone: string;
+    message: string;
+};
 export const Contact = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset,
+    } = useForm<FormValues>({
+        mode: 'onChange',
+    });
+
+    const onSubmit = async (data: FormValues) => {
+        try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tg/contact`, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(data),
+            })
+            if(res.status === 201) {
+                toaster.add({
+                    name: "tgSendMessageSuccess",
+                    content: "Заявка успешно отправлена",
+                    title: "Успешно",
+                    theme: "success",
+                });
+                reset()
+            }
+        } catch (e) {
+            toaster.add({
+                name: "tgSendMessageError",
+                content: "Ошибка отправления заявки",
+                title: "Ошибка",
+                theme: "danger",
+            });
+        }
+        reset();
+    };
     return (
         <div className={styles.container}>
             <div className={styles.container_left}>
@@ -60,12 +103,50 @@ export const Contact = () => {
                     <Text variant={"header-1"}>Свяжитесь с нами</Text>
                 </div>
 
-                <div className={styles.container_item_form}>
-                    <Input inputLabel={"Почта"} placeholder={"Почта"}/>
-                    <Input inputLabel={"Телефон"} placeholder={"Телефон"}/>
-                    <Input inputLabel={"Сообщение"} placeholder={"Сообщение"}/>
-                </div>
-                <Button view={"action"} className={styles.btn}>Отправить</Button>
+                <form className={styles.container_item_form} onSubmit={handleSubmit(onSubmit)}>
+                    <Input
+                        {...register('email', {
+                            required: 'Укажите почту',
+                            pattern: {
+                                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                message: 'Неверный формат почты',
+                            },
+                        })}
+                        error={errors.email?.message}
+                        inputLabel="Email"
+                        placeholder="Почта"
+                    />
+
+                    <Input
+                        {...register('phone', {
+                            required: 'Укажите телефон',
+                            validate: (v) => {
+                                const digits = v?.replace(/\D/g, '') ?? '';
+                                if (!/^([78])\d{10}$/.test(digits)) {
+                                    return 'Введите корректный российский номер';
+                                }
+                                return true;
+                            },
+                        })}
+                        error={errors.phone?.message}
+                        inputLabel="Телефон"
+                        placeholder="+7 999 123-45-67"
+                    />
+
+                    <Input
+                        {...register('message', {
+                            required: 'Введите сообщение',
+                            minLength: { value: 10, message: 'Минимум 10 символов' },
+                        })}
+                        error={errors.message?.message}
+                        inputLabel="Сообщение"
+                        placeholder="Сообщение"
+                    />
+
+                    <Button view="action" type="submit" loading={isSubmitting} className={styles.btn}>
+                        Отправить
+                    </Button>
+                </form>
 
                 <Text className={styles.text_form} variant={"caption-2"}>
                     Нажимая "Отправить" вы даете согласие на обработку ваших персональных данных в соответствии с

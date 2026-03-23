@@ -36,6 +36,9 @@ export class UserUncheckedUpdateManyWithoutRoleInput {
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
     tg?: NullableStringFieldUpdateOperationsInput;
 
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    token?: NullableStringFieldUpdateOperationsInput;
+
     @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
     avatarId?: NullableIntFieldUpdateOperationsInput;
 }

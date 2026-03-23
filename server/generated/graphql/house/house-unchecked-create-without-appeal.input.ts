@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { Float } from '@nestjs/graphql';
 import { FileUncheckedCreateNestedManyWithoutHouseInput } from '../file/file-unchecked-create-nested-many-without-house.input';
 import { FeatureUncheckedCreateNestedManyWithoutHousesInput } from '../feature/feature-unchecked-create-nested-many-without-houses.input';
 
@@ -44,7 +45,16 @@ export class HouseUncheckedCreateWithoutAppealInput {
     isRent?: boolean;
 
     @Field(() => Boolean, {nullable:true})
+    isPopular?: boolean;
+
+    @Field(() => Boolean, {nullable:true})
     isSell?: boolean;
+
+    @Field(() => Float, {nullable:true})
+    lat?: number;
+
+    @Field(() => Float, {nullable:true})
+    lng?: number;
 
     @Field(() => Int, {nullable:false})
     realtorId!: number;

@@ -1,10 +1,16 @@
+import { Metadata } from 'next';
+
+
+export const metadata: Metadata = {
+    title: 'Политика конфиденциальности',
+};
 const Page = () => {
     const COMPANY = {
-        domain: 'helpfulpeople.ru',
-        fullName: 'Общество с ограниченной ответственностью «ПОЛЕЗНО»',
-        shortName: 'ООО «ПОЛЕЗНО»',
-        inn: '1800004221',
-        ogrn: '1231800014500',
+        domain: 'example.ru',
+        fullName: 'ООО «example»',
+        shortName: 'ООО «example»',
+        inn: '9999999999',
+        ogrn: '9999999999999',
     };
     return (
         <div>

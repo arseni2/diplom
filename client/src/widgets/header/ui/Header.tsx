@@ -40,7 +40,7 @@ export const Header = () => {
                 {data?.me.id ? (
                     <HeaderUser
                         firstname={data?.me.firstname || ""}
-                        imgUrl={(data?.me.avatar?.path || data?.me.firstname) || ""}
+                        imgUrl={data?.me.avatar?.path || ""}
                         items={[
                             {label: "Профиль", action: "profile"},
                         ]}

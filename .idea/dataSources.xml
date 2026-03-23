@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="db" uuid="aec67d95-b005-4c8d-9092-5b5d37aa9314">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>e007b487-2efd-4d8b-9441-e77e153fb442</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\arsen\www\crm\server\prisma\db.db</jdbc-url>
@@ -51,6 +51,20 @@
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.45.1/org/xerial/sqlite-jdbc/3.45.1.0/_remote.repositories</url>
         </library>
       </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="diplom_4s1j@dpg-d455v4n5r7bs7396764g-a.oregon-postgres.render.com" uuid="82c90d3d-3ce8-4d12-82fd-eee2251b2b7d">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://dpg-d455v4n5r7bs7396764g-a.oregon-postgres.render.com:5432/diplom_4s1j</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="diplom_4s1j_x6xt@dpg-d4rc5l4hg0os738uht70-a.oregon-postgres.render.com" uuid="26d26e08-98cc-4c59-b3e3-8aa7e5f85214">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://dpg-d4rc5l4hg0os738uht70-a.oregon-postgres.render.com:5432/diplom_4s1j_x6xt</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
 </project>

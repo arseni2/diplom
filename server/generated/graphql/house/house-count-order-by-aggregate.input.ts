@@ -42,7 +42,16 @@ export class HouseCountOrderByAggregateInput {
     isRent?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
+    isPopular?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
     isSell?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
+    lat?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
+    lng?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
     realtorId?: `${SortOrder}`;

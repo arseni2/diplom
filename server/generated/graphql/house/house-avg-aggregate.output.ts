@@ -12,5 +12,11 @@ export class HouseAvgAggregate {
     price?: number;
 
     @Field(() => Float, {nullable:true})
+    lat?: number;
+
+    @Field(() => Float, {nullable:true})
+    lng?: number;
+
+    @Field(() => Float, {nullable:true})
     realtorId?: number;
 }

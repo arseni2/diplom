@@ -40,7 +40,7 @@ export const HeaderUser = ({ items, firstname, imgUrl }: PropsType) => {
                 break;
         }
     };
-
+    console.log("imgUrl",imgUrl)
     return (
         <DropdownMenu
             switcher={

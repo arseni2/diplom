@@ -13,7 +13,10 @@ export enum HouseScalarFieldEnum {
     bio = "bio",
     price = "price",
     isRent = "isRent",
+    isPopular = "isPopular",
     isSell = "isSell",
+    lat = "lat",
+    lng = "lng",
     realtorId = "realtorId"
 }
 

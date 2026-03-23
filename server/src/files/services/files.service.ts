@@ -1,41 +1,56 @@
-import {Injectable} from '@nestjs/common';
-import ImageKit from "imagekit";
-import {UploadFile} from "../controllers/files.resolver";
-import {PrismaService} from "../../common/services/prisma.service";
-import {UploadDto} from "../dto/upload.dto";
+import { Injectable, BadRequestException } from '@nestjs/common';
+import { UploadFile } from "../controllers/files.resolver";
+import { PrismaService } from "../../common/services/prisma.service";
+import { UploadDto } from "../dto/upload.dto";
+import { join, extname } from 'path';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
 
 
 @Injectable()
 export class FilesService {
-    private imageKit: ImageKit
+    private readonly uploadPath = join(process.cwd(), 'static', 'uploads');
 
     constructor(
         private prismaService: PrismaService,
     ) {
-        this.imageKit = new ImageKit({
-            privateKey: process.env.IMAGEKIT_PRIVATE_KEY || "",
-            publicKey: process.env.IMAGEKIT_PUBLIC_KEY || "",
-            urlEndpoint: `https://ik.imagekit.io/${process.env.IMAGEKIT_ID}/`
-        });
+        // Создаем папку при инициализации сервиса
+        if (!existsSync(this.uploadPath)) {
+            mkdirSync(this.uploadPath, { recursive: true });
+        }
     }
 
     async upload(file: UploadFile, houseId?: string | null): Promise<UploadDto> {
         try {
-            const result = await this.imageKit.upload({
-                file: file.buffer,
-                fileName: file.originalname,
-                folder: '/uploads',
-            });
-            const fileFromDb = await this.prismaService.file.create({
+            const fileExtension = extname(file.originalname).toLowerCase();
+            const allowedExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.pdf'];
+            
+            if (!allowedExtensions.includes(fileExtension)) {
+                throw new BadRequestException('Недопустимый формат файла');
+            }
+
+            const fileName = `${Date.now()}${fileExtension}`;
+            const filePath = join(this.uploadPath, fileName);
+            const relativePath = `/uploads/${fileName}`;
+
+            writeFileSync(filePath, file.buffer);
+
+            const fileEntity = await this.prismaService.file.create({
                 data: {
-                    path: result.url,
-                    houseId: Number(houseId) ?? undefined
-                }
-            })
-            return {url: result.url, id: fileFromDb.id};
+                    path: `${process.env.BACKEND_URL}${relativePath}`,           
+                    size: file.buffer.length,     
+                    houseId: houseId ? Number(houseId) : undefined,
+                },
+            });
+
+            return {
+                url: `${process.env.BACKEND_URL}${relativePath}`,
+                id: fileEntity.id,
+            };
+
         } catch (error) {
-            console.error('ImageKit upload error:', error);
-            throw new Error('Failed to upload image');
+            console.error('File upload error:', error);
+            if (error instanceof BadRequestException) throw error;
+            throw new Error('Failed to upload file');
         }
     }
 }

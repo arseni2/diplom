@@ -53,6 +53,9 @@ export class UserWhereUniqueInput {
     @Field(() => StringNullableFilter, {nullable:true})
     tg?: StringNullableFilter;
 
+    @Field(() => StringNullableFilter, {nullable:true})
+    token?: StringNullableFilter;
+
     @Field(() => IntNullableFilter, {nullable:true})
     roleId?: IntNullableFilter;
 

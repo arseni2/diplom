@@ -31,6 +31,7 @@ input AppealsCreateManyClientInput {
 
 input AppealsCreateManyClientInputEnvelope {
   data: [AppealsCreateManyClientInput!]!
+  skipDuplicates: Boolean
 }
 
 input AppealsCreateManyRealtorInput {
@@ -44,6 +45,7 @@ input AppealsCreateManyRealtorInput {
 
 input AppealsCreateManyRealtorInputEnvelope {
   data: [AppealsCreateManyRealtorInput!]!
+  skipDuplicates: Boolean
 }
 
 input AppealsCreateNestedManyWithoutClientInput {
@@ -464,6 +466,7 @@ input FileCreateManyHouseInput {
 
 input FileCreateManyHouseInputEnvelope {
   data: [FileCreateManyHouseInput!]!
+  skipDuplicates: Boolean
 }
 
 input FileCreateNestedManyWithoutHouseInput {
@@ -622,6 +625,17 @@ input FileWhereUniqueInput {
   user: UserNullableScalarRelationFilter
 }
 
+input FloatNullableFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatNullableFilter
+  notIn: [Float!]
+}
+
 type House {
   _count: HouseCount!
   address: String!
@@ -633,8 +647,11 @@ type House {
   floor: String
   id: ID!
   images: [File!]
+  isPopular: Boolean!
   isRent: Boolean!
   isSell: Boolean!
+  lat: Float
+  lng: Float
   price: Int!
   realtor: User!
   realtorId: Int!
@@ -655,8 +672,11 @@ input HouseCreateDto {
   createdAt: DateTime
   description: String!
   floor: String
+  isPopular: Boolean
   isRent: Boolean
   isSell: Boolean
+  lat: Float
+  lng: Float
   price: Float!
   remont: String!
   rooms: String
@@ -671,8 +691,11 @@ input HouseCreateManyRealtorInput {
   description: String!
   floor: String
   id: Int
+  isPopular: Boolean
   isRent: Boolean
   isSell: Boolean
+  lat: Float
+  lng: Float
   price: Int!
   remont: String!
   rooms: String
@@ -682,6 +705,7 @@ input HouseCreateManyRealtorInput {
 
 input HouseCreateManyRealtorInputEnvelope {
   data: [HouseCreateManyRealtorInput!]!
+  skipDuplicates: Boolean
 }
 
 input HouseCreateNestedManyWithoutFeaturesInput {
@@ -737,8 +761,11 @@ input HouseCreateWithoutAppealInput {
   features: FeatureCreateNestedManyWithoutHousesInput
   floor: String
   images: FileCreateNestedManyWithoutHouseInput
+  isPopular: Boolean
   isRent: Boolean
   isSell: Boolean
+  lat: Float
+  lng: Float
   price: Int!
   realtor: UserCreateNestedOneWithoutHousesInput!
   remont: String!
@@ -755,8 +782,11 @@ input HouseCreateWithoutFeaturesInput {
   description: String!
   floor: String
   images: FileCreateNestedManyWithoutHouseInput
+  isPopular: Boolean
   isRent: Boolean
   isSell: Boolean
+  lat: Float
+  lng: Float
   price: Int!
   realtor: UserCreateNestedOneWithoutHousesInput!
   remont: String!
@@ -773,8 +803,11 @@ input HouseCreateWithoutImagesInput {
   description: String!
   features: FeatureCreateNestedManyWithoutHousesInput
   floor: String
+  isPopular: Boolean
   isRent: Boolean
   isSell: Boolean
+  lat: Float
+  lng: Float
   price: Int!
   realtor: UserCreateNestedOneWithoutHousesInput!
   remont: String!
@@ -792,8 +825,11 @@ input HouseCreateWithoutRealtorInput {
   features: FeatureCreateNestedManyWithoutHousesInput
   floor: String
   images: FileCreateNestedManyWithoutHouseInput
+  isPopular: Boolean
   isRent: Boolean
   isSell: Boolean
+  lat: Float
+  lng: Float
   price: Int!
   remont: String!
   rooms: String
@@ -822,8 +858,11 @@ input HouseScalarWhereInput {
   description: StringFilter
   floor: StringNullableFilter
   id: IntFilter
+  isPopular: BoolFilter
   isRent: BoolFilter
   isSell: BoolFilter
+  lat: FloatNullableFilter
+  lng: FloatNullableFilter
   price: IntFilter
   realtorId: IntFilter
   remont: StringFilter
@@ -841,8 +880,11 @@ input HouseUpdateInput {
   features: FeatureUpdateManyWithoutHousesNestedInput
   floor: NullableStringFieldUpdateOperationsInput
   images: FileUpdateManyWithoutHouseNestedInput
+  isPopular: BoolFieldUpdateOperationsInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
+  lat: NullableFloatFieldUpdateOperationsInput
+  lng: NullableFloatFieldUpdateOperationsInput
   price: IntFieldUpdateOperationsInput
   realtor: UserUpdateOneRequiredWithoutHousesNestedInput
   remont: StringFieldUpdateOperationsInput
@@ -857,8 +899,11 @@ input HouseUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
   floor: NullableStringFieldUpdateOperationsInput
+  isPopular: BoolFieldUpdateOperationsInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
+  lat: NullableFloatFieldUpdateOperationsInput
+  lng: NullableFloatFieldUpdateOperationsInput
   price: IntFieldUpdateOperationsInput
   remont: StringFieldUpdateOperationsInput
   rooms: NullableStringFieldUpdateOperationsInput
@@ -951,8 +996,11 @@ input HouseUpdateWithoutAppealInput {
   features: FeatureUpdateManyWithoutHousesNestedInput
   floor: NullableStringFieldUpdateOperationsInput
   images: FileUpdateManyWithoutHouseNestedInput
+  isPopular: BoolFieldUpdateOperationsInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
+  lat: NullableFloatFieldUpdateOperationsInput
+  lng: NullableFloatFieldUpdateOperationsInput
   price: IntFieldUpdateOperationsInput
   realtor: UserUpdateOneRequiredWithoutHousesNestedInput
   remont: StringFieldUpdateOperationsInput
@@ -969,8 +1017,11 @@ input HouseUpdateWithoutFeaturesInput {
   description: StringFieldUpdateOperationsInput
   floor: NullableStringFieldUpdateOperationsInput
   images: FileUpdateManyWithoutHouseNestedInput
+  isPopular: BoolFieldUpdateOperationsInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
+  lat: NullableFloatFieldUpdateOperationsInput
+  lng: NullableFloatFieldUpdateOperationsInput
   price: IntFieldUpdateOperationsInput
   realtor: UserUpdateOneRequiredWithoutHousesNestedInput
   remont: StringFieldUpdateOperationsInput
@@ -987,8 +1038,11 @@ input HouseUpdateWithoutImagesInput {
   description: StringFieldUpdateOperationsInput
   features: FeatureUpdateManyWithoutHousesNestedInput
   floor: NullableStringFieldUpdateOperationsInput
+  isPopular: BoolFieldUpdateOperationsInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
+  lat: NullableFloatFieldUpdateOperationsInput
+  lng: NullableFloatFieldUpdateOperationsInput
   price: IntFieldUpdateOperationsInput
   realtor: UserUpdateOneRequiredWithoutHousesNestedInput
   remont: StringFieldUpdateOperationsInput
@@ -1006,8 +1060,11 @@ input HouseUpdateWithoutRealtorInput {
   features: FeatureUpdateManyWithoutHousesNestedInput
   floor: NullableStringFieldUpdateOperationsInput
   images: FileUpdateManyWithoutHouseNestedInput
+  isPopular: BoolFieldUpdateOperationsInput
   isRent: BoolFieldUpdateOperationsInput
   isSell: BoolFieldUpdateOperationsInput
+  lat: NullableFloatFieldUpdateOperationsInput
+  lng: NullableFloatFieldUpdateOperationsInput
   price: IntFieldUpdateOperationsInput
   remont: StringFieldUpdateOperationsInput
   rooms: NullableStringFieldUpdateOperationsInput
@@ -1052,8 +1109,11 @@ input HouseWhereInput {
   floor: StringNullableFilter
   id: IntFilter
   images: FileListRelationFilter
+  isPopular: BoolFilter
   isRent: BoolFilter
   isSell: BoolFilter
+  lat: FloatNullableFilter
+  lng: FloatNullableFilter
   price: IntFilter
   realtor: UserScalarRelationFilter
   realtorId: IntFilter
@@ -1076,8 +1136,11 @@ input HouseWhereUniqueInput {
   floor: StringNullableFilter
   id: Int
   images: FileListRelationFilter
+  isPopular: BoolFilter
   isRent: BoolFilter
   isSell: BoolFilter
+  lat: FloatNullableFilter
+  lng: FloatNullableFilter
   price: IntFilter
   realtor: UserScalarRelationFilter
   realtorId: IntFilter
@@ -1122,11 +1185,13 @@ type Mutation {
   createFeature(createFeatureInput: FeatureCreateInput!): Feature!
   createHouse(createHouseInput: HouseCreateDto!): House!
   createUser(createUserInput: UserCreateInput!): User!
+  forgotPassword(email: String!): AuthSuccessDto!
+  houseDelete(id: Int!): House!
   removeAnyUser(id: Float!): User!
   removeAppeal(id: Int!): Appeals!
   removeFeature(id: Int!): Feature!
-  removeHouse(id: Int!): House!
   removeUser: User!
+  setPassword(setPasswordDto: SetPasswordDto!): AuthSuccessDto!
   signIn(createUserInput: UserCreateInput!): AuthSuccessDto!
   signUp(createUserInput: UserCreateInput!): AuthSuccessDto!
   updateAnyUser(data: UserUpdateInput!, id: Float!): User!
@@ -1151,6 +1216,17 @@ input NestedDateTimeFilter {
   lte: DateTime
   not: NestedDateTimeFilter
   notIn: [DateTime!]
+}
+
+input NestedFloatNullableFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatNullableFilter
+  notIn: [Float!]
 }
 
 input NestedIntFilter {
@@ -1203,6 +1279,14 @@ input NestedStringNullableFilter {
   startsWith: String
 }
 
+input NullableFloatFieldUpdateOperationsInput {
+  decrement: Float
+  divide: Float
+  increment: Float
+  multiply: Float
+  set: Float
+}
+
 input NullableIntFieldUpdateOperationsInput {
   decrement: Int
   divide: Int
@@ -1230,6 +1314,11 @@ type Query {
   sayHello: String!
   user(id: Int!): User!
   users: [User!]!
+}
+
+enum QueryMode {
+  default
+  insensitive
 }
 
 type Role {
@@ -1306,6 +1395,11 @@ input RoleWhereUniqueInput {
   users: UserListRelationFilter
 }
 
+input SetPasswordDto {
+  newPassword: String!
+  token: String!
+}
+
 input StringFieldUpdateOperationsInput {
   set: String
 }
@@ -1319,6 +1413,7 @@ input StringFilter {
   in: [String!]
   lt: String
   lte: String
+  mode: QueryMode
   not: NestedStringFilter
   notIn: [String!]
   startsWith: String
@@ -1333,6 +1428,7 @@ input StringNullableFilter {
   in: [String!]
   lt: String
   lte: String
+  mode: QueryMode
   not: NestedStringNullableFilter
   notIn: [String!]
   startsWith: String
@@ -1364,6 +1460,7 @@ type User {
   roleId: Int
   telephone: String
   tg: String
+  token: String
 }
 
 type UserCount {
@@ -1386,6 +1483,7 @@ input UserCreateInput {
   role: RoleCreateNestedOneWithoutUsersInput
   telephone: String
   tg: String
+  token: String
 }
 
 input UserCreateNestedOneWithoutAppealsAsClientInput {
@@ -1445,6 +1543,7 @@ input UserCreateWithoutAppealsAsClientInput {
   role: RoleCreateNestedOneWithoutUsersInput
   telephone: String
   tg: String
+  token: String
 }
 
 input UserCreateWithoutAppealsAsRealtorInput {
@@ -1460,6 +1559,7 @@ input UserCreateWithoutAppealsAsRealtorInput {
   role: RoleCreateNestedOneWithoutUsersInput
   telephone: String
   tg: String
+  token: String
 }
 
 input UserCreateWithoutAvatarInput {
@@ -1475,6 +1575,7 @@ input UserCreateWithoutAvatarInput {
   role: RoleCreateNestedOneWithoutUsersInput
   telephone: String
   tg: String
+  token: String
 }
 
 input UserCreateWithoutHousesInput {
@@ -1490,6 +1591,7 @@ input UserCreateWithoutHousesInput {
   role: RoleCreateNestedOneWithoutUsersInput
   telephone: String
   tg: String
+  token: String
 }
 
 input UserListRelationFilter {
@@ -1522,6 +1624,7 @@ input UserUpdateInput {
   role: RoleUpdateOneWithoutUsersNestedInput
   telephone: NullableStringFieldUpdateOperationsInput
   tg: NullableStringFieldUpdateOperationsInput
+  token: NullableStringFieldUpdateOperationsInput
 }
 
 input UserUpdateOneRequiredWithoutHousesNestedInput {
@@ -1595,6 +1698,7 @@ input UserUpdateWithoutAppealsAsClientInput {
   role: RoleUpdateOneWithoutUsersNestedInput
   telephone: NullableStringFieldUpdateOperationsInput
   tg: NullableStringFieldUpdateOperationsInput
+  token: NullableStringFieldUpdateOperationsInput
 }
 
 input UserUpdateWithoutAppealsAsRealtorInput {
@@ -1610,6 +1714,7 @@ input UserUpdateWithoutAppealsAsRealtorInput {
   role: RoleUpdateOneWithoutUsersNestedInput
   telephone: NullableStringFieldUpdateOperationsInput
   tg: NullableStringFieldUpdateOperationsInput
+  token: NullableStringFieldUpdateOperationsInput
 }
 
 input UserUpdateWithoutAvatarInput {
@@ -1625,6 +1730,7 @@ input UserUpdateWithoutAvatarInput {
   role: RoleUpdateOneWithoutUsersNestedInput
   telephone: NullableStringFieldUpdateOperationsInput
   tg: NullableStringFieldUpdateOperationsInput
+  token: NullableStringFieldUpdateOperationsInput
 }
 
 input UserUpdateWithoutHousesInput {
@@ -1640,6 +1746,7 @@ input UserUpdateWithoutHousesInput {
   role: RoleUpdateOneWithoutUsersNestedInput
   telephone: NullableStringFieldUpdateOperationsInput
   tg: NullableStringFieldUpdateOperationsInput
+  token: NullableStringFieldUpdateOperationsInput
 }
 
 input UserUpsertWithoutAppealsAsClientInput {
@@ -1686,6 +1793,7 @@ input UserWhereInput {
   roleId: IntNullableFilter
   telephone: StringNullableFilter
   tg: StringNullableFilter
+  token: StringNullableFilter
 }
 
 input UserWhereUniqueInput {
@@ -1708,4 +1816,5 @@ input UserWhereUniqueInput {
   roleId: IntNullableFilter
   telephone: StringNullableFilter
   tg: StringNullableFilter
+  token: StringNullableFilter
 }

@@ -5,6 +5,7 @@ import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-up
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
 import { BoolFieldUpdateOperationsInput } from '../prisma/bool-field-update-operations.input';
+import { NullableFloatFieldUpdateOperationsInput } from '../prisma/nullable-float-field-update-operations.input';
 import { FileUncheckedUpdateManyWithoutHouseNestedInput } from '../file/file-unchecked-update-many-without-house-nested.input';
 import { FeatureUncheckedUpdateManyWithoutHousesNestedInput } from '../feature/feature-unchecked-update-many-without-houses-nested.input';
 import { AppealsUncheckedUpdateOneWithoutHouseNestedInput } from '../appeals/appeals-unchecked-update-one-without-house-nested.input';
@@ -49,7 +50,16 @@ export class HouseUncheckedUpdateInput {
     isRent?: BoolFieldUpdateOperationsInput;
 
     @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
+    isPopular?: BoolFieldUpdateOperationsInput;
+
+    @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
     isSell?: BoolFieldUpdateOperationsInput;
+
+    @Field(() => NullableFloatFieldUpdateOperationsInput, {nullable:true})
+    lat?: NullableFloatFieldUpdateOperationsInput;
+
+    @Field(() => NullableFloatFieldUpdateOperationsInput, {nullable:true})
+    lng?: NullableFloatFieldUpdateOperationsInput;
 
     @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
     realtorId?: IntFieldUpdateOperationsInput;

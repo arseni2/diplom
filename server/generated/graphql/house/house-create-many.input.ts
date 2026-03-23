@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { Float } from '@nestjs/graphql';
 
 @InputType()
 export class HouseCreateManyInput {
@@ -42,7 +43,16 @@ export class HouseCreateManyInput {
     isRent?: boolean;
 
     @Field(() => Boolean, {nullable:true})
+    isPopular?: boolean;
+
+    @Field(() => Boolean, {nullable:true})
     isSell?: boolean;
+
+    @Field(() => Float, {nullable:true})
+    lat?: number;
+
+    @Field(() => Float, {nullable:true})
+    lng?: number;
 
     @Field(() => Int, {nullable:false})
     realtorId!: number;

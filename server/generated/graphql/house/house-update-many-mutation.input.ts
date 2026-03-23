@@ -5,6 +5,7 @@ import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-
 import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { BoolFieldUpdateOperationsInput } from '../prisma/bool-field-update-operations.input';
+import { NullableFloatFieldUpdateOperationsInput } from '../prisma/nullable-float-field-update-operations.input';
 
 @InputType()
 export class HouseUpdateManyMutationInput {
@@ -43,5 +44,14 @@ export class HouseUpdateManyMutationInput {
     isRent?: BoolFieldUpdateOperationsInput;
 
     @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
+    isPopular?: BoolFieldUpdateOperationsInput;
+
+    @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
     isSell?: BoolFieldUpdateOperationsInput;
+
+    @Field(() => NullableFloatFieldUpdateOperationsInput, {nullable:true})
+    lat?: NullableFloatFieldUpdateOperationsInput;
+
+    @Field(() => NullableFloatFieldUpdateOperationsInput, {nullable:true})
+    lng?: NullableFloatFieldUpdateOperationsInput;
 }

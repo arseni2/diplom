@@ -9,4 +9,7 @@ export class CreateManyAppealsArgs {
     @Field(() => [AppealsCreateManyInput], {nullable:false})
     @Type(() => AppealsCreateManyInput)
     data!: Array<AppealsCreateManyInput>;
+
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }

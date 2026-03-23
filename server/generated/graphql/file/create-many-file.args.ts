@@ -9,4 +9,7 @@ export class CreateManyFileArgs {
     @Field(() => [FileCreateManyInput], {nullable:false})
     @Type(() => FileCreateManyInput)
     data!: Array<FileCreateManyInput>;
+
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }

@@ -8,8 +8,9 @@ import clsx from "clsx";
 
 export const SidebarManage = () => {
     const pathname = usePathname();
+    const cleaned = pathname.replace(/\/\d+(\/|$)/g, '/').replace(/\/$/, '');
 
-    const isActive = (path: string) => pathname === path;
+    const isActive = (path: string) => cleaned === path;
 
     return (
         <div className={styles.container}>
@@ -26,7 +27,7 @@ export const SidebarManage = () => {
                 <Link
                     href="/manage/houses"
                     className={clsx(styles.container_list_item, {
-                        [styles.active]: isActive('/manage/houses'),
+                        [styles.active]: isActive('/manage/houses') || isActive('/manage/houses/edit') || isActive('/manage/houses/create'),
                     })}
                 >
                     <House width={24} height={24} />

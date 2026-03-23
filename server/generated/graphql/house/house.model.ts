@@ -2,6 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { ID } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { Float } from '@nestjs/graphql';
 import { User } from '../user/user.model';
 import { File } from '../file/file.model';
 import { Feature } from '../feature/feature.model';
@@ -47,8 +48,17 @@ export class House {
     @Field(() => Boolean, {defaultValue:true,nullable:false})
     isRent!: boolean;
 
+    @Field(() => Boolean, {defaultValue:false,nullable:false})
+    isPopular!: boolean;
+
     @Field(() => Boolean, {defaultValue:true,nullable:false})
     isSell!: boolean;
+
+    @Field(() => Float, {nullable:true})
+    lat!: number | null;
+
+    @Field(() => Float, {nullable:true})
+    lng!: number | null;
 
     @Field(() => Int, {nullable:false})
     realtorId!: number;

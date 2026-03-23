@@ -33,6 +33,9 @@ export class UserCountAggregate {
     tg!: number;
 
     @Field(() => Int, {nullable:false})
+    token!: number;
+
+    @Field(() => Int, {nullable:false})
     roleId!: number;
 
     @Field(() => Int, {nullable:false})

@@ -41,7 +41,16 @@ export class HouseMaxAggregateInput {
     isRent?: true;
 
     @Field(() => Boolean, {nullable:true})
+    isPopular?: true;
+
+    @Field(() => Boolean, {nullable:true})
     isSell?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    lat?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    lng?: true;
 
     @Field(() => Boolean, {nullable:true})
     realtorId?: true;

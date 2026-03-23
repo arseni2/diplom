@@ -66,7 +66,7 @@ export class HousesResolver {
       return this.housesService.update(user, id, updateHouseInput);
     }
 
-    @Mutation(() => House)
+    @Mutation(() => House, {name: 'houseDelete'})
     @UseGuards(AuthGuard)
     removeHouse(@GetUserDecorator() user: IPayload, @Args('id', {type: () => Int}) id: number) {
         return this.housesService.remove(user, id);

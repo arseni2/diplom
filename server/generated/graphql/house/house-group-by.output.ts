@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { Float } from '@nestjs/graphql';
 import { HouseCountAggregate } from './house-count-aggregate.output';
 import { HouseAvgAggregate } from './house-avg-aggregate.output';
 import { HouseSumAggregate } from './house-sum-aggregate.output';
@@ -47,7 +48,16 @@ export class HouseGroupBy {
     isRent!: boolean;
 
     @Field(() => Boolean, {nullable:false})
+    isPopular!: boolean;
+
+    @Field(() => Boolean, {nullable:false})
     isSell!: boolean;
+
+    @Field(() => Float, {nullable:true})
+    lat?: number;
+
+    @Field(() => Float, {nullable:true})
+    lng?: number;
 
     @Field(() => Int, {nullable:false})
     realtorId!: number;

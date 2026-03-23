@@ -9,4 +9,7 @@ export class CreateManyHouseArgs {
     @Field(() => [HouseCreateManyInput], {nullable:false})
     @Type(() => HouseCreateManyInput)
     data!: Array<HouseCreateManyInput>;
+
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }

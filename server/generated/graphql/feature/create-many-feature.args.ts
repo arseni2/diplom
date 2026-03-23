@@ -9,4 +9,7 @@ export class CreateManyFeatureArgs {
     @Field(() => [FeatureCreateManyInput], {nullable:false})
     @Type(() => FeatureCreateManyInput)
     data!: Array<FeatureCreateManyInput>;
+
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }

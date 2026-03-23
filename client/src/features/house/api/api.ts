@@ -8,6 +8,7 @@ export const getHouseRentQuery = gql`
             title
             description
             address
+            isPopular
             square
             remont
             bio
@@ -36,6 +37,7 @@ export const getHouseAllQuery = gql`
             address
             square
             remont
+            isPopular
             bio
             price
             realtorId
@@ -63,8 +65,13 @@ export const getHouseDetailQuery = gql`
             square
             remont
             bio
+            lat
+            lng
             price
+            isPopular
             isRent
+            rooms
+            floor
             isSell
             realtorId
             realtor {
@@ -223,6 +230,7 @@ export const filterHouseQuery = gql`
     query HousesFilter($address: String, $minPrice: Float, $maxPrice: Float, $isRent: Boolean) {
         housesFilter(address: $address, minPrice: $minPrice, maxPrice: $maxPrice, isRent: $isRent) {
             id
+            isPopular
             createdAt
             title
             description
@@ -251,6 +259,7 @@ mutation updateHouse($id: Float!, $input: HouseUpdateInput!) {
         createdAt
         title
         description
+        isPopular
         address
         square
         remont
@@ -276,3 +285,11 @@ mutation updateHouse($id: Float!, $input: HouseUpdateInput!) {
     }
 }
 `
+
+export const deleteHouseMutation = gql`
+    mutation deleteHouse($id: Int!) {
+        houseDelete(id: $id) {
+            id
+        }
+    }
+`;

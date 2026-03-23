@@ -38,6 +38,9 @@ export class UserOrderByWithRelationInput {
     tg?: SortOrderInput;
 
     @Field(() => SortOrderInput, {nullable:true})
+    token?: SortOrderInput;
+
+    @Field(() => SortOrderInput, {nullable:true})
     roleId?: SortOrderInput;
 
     @Field(() => SortOrderInput, {nullable:true})

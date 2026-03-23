@@ -33,6 +33,9 @@ export class UserMaxOrderByAggregateInput {
     tg?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
+    token?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
     roleId?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})

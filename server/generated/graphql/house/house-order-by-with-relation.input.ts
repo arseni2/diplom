@@ -47,7 +47,16 @@ export class HouseOrderByWithRelationInput {
     isRent?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
+    isPopular?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
     isSell?: `${SortOrder}`;
+
+    @Field(() => SortOrderInput, {nullable:true})
+    lat?: SortOrderInput;
+
+    @Field(() => SortOrderInput, {nullable:true})
+    lng?: SortOrderInput;
 
     @Field(() => SortOrder, {nullable:true})
     realtorId?: `${SortOrder}`;

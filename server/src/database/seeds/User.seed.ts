@@ -1,5 +1,6 @@
-// User.seed.ts
 import {PrismaClient} from '@prisma/client';
+import argon2 from "argon2";
+
 
 class UserSeeder {
     private prisma: PrismaClient;
@@ -41,6 +42,7 @@ class UserSeeder {
 
             for (const user of this.users) {
                 try {
+                    user.password = await argon2.hash(user.password);
                     await this.prisma.user.create({data: user});
                     console.log(`✅ Пользователь "${user.email}" создан`);
                 } catch (error: any) {

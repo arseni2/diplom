@@ -9,4 +9,7 @@ export class AppealsCreateManyRealtorInputEnvelope {
     @Field(() => [AppealsCreateManyRealtorInput], {nullable:false})
     @Type(() => AppealsCreateManyRealtorInput)
     data!: Array<AppealsCreateManyRealtorInput>;
+
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }

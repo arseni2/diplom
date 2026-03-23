@@ -32,6 +32,9 @@ export class UserCreateWithoutHousesInput {
     @Field(() => String, {nullable:true})
     tg?: string;
 
+    @Field(() => String, {nullable:true})
+    token?: string;
+
     @Field(() => RoleCreateNestedOneWithoutUsersInput, {nullable:true})
     role?: RoleCreateNestedOneWithoutUsersInput;
 

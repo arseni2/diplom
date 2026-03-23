@@ -40,7 +40,7 @@ export class AppealService {
             })
         }
 
-        if (userFromDb?.roleId === RoleEnum.ADMIN) {
+        if (userFromDb?.roleId === RoleEnum.REALTOR) {
             return this.prismaService.appeals.findMany({
                 where: {
                     realtorId: userFromDb?.id

@@ -9,4 +9,7 @@ export class HouseCreateManyRealtorInputEnvelope {
     @Field(() => [HouseCreateManyRealtorInput], {nullable:false})
     @Type(() => HouseCreateManyRealtorInput)
     data!: Array<HouseCreateManyRealtorInput>;
+
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }

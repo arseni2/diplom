@@ -97,6 +97,25 @@ export class HousesService {
         if(dbUser?.roleId == RoleEnum.USER) {
             throw new AppException({"user": ["нет прав"]}, HttpStatus.FORBIDDEN);
         }
+
+        if(dbUser?.roleId == RoleEnum.REALTOR) {
+            const house = await this.prisma.house.findUnique({
+                where: {
+                    id: id,
+                    realtorId: user.id
+                }
+            })
+
+            if(!house) {
+                throw new AppException({"user": ["нет прав, недвижимость другого риелтора"]}, HttpStatus.FORBIDDEN);
+            }
+
+            return this.prisma.house.delete({
+                where: {
+                    id: house.id
+                }
+            })
+        }
         return this.prisma.house.delete({
             where: {id}
         });
@@ -161,7 +180,10 @@ export class HousesService {
 
         return this.prisma.house.update({
             where: { id },
-            data: dto
+            data: dto,
+            include: {
+                images: true
+            }
         })
     }
 }

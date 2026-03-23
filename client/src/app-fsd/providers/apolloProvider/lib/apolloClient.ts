@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 
 export const createApolloClient = () => {
     const httpLink = new UploadHttpLink({
-        uri: "http://localhost:7777/graphql",
+        uri: `${process.env.NEXT_PUBLIC_API_URL}/graphql`,
     });
 
     const authLink = setContext((_, { headers }) => {

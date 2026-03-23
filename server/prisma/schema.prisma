@@ -9,7 +9,7 @@ generator nestgraphql {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -38,6 +38,7 @@ model User {
   password   String
   telephone  String?
   tg         String?
+  token      String?  @unique
 
   roleId           Int?      @default(1)
   role             Role?     @relation(fields: [roleId], references: [id])
@@ -94,7 +95,10 @@ model House {
   bio         String
   price       Int
   isRent      Boolean  @default(true)
+  isPopular   Boolean  @default(false)
   isSell      Boolean  @default(true)
+  lat         Float? // широта
+  lng         Float? // долгота
 
   realtor   User      @relation(fields: [realtorId], references: [id])
   realtorId Int
@@ -107,6 +111,7 @@ model House {
   @@index([isRent])
   @@index([isSell])
   @@index([createdAt])
+  @@index([lat, lng]) // быстрый поиск по координатам
 }
 
 model Appeals {

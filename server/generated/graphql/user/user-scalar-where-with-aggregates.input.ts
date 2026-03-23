@@ -45,6 +45,9 @@ export class UserScalarWhereWithAggregatesInput {
     @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
     tg?: StringNullableWithAggregatesFilter;
 
+    @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
+    token?: StringNullableWithAggregatesFilter;
+
     @Field(() => IntNullableWithAggregatesFilter, {nullable:true})
     roleId?: IntNullableWithAggregatesFilter;
 

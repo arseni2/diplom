@@ -5,6 +5,7 @@ import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-
 import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { BoolFieldUpdateOperationsInput } from '../prisma/bool-field-update-operations.input';
+import { NullableFloatFieldUpdateOperationsInput } from '../prisma/nullable-float-field-update-operations.input';
 import { UserUpdateOneRequiredWithoutHousesNestedInput } from '../user/user-update-one-required-without-houses-nested.input';
 import { FeatureUpdateManyWithoutHousesNestedInput } from '../feature/feature-update-many-without-houses-nested.input';
 import { AppealsUpdateOneWithoutHouseNestedInput } from '../appeals/appeals-update-one-without-house-nested.input';
@@ -46,7 +47,16 @@ export class HouseUpdateWithoutImagesInput {
     isRent?: BoolFieldUpdateOperationsInput;
 
     @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
+    isPopular?: BoolFieldUpdateOperationsInput;
+
+    @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
     isSell?: BoolFieldUpdateOperationsInput;
+
+    @Field(() => NullableFloatFieldUpdateOperationsInput, {nullable:true})
+    lat?: NullableFloatFieldUpdateOperationsInput;
+
+    @Field(() => NullableFloatFieldUpdateOperationsInput, {nullable:true})
+    lng?: NullableFloatFieldUpdateOperationsInput;
 
     @Field(() => UserUpdateOneRequiredWithoutHousesNestedInput, {nullable:true})
     realtor?: UserUpdateOneRequiredWithoutHousesNestedInput;

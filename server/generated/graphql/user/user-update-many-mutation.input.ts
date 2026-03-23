@@ -30,4 +30,7 @@ export class UserUpdateManyMutationInput {
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
     tg?: NullableStringFieldUpdateOperationsInput;
+
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    token?: NullableStringFieldUpdateOperationsInput;
 }

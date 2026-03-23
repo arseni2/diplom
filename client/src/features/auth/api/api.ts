@@ -61,3 +61,21 @@ export const SignUpDocument = gql`
         }
     }
 `
+
+export const SetPasswordDocument = gql`
+    mutation SetPassword($setPasswordDto: SetPasswordDto!) {
+        setPassword(setPasswordDto: $setPasswordDto) {
+            id
+            token
+        }
+    }
+`
+
+export const ForgotPasswordDocument = gql`
+    mutation ForgotPassword($email: String!) {
+        forgotPassword(email: $email) {
+            id
+            email
+        }
+    }
+`

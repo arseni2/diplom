@@ -37,6 +37,9 @@ export class UserGroupBy {
     @Field(() => String, {nullable:true})
     tg?: string;
 
+    @Field(() => String, {nullable:true})
+    token?: string;
+
     @Field(() => Int, {nullable:true})
     roleId?: number;
 

@@ -32,6 +32,9 @@ export class UserMinAggregateInput {
     tg?: true;
 
     @Field(() => Boolean, {nullable:true})
+    token?: true;
+
+    @Field(() => Boolean, {nullable:true})
     roleId?: true;
 
     @Field(() => Boolean, {nullable:true})

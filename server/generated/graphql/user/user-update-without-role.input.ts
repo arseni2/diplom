@@ -35,6 +35,9 @@ export class UserUpdateWithoutRoleInput {
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
     tg?: NullableStringFieldUpdateOperationsInput;
 
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    token?: NullableStringFieldUpdateOperationsInput;
+
     @Field(() => FileUpdateOneWithoutUserNestedInput, {nullable:true})
     avatar?: FileUpdateOneWithoutUserNestedInput;
 
