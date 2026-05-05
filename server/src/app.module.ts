@@ -57,7 +57,7 @@ import { UserModule } from './user/user.module';
         },
       },
       defaults: {
-        from: `Your App`,
+        from: `Proludi <${process.env.MAIL_USER}>`,
       },
       template: {
         dir: join(__dirname, '..', '..', 'src', 'templates'),

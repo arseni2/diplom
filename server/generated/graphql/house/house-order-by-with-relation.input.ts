@@ -5,7 +5,7 @@ import { SortOrderInput } from '../prisma/sort-order.input';
 import { UserOrderByWithRelationInput } from '../user/user-order-by-with-relation.input';
 import { FileOrderByRelationAggregateInput } from '../file/file-order-by-relation-aggregate.input';
 import { FeatureOrderByRelationAggregateInput } from '../feature/feature-order-by-relation-aggregate.input';
-import { AppealsOrderByWithRelationInput } from '../appeals/appeals-order-by-with-relation.input';
+import { AppealsOrderByRelationAggregateInput } from '../appeals/appeals-order-by-relation-aggregate.input';
 
 @InputType()
 export class HouseOrderByWithRelationInput {
@@ -70,6 +70,6 @@ export class HouseOrderByWithRelationInput {
     @Field(() => FeatureOrderByRelationAggregateInput, {nullable:true})
     features?: FeatureOrderByRelationAggregateInput;
 
-    @Field(() => AppealsOrderByWithRelationInput, {nullable:true})
-    appeal?: AppealsOrderByWithRelationInput;
+    @Field(() => AppealsOrderByRelationAggregateInput, {nullable:true})
+    appeals?: AppealsOrderByRelationAggregateInput;
 }

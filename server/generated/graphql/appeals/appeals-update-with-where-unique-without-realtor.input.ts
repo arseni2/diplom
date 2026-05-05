@@ -10,7 +10,7 @@ export class AppealsUpdateWithWhereUniqueWithoutRealtorInput {
 
     @Field(() => AppealsWhereUniqueInput, {nullable:false})
     @Type(() => AppealsWhereUniqueInput)
-    where!: Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'clientId' | 'realtorId'>;
+    where!: Prisma.AtLeast<AppealsWhereUniqueInput, 'id'>;
 
     @Field(() => AppealsUpdateWithoutRealtorInput, {nullable:false})
     @Type(() => AppealsUpdateWithoutRealtorInput)

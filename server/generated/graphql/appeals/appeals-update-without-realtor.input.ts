@@ -2,7 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
-import { HouseUpdateOneWithoutAppealNestedInput } from '../house/house-update-one-without-appeal-nested.input';
+import { HouseUpdateOneWithoutAppealsNestedInput } from '../house/house-update-one-without-appeals-nested.input';
 import { UserUpdateOneWithoutAppealsAsClientNestedInput } from '../user/user-update-one-without-appeals-as-client-nested.input';
 
 @InputType()
@@ -17,8 +17,8 @@ export class AppealsUpdateWithoutRealtorInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     comment?: StringFieldUpdateOperationsInput;
 
-    @Field(() => HouseUpdateOneWithoutAppealNestedInput, {nullable:true})
-    house?: HouseUpdateOneWithoutAppealNestedInput;
+    @Field(() => HouseUpdateOneWithoutAppealsNestedInput, {nullable:true})
+    house?: HouseUpdateOneWithoutAppealsNestedInput;
 
     @Field(() => UserUpdateOneWithoutAppealsAsClientNestedInput, {nullable:true})
     client?: UserUpdateOneWithoutAppealsAsClientNestedInput;

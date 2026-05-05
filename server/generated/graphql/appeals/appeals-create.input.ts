@@ -1,6 +1,6 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { HouseCreateNestedOneWithoutAppealInput } from '../house/house-create-nested-one-without-appeal.input';
+import { HouseCreateNestedOneWithoutAppealsInput } from '../house/house-create-nested-one-without-appeals.input';
 import { UserCreateNestedOneWithoutAppealsAsClientInput } from '../user/user-create-nested-one-without-appeals-as-client.input';
 import { UserCreateNestedOneWithoutAppealsAsRealtorInput } from '../user/user-create-nested-one-without-appeals-as-realtor.input';
 
@@ -16,8 +16,8 @@ export class AppealsCreateInput {
     @Field(() => String, {nullable:false})
     comment!: string;
 
-    @Field(() => HouseCreateNestedOneWithoutAppealInput, {nullable:true})
-    house?: HouseCreateNestedOneWithoutAppealInput;
+    @Field(() => HouseCreateNestedOneWithoutAppealsInput, {nullable:true})
+    house?: HouseCreateNestedOneWithoutAppealsInput;
 
     @Field(() => UserCreateNestedOneWithoutAppealsAsClientInput, {nullable:true})
     client?: UserCreateNestedOneWithoutAppealsAsClientInput;

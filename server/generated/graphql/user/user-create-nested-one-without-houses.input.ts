@@ -19,5 +19,5 @@ export class UserCreateNestedOneWithoutHousesInput {
 
     @Field(() => UserWhereUniqueInput, {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'avatarId'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'token' | 'avatarId'>;
 }

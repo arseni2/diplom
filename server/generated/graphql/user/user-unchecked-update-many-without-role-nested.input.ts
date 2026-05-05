@@ -32,19 +32,19 @@ export class UserUncheckedUpdateManyWithoutRoleNestedInput {
 
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'avatarId'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'token' | 'avatarId'>>;
 
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'avatarId'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'token' | 'avatarId'>>;
 
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'avatarId'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'token' | 'avatarId'>>;
 
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'avatarId'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'token' | 'avatarId'>>;
 
     @Field(() => [UserUpdateWithWhereUniqueWithoutRoleInput], {nullable:true})
     @Type(() => UserUpdateWithWhereUniqueWithoutRoleInput)

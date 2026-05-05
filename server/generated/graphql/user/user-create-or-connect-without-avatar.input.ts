@@ -10,7 +10,7 @@ export class UserCreateOrConnectWithoutAvatarInput {
 
     @Field(() => UserWhereUniqueInput, {nullable:false})
     @Type(() => UserWhereUniqueInput)
-    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'avatarId'>;
+    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'token' | 'avatarId'>;
 
     @Field(() => UserCreateWithoutAvatarInput, {nullable:false})
     @Type(() => UserCreateWithoutAvatarInput)

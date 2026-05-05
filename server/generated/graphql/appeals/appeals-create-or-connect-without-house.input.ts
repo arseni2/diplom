@@ -10,7 +10,7 @@ export class AppealsCreateOrConnectWithoutHouseInput {
 
     @Field(() => AppealsWhereUniqueInput, {nullable:false})
     @Type(() => AppealsWhereUniqueInput)
-    where!: Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'clientId' | 'realtorId'>;
+    where!: Prisma.AtLeast<AppealsWhereUniqueInput, 'id'>;
 
     @Field(() => AppealsCreateWithoutHouseInput, {nullable:false})
     @Type(() => AppealsCreateWithoutHouseInput)

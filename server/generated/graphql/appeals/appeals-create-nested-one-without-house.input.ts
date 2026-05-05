@@ -19,5 +19,5 @@ export class AppealsCreateNestedOneWithoutHouseInput {
 
     @Field(() => AppealsWhereUniqueInput, {nullable:true})
     @Type(() => AppealsWhereUniqueInput)
-    connect?: Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'clientId' | 'realtorId'>;
+    connect?: Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'realtorId'>;
 }

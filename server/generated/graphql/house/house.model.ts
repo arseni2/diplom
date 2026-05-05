@@ -72,8 +72,8 @@ export class House {
     @Field(() => [Feature], {nullable:true})
     features?: Array<Feature>;
 
-    @Field(() => Appeals, {nullable:true})
-    appeal?: Appeals | null;
+    @Field(() => [Appeals], {nullable:true})
+    appeals?: Array<Appeals>;
 
     @Field(() => HouseCount, {nullable:false})
     _count?: HouseCount;

@@ -9,7 +9,7 @@ import { FloatNullableFilter } from '../prisma/float-nullable-filter.input';
 import { UserScalarRelationFilter } from '../user/user-scalar-relation-filter.input';
 import { FileListRelationFilter } from '../file/file-list-relation-filter.input';
 import { FeatureListRelationFilter } from '../feature/feature-list-relation-filter.input';
-import { AppealsNullableScalarRelationFilter } from '../appeals/appeals-nullable-scalar-relation-filter.input';
+import { AppealsListRelationFilter } from '../appeals/appeals-list-relation-filter.input';
 
 @InputType()
 export class HouseWhereInput {
@@ -83,6 +83,6 @@ export class HouseWhereInput {
     @Field(() => FeatureListRelationFilter, {nullable:true})
     features?: FeatureListRelationFilter;
 
-    @Field(() => AppealsNullableScalarRelationFilter, {nullable:true})
-    appeal?: AppealsNullableScalarRelationFilter;
+    @Field(() => AppealsListRelationFilter, {nullable:true})
+    appeals?: AppealsListRelationFilter;
 }

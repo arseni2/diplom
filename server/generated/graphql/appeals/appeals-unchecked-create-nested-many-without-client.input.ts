@@ -24,5 +24,5 @@ export class AppealsUncheckedCreateNestedManyWithoutClientInput {
 
     @Field(() => [AppealsWhereUniqueInput], {nullable:true})
     @Type(() => AppealsWhereUniqueInput)
-    connect?: Array<Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'clientId' | 'realtorId'>>;
+    connect?: Array<Prisma.AtLeast<AppealsWhereUniqueInput, 'id'>>;
 }

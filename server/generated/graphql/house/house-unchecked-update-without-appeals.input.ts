@@ -1,0 +1,71 @@
+import { Field } from '@nestjs/graphql';
+import { InputType } from '@nestjs/graphql';
+import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
+import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
+import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
+import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
+import { BoolFieldUpdateOperationsInput } from '../prisma/bool-field-update-operations.input';
+import { NullableFloatFieldUpdateOperationsInput } from '../prisma/nullable-float-field-update-operations.input';
+import { FileUncheckedUpdateManyWithoutHouseNestedInput } from '../file/file-unchecked-update-many-without-house-nested.input';
+import { FeatureUncheckedUpdateManyWithoutHousesNestedInput } from '../feature/feature-unchecked-update-many-without-houses-nested.input';
+
+@InputType()
+export class HouseUncheckedUpdateWithoutAppealsInput {
+
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    id?: IntFieldUpdateOperationsInput;
+
+    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
+    createdAt?: DateTimeFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    title?: StringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    description?: StringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    address?: StringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    square?: StringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    remont?: StringFieldUpdateOperationsInput;
+
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    floor?: NullableStringFieldUpdateOperationsInput;
+
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    rooms?: NullableStringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    bio?: StringFieldUpdateOperationsInput;
+
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    price?: IntFieldUpdateOperationsInput;
+
+    @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
+    isRent?: BoolFieldUpdateOperationsInput;
+
+    @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
+    isPopular?: BoolFieldUpdateOperationsInput;
+
+    @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
+    isSell?: BoolFieldUpdateOperationsInput;
+
+    @Field(() => NullableFloatFieldUpdateOperationsInput, {nullable:true})
+    lat?: NullableFloatFieldUpdateOperationsInput;
+
+    @Field(() => NullableFloatFieldUpdateOperationsInput, {nullable:true})
+    lng?: NullableFloatFieldUpdateOperationsInput;
+
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    realtorId?: IntFieldUpdateOperationsInput;
+
+    @Field(() => FileUncheckedUpdateManyWithoutHouseNestedInput, {nullable:true})
+    images?: FileUncheckedUpdateManyWithoutHouseNestedInput;
+
+    @Field(() => FeatureUncheckedUpdateManyWithoutHousesNestedInput, {nullable:true})
+    features?: FeatureUncheckedUpdateManyWithoutHousesNestedInput;
+}

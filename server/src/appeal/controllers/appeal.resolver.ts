@@ -38,7 +38,7 @@ export class AppealResolver {
         @Args('updateAppealInput') updateAppealInput: AppealsUpdateInput,
         @GetUserDecorator() user: IPayload
     ) {
-      return this.appealService.update(id, updateAppealInput, user);
+        return this.appealService.update(id, updateAppealInput, user);
     }
 
     @Mutation(() => Appeals)

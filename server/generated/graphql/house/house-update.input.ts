@@ -9,7 +9,7 @@ import { NullableFloatFieldUpdateOperationsInput } from '../prisma/nullable-floa
 import { UserUpdateOneRequiredWithoutHousesNestedInput } from '../user/user-update-one-required-without-houses-nested.input';
 import { FileUpdateManyWithoutHouseNestedInput } from '../file/file-update-many-without-house-nested.input';
 import { FeatureUpdateManyWithoutHousesNestedInput } from '../feature/feature-update-many-without-houses-nested.input';
-import { AppealsUpdateOneWithoutHouseNestedInput } from '../appeals/appeals-update-one-without-house-nested.input';
+import { AppealsUpdateManyWithoutHouseNestedInput } from '../appeals/appeals-update-many-without-house-nested.input';
 
 @InputType()
 export class HouseUpdateInput {
@@ -68,6 +68,6 @@ export class HouseUpdateInput {
     @Field(() => FeatureUpdateManyWithoutHousesNestedInput, {nullable:true})
     features?: FeatureUpdateManyWithoutHousesNestedInput;
 
-    @Field(() => AppealsUpdateOneWithoutHouseNestedInput, {nullable:true})
-    appeal?: AppealsUpdateOneWithoutHouseNestedInput;
+    @Field(() => AppealsUpdateManyWithoutHouseNestedInput, {nullable:true})
+    appeals?: AppealsUpdateManyWithoutHouseNestedInput;
 }

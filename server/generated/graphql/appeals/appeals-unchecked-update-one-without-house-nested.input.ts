@@ -34,7 +34,7 @@ export class AppealsUncheckedUpdateOneWithoutHouseNestedInput {
 
     @Field(() => AppealsWhereUniqueInput, {nullable:true})
     @Type(() => AppealsWhereUniqueInput)
-    connect?: Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'clientId' | 'realtorId'>;
+    connect?: Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'realtorId'>;
 
     @Field(() => AppealsUpdateToOneWithWhereWithoutHouseInput, {nullable:true})
     @Type(() => AppealsUpdateToOneWithWhereWithoutHouseInput)

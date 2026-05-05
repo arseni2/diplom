@@ -23,7 +23,7 @@ export class AppealsAggregateArgs {
     orderBy?: Array<AppealsOrderByWithRelationInput>;
 
     @Field(() => AppealsWhereUniqueInput, {nullable:true})
-    cursor?: Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'clientId' | 'realtorId'>;
+    cursor?: Prisma.AtLeast<AppealsWhereUniqueInput, 'id'>;
 
     @Field(() => Int, {nullable:true})
     take?: number;

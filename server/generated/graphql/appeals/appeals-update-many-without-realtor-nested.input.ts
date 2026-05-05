@@ -32,19 +32,19 @@ export class AppealsUpdateManyWithoutRealtorNestedInput {
 
     @Field(() => [AppealsWhereUniqueInput], {nullable:true})
     @Type(() => AppealsWhereUniqueInput)
-    set?: Array<Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'clientId' | 'realtorId'>>;
+    set?: Array<Prisma.AtLeast<AppealsWhereUniqueInput, 'id'>>;
 
     @Field(() => [AppealsWhereUniqueInput], {nullable:true})
     @Type(() => AppealsWhereUniqueInput)
-    disconnect?: Array<Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'clientId' | 'realtorId'>>;
+    disconnect?: Array<Prisma.AtLeast<AppealsWhereUniqueInput, 'id'>>;
 
     @Field(() => [AppealsWhereUniqueInput], {nullable:true})
     @Type(() => AppealsWhereUniqueInput)
-    delete?: Array<Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'clientId' | 'realtorId'>>;
+    delete?: Array<Prisma.AtLeast<AppealsWhereUniqueInput, 'id'>>;
 
     @Field(() => [AppealsWhereUniqueInput], {nullable:true})
     @Type(() => AppealsWhereUniqueInput)
-    connect?: Array<Prisma.AtLeast<AppealsWhereUniqueInput, 'id' | 'houseId' | 'clientId' | 'realtorId'>>;
+    connect?: Array<Prisma.AtLeast<AppealsWhereUniqueInput, 'id'>>;
 
     @Field(() => [AppealsUpdateWithWhereUniqueWithoutRealtorInput], {nullable:true})
     @Type(() => AppealsUpdateWithWhereUniqueWithoutRealtorInput)

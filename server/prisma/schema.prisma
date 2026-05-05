@@ -10,7 +10,7 @@ generator nestgraphql {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://postgres:postgres@localhost:5555/postgres"
 }
 
 // ======================
@@ -104,7 +104,7 @@ model House {
   realtorId Int
   images    File[]
   features  Feature[] @relation("HouseFeatures")
-  appeal    Appeals?
+  appeals   Appeals[]
   // Feature   Feature[]
 
   @@index([realtorId])
@@ -121,13 +121,13 @@ model Appeals {
   comment   String
 
   house   House? @relation(fields: [houseId], references: [id])
-  houseId Int?   @unique
+  houseId Int?
 
   client   User? @relation("AppealClient", fields: [clientId], references: [id])
-  clientId Int?  @unique
+  clientId Int?
 
   realtor   User? @relation("AppealRealtor", fields: [realtorId], references: [id])
-  realtorId Int?  @unique
+  realtorId Int?
 
   @@index([houseId])
   @@index([clientId])

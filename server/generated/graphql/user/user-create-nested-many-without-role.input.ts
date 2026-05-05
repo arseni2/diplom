@@ -24,5 +24,5 @@ export class UserCreateNestedManyWithoutRoleInput {
 
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'avatarId'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'token' | 'avatarId'>>;
 }

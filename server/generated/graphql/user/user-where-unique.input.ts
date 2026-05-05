@@ -20,6 +20,9 @@ export class UserWhereUniqueInput {
     @Field(() => String, {nullable:true})
     email?: string;
 
+    @Field(() => String, {nullable:true})
+    token?: string;
+
     @Field(() => Int, {nullable:true})
     avatarId?: number;
 
@@ -52,9 +55,6 @@ export class UserWhereUniqueInput {
 
     @Field(() => StringNullableFilter, {nullable:true})
     tg?: StringNullableFilter;
-
-    @Field(() => StringNullableFilter, {nullable:true})
-    token?: StringNullableFilter;
 
     @Field(() => IntNullableFilter, {nullable:true})
     roleId?: IntNullableFilter;

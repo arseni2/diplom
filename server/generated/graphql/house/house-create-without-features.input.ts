@@ -4,7 +4,7 @@ import { Int } from '@nestjs/graphql';
 import { Float } from '@nestjs/graphql';
 import { UserCreateNestedOneWithoutHousesInput } from '../user/user-create-nested-one-without-houses.input';
 import { FileCreateNestedManyWithoutHouseInput } from '../file/file-create-nested-many-without-house.input';
-import { AppealsCreateNestedOneWithoutHouseInput } from '../appeals/appeals-create-nested-one-without-house.input';
+import { AppealsCreateNestedManyWithoutHouseInput } from '../appeals/appeals-create-nested-many-without-house.input';
 
 @InputType()
 export class HouseCreateWithoutFeaturesInput {
@@ -60,6 +60,6 @@ export class HouseCreateWithoutFeaturesInput {
     @Field(() => FileCreateNestedManyWithoutHouseInput, {nullable:true})
     images?: FileCreateNestedManyWithoutHouseInput;
 
-    @Field(() => AppealsCreateNestedOneWithoutHouseInput, {nullable:true})
-    appeal?: AppealsCreateNestedOneWithoutHouseInput;
+    @Field(() => AppealsCreateNestedManyWithoutHouseInput, {nullable:true})
+    appeals?: AppealsCreateNestedManyWithoutHouseInput;
 }

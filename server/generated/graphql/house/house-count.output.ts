@@ -10,4 +10,7 @@ export class HouseCount {
 
     @Field(() => Int, {nullable:false})
     features?: number;
+
+    @Field(() => Int, {nullable:false})
+    appeals?: number;
 }

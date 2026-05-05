@@ -180,7 +180,7 @@ export const createHouseMutation = gql`
                 title
                 value
             }
-            appeal {
+            appeals {
                 id
                 createdAt
                 status

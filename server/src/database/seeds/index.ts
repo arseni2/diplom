@@ -1,3 +1,5 @@
+import { config } from "dotenv";
+config();
 import {roleSeeder} from "./Role.seed";
 import {userSeeder} from "./User.seed";
 

@@ -7,7 +7,7 @@ import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-str
 import { BoolFieldUpdateOperationsInput } from '../prisma/bool-field-update-operations.input';
 import { NullableFloatFieldUpdateOperationsInput } from '../prisma/nullable-float-field-update-operations.input';
 import { FileUncheckedUpdateManyWithoutHouseNestedInput } from '../file/file-unchecked-update-many-without-house-nested.input';
-import { AppealsUncheckedUpdateOneWithoutHouseNestedInput } from '../appeals/appeals-unchecked-update-one-without-house-nested.input';
+import { AppealsUncheckedUpdateManyWithoutHouseNestedInput } from '../appeals/appeals-unchecked-update-many-without-house-nested.input';
 
 @InputType()
 export class HouseUncheckedUpdateWithoutFeaturesInput {
@@ -66,6 +66,6 @@ export class HouseUncheckedUpdateWithoutFeaturesInput {
     @Field(() => FileUncheckedUpdateManyWithoutHouseNestedInput, {nullable:true})
     images?: FileUncheckedUpdateManyWithoutHouseNestedInput;
 
-    @Field(() => AppealsUncheckedUpdateOneWithoutHouseNestedInput, {nullable:true})
-    appeal?: AppealsUncheckedUpdateOneWithoutHouseNestedInput;
+    @Field(() => AppealsUncheckedUpdateManyWithoutHouseNestedInput, {nullable:true})
+    appeals?: AppealsUncheckedUpdateManyWithoutHouseNestedInput;
 }

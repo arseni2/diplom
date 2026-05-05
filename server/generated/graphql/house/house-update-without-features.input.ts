@@ -8,7 +8,7 @@ import { BoolFieldUpdateOperationsInput } from '../prisma/bool-field-update-oper
 import { NullableFloatFieldUpdateOperationsInput } from '../prisma/nullable-float-field-update-operations.input';
 import { UserUpdateOneRequiredWithoutHousesNestedInput } from '../user/user-update-one-required-without-houses-nested.input';
 import { FileUpdateManyWithoutHouseNestedInput } from '../file/file-update-many-without-house-nested.input';
-import { AppealsUpdateOneWithoutHouseNestedInput } from '../appeals/appeals-update-one-without-house-nested.input';
+import { AppealsUpdateManyWithoutHouseNestedInput } from '../appeals/appeals-update-many-without-house-nested.input';
 
 @InputType()
 export class HouseUpdateWithoutFeaturesInput {
@@ -64,6 +64,6 @@ export class HouseUpdateWithoutFeaturesInput {
     @Field(() => FileUpdateManyWithoutHouseNestedInput, {nullable:true})
     images?: FileUpdateManyWithoutHouseNestedInput;
 
-    @Field(() => AppealsUpdateOneWithoutHouseNestedInput, {nullable:true})
-    appeal?: AppealsUpdateOneWithoutHouseNestedInput;
+    @Field(() => AppealsUpdateManyWithoutHouseNestedInput, {nullable:true})
+    appeals?: AppealsUpdateManyWithoutHouseNestedInput;
 }
